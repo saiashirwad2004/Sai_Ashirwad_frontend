@@ -1,0 +1,30 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://anandverse.space/#website",
+      "name": "AnandVerse",
+      "url": "https://anandverse.space",
+      "description": "AnandVerse is the portfolio of Anand, a Full Stack Developer building scalable web applications.",
+      "inLanguage": "en",
+      "publisher": {
+        "@id": "https://anandverse.space/about"
+      },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://anandverse.space/search?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://anandverse.space/about",
+      "name": "Anand",
+      "url": "https://anandverse.space/about",
+      "jobTitle": "Full Stack Developer",
+      "description": "Full Stack Developer specializing in modern web technologies including React and Node.js.",
+      "knowsAbout": ["React", "Node.js", "TypeScript", "Full Stack Development"]
+    }
+  ]
+}

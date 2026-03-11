@@ -31,17 +31,14 @@ export default function Navigation() {
 
   return (
     <>
-      <motion.nav
-        initial={{ y: -100 }}
-        animate={{ y: 0 }}
-        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+      <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled
             ? 'bg-background/80 backdrop-blur-xl border-b border-border/50'
             : 'bg-transparent'
           }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16 md:h-20">
+          <nav className="flex items-center justify-between h-16 md:h-20" aria-label="Main Navigation">
             {/* Logo */}
             <Link to="/" className="inline-flex items-center gap-2 group">
               <div className="w-8 h-8 md:w-10 md:h-10 rounded-xl bg-gradient-to-br from-primary to-purple-600 flex items-center justify-center text-primary-foreground shadow-lg shadow-primary/20 group-hover:scale-105 group-hover:rotate-3 transition-all duration-300">
@@ -53,15 +50,15 @@ export default function Navigation() {
             </Link>
 
             {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center gap-1">
+            <ul className="hidden md:flex items-center gap-1 list-none m-0 p-0">
               {navItems.map((item) => {
                 const isActive = location.pathname === item.path;
                 return (
-                  <Link
-                    key={item.path}
-                    to={item.path}
-                    className="relative px-4 py-2 group"
-                  >
+                  <li key={item.path}>
+                    <Link
+                      to={item.path}
+                      className="relative px-4 py-2 group block"
+                    >
                     <span
                       className={`text-sm font-medium transition-colors duration-300 ${isActive
                           ? 'text-foreground'
@@ -80,10 +77,11 @@ export default function Navigation() {
                     <motion.div
                       className="absolute inset-0 bg-white/5 rounded-lg opacity-0 group-hover:opacity-100 -z-10 transition-opacity duration-300"
                     />
-                  </Link>
+                    </Link>
+                  </li>
                 );
               })}
-            </div>
+            </ul>
 
             {/* Mobile Menu Button */}
             <button
@@ -96,9 +94,9 @@ export default function Navigation() {
                 <Menu className="w-6 h-6" />
               )}
             </button>
-          </div>
+          </nav>
         </div>
-      </motion.nav>
+      </header>
 
       {/* Mobile Menu */}
       <AnimatePresence>
@@ -121,29 +119,31 @@ export default function Navigation() {
               transition={{ duration: 0.2, delay: 0.1 }}
               className="absolute top-20 left-4 right-4 bg-card border border-border rounded-2xl p-6 shadow-2xl"
             >
-              <div className="flex flex-col gap-2">
-                {navItems.map((item, index) => {
-                  const isActive = location.pathname === item.path;
-                  return (
-                    <motion.div
-                      key={item.path}
-                      initial={{ opacity: 0, x: -20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: index * 0.05 + 0.1 }}
-                    >
-                      <Link
-                        to={item.path}
-                        className={`flex items-center px-4 py-3 rounded-xl text-lg font-medium transition-all duration-300 ${isActive
-                            ? 'bg-primary/10 text-foreground'
-                            : 'text-muted-foreground hover:bg-white/5 hover:text-foreground'
-                          }`}
+              <nav aria-label="Mobile Navigation">
+                <ul className="flex flex-col gap-2 list-none p-0 m-0">
+                  {navItems.map((item, index) => {
+                    const isActive = location.pathname === item.path;
+                    return (
+                      <motion.li
+                        key={item.path}
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: index * 0.05 + 0.1 }}
                       >
-                        {item.label}
-                      </Link>
-                    </motion.div>
-                  );
-                })}
-              </div>
+                        <Link
+                          to={item.path}
+                          className={`flex items-center px-4 py-3 rounded-xl text-lg font-medium transition-all duration-300 ${isActive
+                              ? 'bg-primary/10 text-foreground'
+                              : 'text-muted-foreground hover:bg-white/5 hover:text-foreground'
+                            }`}
+                        >
+                          {item.label}
+                        </Link>
+                      </motion.li>
+                    );
+                  })}
+                </ul>
+              </nav>
             </motion.div>
           </motion.div>
         )}

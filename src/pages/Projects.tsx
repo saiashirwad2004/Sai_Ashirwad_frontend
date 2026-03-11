@@ -5,6 +5,7 @@ import { ArrowRight, ExternalLink, Github, Sparkles, FolderKanban } from 'lucide
 import PageTransition from '@/components/PageTransition';
 import FadeIn from '@/components/animations/FadeIn';
 import { publicApi } from '@/services/api';
+import { useSEO } from '@/hooks/useSEO';
 
 interface Project {
   _id: string; title: string; slug: string; description: string;
@@ -19,6 +20,12 @@ export default function Projects() {
   useEffect(() => {
     publicApi.getProjects().then(r => setProjects((r.data || []) as unknown as Project[])).catch(() => { }).finally(() => setLoading(false));
   }, []);
+
+  useSEO({
+    title: 'Projects',
+    description: 'Explore the portfolio of Anand, featuring full-stack applications, creative coding, and professional projects.',
+    url: 'https://anandverse.space/projects'
+  });
 
   const allTags = Array.from(new Set(projects.flatMap(p => p.tags || [])));
   const categories = ['All', ...allTags.slice(0, 6)];

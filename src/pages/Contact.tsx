@@ -5,6 +5,7 @@ import PageTransition from '@/components/PageTransition';
 import FadeIn from '@/components/animations/FadeIn';
 import StaggerContainer, { StaggerItem } from '@/components/animations/StaggerContainer';
 import { publicApi } from '@/services/api';
+import { useSEO } from '@/hooks/useSEO';
 
 interface SiteData {
   email: string; phone: string; location: string;
@@ -23,6 +24,12 @@ export default function Contact() {
   useEffect(() => {
     publicApi.getSite().then(r => setSite(r.data as unknown as SiteData)).catch(() => { });
   }, []);
+
+  useSEO({
+    title: 'Contact',
+    description: 'Get in touch with Anand. Have a visionary project in mind or a question about my work? Send a message securely and let us connect.',
+    url: 'https://anandverse.space/contact'
+  });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });

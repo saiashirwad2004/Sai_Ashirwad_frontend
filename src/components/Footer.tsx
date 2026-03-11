@@ -83,37 +83,41 @@ export default function Footer() {
           {/* Quick Links */}
           <div className="lg:col-span-2">
             <h3 className="text-[13px] font-bold uppercase tracking-wider text-foreground mb-5">Navigation</h3>
-            <ul className="space-y-4">
-              {navLinks.map((link) => (
-                <li key={link.path}>
-                  <Link
-                    to={link.path}
-                    className="text-muted-foreground hover:text-primary font-medium transition-colors inline-flex items-center gap-2 group"
-                  >
-                    <span className="w-1.5 h-1.5 rounded-full bg-primary/0 group-hover:bg-primary transition-colors" />
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+            <nav aria-label="Footer Quick Links">
+              <ul className="space-y-4">
+                {navLinks.map((link) => (
+                  <li key={link.path}>
+                    <Link
+                      to={link.path}
+                      className="text-muted-foreground hover:text-primary font-medium transition-colors inline-flex items-center gap-2 group"
+                    >
+                      <span className="w-1.5 h-1.5 rounded-full bg-primary/0 group-hover:bg-primary transition-colors" />
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </nav>
           </div>
 
           {/* Legal Links */}
           <div className="lg:col-span-2">
             <h3 className="text-[13px] font-bold uppercase tracking-wider text-foreground mb-5">Legal</h3>
-            <ul className="space-y-4">
-              {legalLinks.map((link) => (
-                <li key={link.path}>
-                  <Link
-                    to={link.path}
-                    className="text-muted-foreground hover:text-primary font-medium transition-colors inline-flex items-center gap-2 group"
-                  >
-                    <span className="w-1.5 h-1.5 rounded-full bg-primary/0 group-hover:bg-primary transition-colors" />
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+            <nav aria-label="Footer Legal Links">
+              <ul className="space-y-4">
+                {legalLinks.map((link) => (
+                  <li key={link.path}>
+                    <Link
+                      to={link.path}
+                      className="text-muted-foreground hover:text-primary font-medium transition-colors inline-flex items-center gap-2 group"
+                    >
+                      <span className="w-1.5 h-1.5 rounded-full bg-primary/0 group-hover:bg-primary transition-colors" />
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </nav>
           </div>
 
           {/* Contact */}

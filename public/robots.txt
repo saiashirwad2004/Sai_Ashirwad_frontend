@@ -1,4 +1,28 @@
-User-agent: *
-Allow: /
+# *
+# ---------------------
+# This file tells search engine crawlers which pages or files they can or can't request from your site.
 
+User-agent: *
+# Allow crawling of public pages
+Allow: /
+Allow: /about
+Allow: /projects
+Allow: /blog
+Allow: /contact
+
+# Disallow crawling of authentication and setup pages
+Disallow: /login
+Disallow: /setup
+Disallow: /forgot-password
+Disallow: /reset-password/
+Disallow: /accept-invite/
+
+# Disallow crawling of the admin panel and its sub-routes
+Disallow: /admin/
+Disallow: /admin
+
+# Disallow crawling of API routes if exposed on frontend domain
+Disallow: /api/
+
+# Specify the location of the sitemap (Uncomment and replace with your actual domain when you have a sitemap)
 Sitemap: https://anandverse.space/sitemap.xml

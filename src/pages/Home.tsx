@@ -6,6 +6,7 @@ import PageTransition from '@/components/PageTransition';
 import FadeIn from '@/components/animations/FadeIn';
 import StaggerContainer, { StaggerItem } from '@/components/animations/StaggerContainer';
 import { publicApi } from '@/services/api';
+import { useSEO } from '@/hooks/useSEO';
 
 interface SiteData {
   heroHeading: string; heroSubtitle: string; heroDescription: string; siteTagline: string;
@@ -59,6 +60,12 @@ export default function Home() {
     publicApi.getTestimonials().then(r => setTestimonials(((r.data || []) as unknown as Testimonial[]).slice(0, 3))).catch(() => { });
   }, []);
 
+  useSEO({
+    title: 'Home',
+    description: 'AnandVerse is the portfolio of Anand, a Full Stack Developer building scalable web applications using React, Node.js, and modern technologies.',
+    url: 'https://anandverse.space'
+  });
+
   const heading = site?.heroHeading || "Hi, I'm Anand";
   const subtitle = site?.heroSubtitle || 'I build beautiful, fast, and user-friendly web experiences';
   const description = site?.heroDescription || 'Passionate about creating innovative solutions with modern technologies.';
@@ -97,6 +104,7 @@ export default function Home() {
                 <motion.div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-600" initial={{ x: '-100%' }} whileHover={{ x: 0 }} transition={{ duration: 0.3 }} />
               </Link>
               <Link to={cta.secondary.link} className="px-6 py-3 border border-border rounded-xl text-sm font-bold text-foreground hover:bg-white/5 transition-all duration-300">{cta.secondary.text}</Link>
+              <Link to="/about" className="px-6 py-3 text-sm font-bold text-muted-foreground hover:text-foreground hover:underline transition-all duration-300">More About Me</Link>
             </motion.div>
 
             {stats.length > 0 && (

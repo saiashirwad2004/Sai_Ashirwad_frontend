@@ -5,6 +5,7 @@ import PageTransition from '@/components/PageTransition';
 import FadeIn from '@/components/animations/FadeIn';
 import StaggerContainer, { StaggerItem } from '@/components/animations/StaggerContainer';
 import { publicApi } from '@/services/api';
+import { useSEO } from '@/hooks/useSEO';
 
 interface SiteData {
   ownerName: string; ownerTitle: string; ownerBio: string; aboutDescription: string;
@@ -46,6 +47,12 @@ export default function About() {
     publicApi.getExperience('certification').then(r => setCertExp((r.data || []) as unknown as Experience[])).catch(() => { });
     publicApi.getExperience('mentorship').then(r => setMentorExp((r.data || []) as unknown as Experience[])).catch(() => { });
   }, []);
+
+  useSEO({
+    title: 'About Me',
+    description: 'Learn more about Anand, a Full Stack Developer specializing in React, Node.js, and modern web architectures.',
+    url: 'https://anandverse.space/about'
+  });
 
   return (
     <PageTransition>

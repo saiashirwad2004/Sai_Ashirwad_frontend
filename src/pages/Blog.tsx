@@ -5,6 +5,7 @@ import { ArrowRight, Calendar, Clock, Search, Tag, Sparkles, BookOpen } from 'lu
 import PageTransition from '@/components/PageTransition';
 import FadeIn from '@/components/animations/FadeIn';
 import { publicApi } from '@/services/api';
+import { useSEO } from '@/hooks/useSEO';
 
 interface BlogPost {
   _id: string; title: string; slug: string; excerpt: string; image: { url: string };
@@ -20,6 +21,12 @@ export default function Blog() {
   useEffect(() => {
     publicApi.getBlog().then(r => setPosts((r.data || []) as unknown as BlogPost[])).catch(() => { }).finally(() => setLoading(false));
   }, []);
+
+  useSEO({
+    title: 'Blog',
+    description: 'Read articles, tutorials, and insights on modern web development, architecture, and technology by Anand.',
+    url: 'https://anandverse.space/blog'
+  });
 
   const allTags = Array.from(new Set(posts.flatMap(p => p.tags || [])));
 

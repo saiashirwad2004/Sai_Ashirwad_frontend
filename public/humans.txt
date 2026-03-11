@@ -1,0 +1,11 @@
+/* TEAM */
+  Developer: Anand
+  Role: Full Stack Engineer
+  Location: Earth
+  Contact: hello [at] anandverse.space (update with actual email)
+
+/* SITE */
+  Last update: 2026-03-12
+  Language: English
+  Tools: React, Node.js, Express, MongoDB, TailwindCSS, GSAP, Radix UI, Framer Motion
+  Components: Hosted on Vercel
