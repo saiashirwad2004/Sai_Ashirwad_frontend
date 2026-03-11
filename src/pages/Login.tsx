@@ -52,7 +52,10 @@ export default function Login() {
 
   return (
     <PageTransition>
-      <section className="min-h-screen flex items-center justify-center pt-20 pb-16">
+      <section className="min-h-screen flex items-center justify-center pt-20 pb-16 relative overflow-hidden">
+        {/* Decorative orbs */}
+        <div className="absolute top-1/3 left-1/4 w-[400px] h-[400px] bg-primary/8 rounded-full blur-[160px] pointer-events-none" />
+        <div className="absolute bottom-1/3 right-1/4 w-[300px] h-[300px] bg-purple-500/6 rounded-full blur-[140px] pointer-events-none" />
         <div className="max-w-md w-full mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -75,7 +78,7 @@ export default function Login() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="p-6 sm:p-8 rounded-2xl bg-card/40 backdrop-blur-xl shadow-xl border border-border"
+            className="glass-card p-6 sm:p-8"
           >
             <form onSubmit={handleSubmit} className="space-y-4">
               {error && (
@@ -99,7 +102,7 @@ export default function Login() {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 rounded-xl bg-background/40 backdrop-blur-xl shadow-xl border border-border focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all"
+                  className="input-field"
                   placeholder="anand@example.com"
                 />
               </div>
@@ -116,7 +119,7 @@ export default function Login() {
                     value={formData.password}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 pr-12 rounded-xl bg-background/40 backdrop-blur-xl shadow-xl border border-border focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all"
+                    className="input-field pr-12"
                     placeholder="Enter your password"
                   />
                   <button
@@ -141,7 +144,7 @@ export default function Login() {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full flex items-center justify-center gap-2 px-6 py-4 bg-primary text-primary-foreground rounded-xl font-medium hover:shadow-lg hover:shadow-primary/25 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full btn-primary justify-center py-4 disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {isSubmitting ? (
                   <>

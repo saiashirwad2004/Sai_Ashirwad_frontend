@@ -34,18 +34,22 @@ export default function About() {
   const [certExp, setCertExp] = useState<Experience[]>([]);
   const [mentorExp, setMentorExp] = useState<Experience[]>([]);
 
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
-    publicApi.getSite().then(r => setSite(r.data as unknown as SiteData)).catch(() => { });
-    publicApi.getSkills().then(r => {
-      const all = (r.data || []) as unknown as Skill[];
-      const grouped: Record<string, Skill[]> = {};
-      all.forEach(s => { if (!grouped[s.category]) grouped[s.category] = []; grouped[s.category].push(s); });
-      setSkills(grouped);
-    }).catch(() => { });
-    publicApi.getExperience('work').then(r => setWorkExp((r.data || []) as unknown as Experience[])).catch(() => { });
-    publicApi.getExperience('education').then(r => setEduExp((r.data || []) as unknown as Experience[])).catch(() => { });
-    publicApi.getExperience('certification').then(r => setCertExp((r.data || []) as unknown as Experience[])).catch(() => { });
-    publicApi.getExperience('mentorship').then(r => setMentorExp((r.data || []) as unknown as Experience[])).catch(() => { });
+    Promise.all([
+      publicApi.getSite().then(r => setSite(r.data as unknown as SiteData)).catch(() => { }),
+      publicApi.getSkills().then(r => {
+        const all = (r.data || []) as unknown as Skill[];
+        const grouped: Record<string, Skill[]> = {};
+        all.forEach(s => { if (!grouped[s.category]) grouped[s.category] = []; grouped[s.category].push(s); });
+        setSkills(grouped);
+      }).catch(() => { }),
+      publicApi.getExperience('work').then(r => setWorkExp((r.data || []) as unknown as Experience[])).catch(() => { }),
+      publicApi.getExperience('education').then(r => setEduExp((r.data || []) as unknown as Experience[])).catch(() => { }),
+      publicApi.getExperience('certification').then(r => setCertExp((r.data || []) as unknown as Experience[])).catch(() => { }),
+      publicApi.getExperience('mentorship').then(r => setMentorExp((r.data || []) as unknown as Experience[])).catch(() => { }),
+    ]).finally(() => setLoading(false));
   }, []);
 
   useSEO({
@@ -54,10 +58,18 @@ export default function About() {
     url: 'https://anandverse.space/about'
   });
 
+  if (loading || !site) {
+    return (
+      <div className="min-h-screen flex flex-col items-center justify-center gap-6">
+        <div className="w-10 h-10 border-[3px] border-primary/20 border-t-primary rounded-full animate-spin shadow-lg shadow-primary/10" />
+      </div>
+    );
+  }
+
   return (
     <PageTransition>
       {/* Hero Section */}
-      <section className="pt-24 pb-12 relative">
+      <section className="page-hero">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
             <FadeIn direction="left">
@@ -75,17 +87,17 @@ export default function About() {
               <FadeIn delay={0.1}>
                 <span className="text-primary text-sm font-bold tracking-wide uppercase mb-3 block">About Me</span>
                 <h1 className="text-3xl sm:text-4xl md:text-5xl font-black font-display mb-4 tracking-tight">
-                  {site?.ownerTitle?.split(' ').slice(0, 2).join(' ') || 'Full Stack'}{' '}
-                  <span className="text-gradient">{site?.ownerTitle?.split(' ').slice(2).join(' ') || 'Developer'}</span>
+                  {site.ownerTitle?.split(' ').slice(0, 2).join(' ')}{' '}
+                  <span className="text-gradient">{site.ownerTitle?.split(' ').slice(2).join(' ')}</span>
                 </h1>
               </FadeIn>
 
               <FadeIn delay={0.2}>
-                <p className="text-muted-foreground text-base mb-4 leading-relaxed">{site?.ownerBio || ''}</p>
+                <p className="text-muted-foreground text-base mb-4 leading-relaxed">{site.ownerBio}</p>
               </FadeIn>
 
               <FadeIn delay={0.3}>
-                <p className="text-muted-foreground text-sm mb-6 leading-relaxed">{site?.aboutDescription || ''}</p>
+                <p className="text-muted-foreground text-sm mb-6 leading-relaxed">{site.aboutDescription}</p>
               </FadeIn>
 
               <FadeIn delay={0.4}>
@@ -100,12 +112,12 @@ export default function About() {
               <FadeIn delay={0.5}>
                 <div className="flex flex-wrap gap-3">
                   {site?.resumeUrl && (
-                    <a href={site.resumeUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-5 py-2.5 bg-primary text-primary-foreground rounded-xl text-sm font-bold shadow-lg shadow-primary/20 hover:bg-primary/90 transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]">
+                    <a href={site.resumeUrl} target="_blank" rel="noopener noreferrer" className="btn-primary">
                       <Download className="w-4 h-4" /> Download Resume
                     </a>
                   )}
                   {site?.email && (
-                    <a href={`mailto:${site.email}`} className="inline-flex items-center gap-2 px-5 py-2.5 border border-border rounded-xl text-sm font-bold hover:bg-muted text-foreground transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]">
+                    <a href={`mailto:${site.email}`} className="btn-ghost">
                       <Mail className="w-4 h-4 text-muted-foreground" /> Contact Me
                     </a>
                   )}
@@ -118,17 +130,17 @@ export default function About() {
 
       {/* Skills Section */}
       {Object.keys(skills).length > 0 && (
-        <section className="py-16 relative">
+        <section className="py-20 relative">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <FadeIn className="text-center mb-12">
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-black font-display mb-3 tracking-tight">My <span className="text-gradient">Skills</span></h2>
-              <p className="text-muted-foreground text-sm sm:text-base max-w-xl mx-auto">Technologies and tools I use to bring ideas to life.</p>
+            <FadeIn className="text-center mb-14">
+              <h2 className="section-heading mb-4">My <span className="text-gradient">Skills</span></h2>
+              <p className="section-subtext">Technologies and tools I use to bring ideas to life.</p>
             </FadeIn>
 
             <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {Object.entries(skills).map(([cat, items]) => (
                 <StaggerItem key={cat}>
-                  <div className="p-5 rounded-[1.5rem] bg-card/40 backdrop-blur-xl shadow-xl border border-border/50 h-full shadow-sm hover:shadow-md transition-shadow">
+                  <div className="p-6 glass-card h-full">
                     <h3 className="text-lg font-bold mb-5 flex items-center gap-2 capitalize">
                       <span className={`w-2.5 h-2.5 rounded-full ${catDots[cat] || 'bg-gray-500'}`} />
                       {catLabels[cat] || cat}
@@ -157,11 +169,11 @@ export default function About() {
 
       {/* Experience Section */}
       {(workExp.length > 0 || eduExp.length > 0 || certExp.length > 0 || mentorExp.length > 0) && (
-        <section className="py-16 relative bg-muted/20 border-y border-border/50">
+        <section className="py-20 relative">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <FadeIn className="text-center mb-12">
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-black font-display mb-3 tracking-tight">Journey & <span className="text-gradient">Experience</span></h2>
-              <p className="text-muted-foreground text-sm sm:text-base max-w-xl mx-auto">My professional journey, academic background, certifications and mentorship.</p>
+            <FadeIn className="text-center mb-14">
+              <h2 className="section-heading mb-4">Journey & <span className="text-gradient">Experience</span></h2>
+              <p className="section-subtext">My professional journey, academic background, certifications and mentorship.</p>
             </FadeIn>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
@@ -251,12 +263,12 @@ export default function About() {
 
       {/* Stats Section */}
       {(site?.stats || []).length > 0 && (
-        <section className="py-16 relative">
+        <section className="py-20 relative">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <StaggerContainer className="grid grid-cols-2 lg:grid-cols-4 gap-4">
               {site!.stats.map((stat, i) => (
                 <StaggerItem key={i}>
-                  <div className="text-center p-5 rounded-[1.5rem] bg-card/40 backdrop-blur-xl shadow-xl border border-border/50 shadow-sm hover:shadow-md transition-shadow">
+                  <div className="text-center p-6 glass-card">
                     <motion.div initial={{ scale: 0 }} whileInView={{ scale: 1 }} viewport={{ once: true }} transition={{ delay: i * 0.1, type: 'spring' }}
                       className="text-3xl md:text-4xl font-black font-display text-gradient mb-1">{stat.number}</motion.div>
                     <p className="text-xs sm:text-sm font-semibold text-muted-foreground uppercase tracking-wider">{stat.label}</p>

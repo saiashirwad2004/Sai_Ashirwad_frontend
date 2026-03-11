@@ -33,7 +33,7 @@ export default function Navigation() {
     <>
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled
-          ? 'bg-background/80 backdrop-blur-xl border-b border-border/50'
+          ? 'bg-background/70 backdrop-blur-2xl border-b border-border/30 shadow-lg shadow-background/50'
           : 'bg-transparent'
           }`}
       >
@@ -115,7 +115,7 @@ export default function Navigation() {
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.95 }}
               transition={{ duration: 0.2, delay: 0.1 }}
-              className="absolute top-20 left-4 right-4 bg-card/40 backdrop-blur-xl shadow-xl border border-border rounded-2xl p-6 shadow-2xl"
+              className="absolute top-20 left-4 right-4 glass-card p-6"
             >
               <nav aria-label="Mobile Navigation">
                 <ul className="flex flex-col gap-2 list-none p-0 m-0">

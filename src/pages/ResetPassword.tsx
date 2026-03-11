@@ -116,7 +116,7 @@ export default function ResetPassword() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="p-6 sm:p-8 rounded-2xl bg-card/40 backdrop-blur-xl shadow-xl border border-border"
+            className="glass-card p-6 sm:p-8"
           >
             <form onSubmit={handleSubmit} className="space-y-4">
               {error && (

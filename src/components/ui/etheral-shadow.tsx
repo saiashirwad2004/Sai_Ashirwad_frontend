@@ -179,7 +179,7 @@ export function Component({
                     zIndex: 10
                 }}
             >
-                
+
             </div>
 
             {noise && noise.opacity > 0 && (

@@ -35,29 +35,36 @@ export default function Footer() {
       href: url
     }));
 
-  const contactEmail = site?.email || 'anand@anandverse.space';
-  const contactLocation = site?.location || 'San Francisco, CA';
+  const contactEmail = site?.email;
 
   return (
-    <footer className="relative border-t border-border bg-card/40 backdrop-blur-xl shadow-xl overflow-hidden">
-      {/* Background Gradients */}
+    <footer className="relative mt-24 border-t border-border/40 bg-card/40 backdrop-blur-2xl overflow-hidden">
+      {/* Subtle Top Glow */}
+      <div className="absolute top-0 inset-x-0 h-[1px] bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
+      
+      {/* Background Ambience */}
       <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-primary/5 rounded-full blur-[100px] pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-purple-500/5 rounded-full blur-[100px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8">
-
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-8">
+          
           {/* Brand Info */}
-          <div className="lg:col-span-5">
-            <Link to="/" className="inline-flex items-center gap-2 mb-5 group">
-              <img src="/logo.png" alt="AnandVerse Logo" className="w-8 h-8 md:w-10 md:h-10 object-contain group-hover:scale-105 group-hover:-rotate-3 transition-all duration-300 rounded-xl" />
-              <span className="text-xl md:text-2xl font-black font-display tracking-tight hover:text-primary transition-colors duration-300">
+          <div className="lg:col-span-4 lg:col-start-1">
+            <Link to="/" className="inline-flex items-center gap-3 mb-6 group">
+              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary/80 to-purple-600/80 p-[1px] group-hover:scale-105 transition-transform duration-300">
+                <div className="w-full h-full bg-background/90 rounded-[11px] flex items-center justify-center overflow-hidden">
+                  <img src="/logo.png" alt="AnandVerse" className="w-6 h-6 object-contain" />
+                </div>
+              </div>
+              <span className="text-xl font-bold font-display tracking-tight hover:text-primary transition-colors duration-300">
                 AnandVerse<span className="text-primary">.</span>
               </span>
             </Link>
-            <p className="text-muted-foreground text-sm mb-6 leading-relaxed max-w-sm">
+            <p className="text-muted-foreground text-sm mb-8 leading-relaxed max-w-sm">
               Crafting premium and scalable web experiences. Turning imaginative concepts into functional reality.
             </p>
+            
             {activeSocialLinks.length > 0 && (
               <div className="flex flex-wrap gap-3">
                 {activeSocialLinks.map((social: any) => (
@@ -66,9 +73,9 @@ export default function Footer() {
                     href={social.href as string}
                     target="_blank"
                     rel="noopener noreferrer"
-                    whileHover={{ y: -4, scale: 1.1 }}
+                    whileHover={{ scale: 1.1, translateY: -2 }}
                     whileTap={{ scale: 0.95 }}
-                    className="w-10 h-10 rounded-xl bg-background/40 backdrop-blur-xl shadow-xl border border-border/50 flex items-center justify-center text-muted-foreground hover:bg-primary hover:border-primary hover:text-primary-foreground hover:shadow-lg hover:shadow-primary/30 transition-all duration-300"
+                    className="w-10 h-10 rounded-xl bg-card border border-border/50 flex items-center justify-center text-muted-foreground hover:bg-primary hover:border-primary hover:text-primary-foreground hover:shadow-lg hover:shadow-primary/20 transition-all duration-300"
                     title={social.label as string}
                   >
                     <social.icon className="w-4 h-4" />
@@ -79,71 +86,74 @@ export default function Footer() {
           </div>
 
           {/* Quick Links */}
-          <div className="lg:col-span-2">
-            <h3 className="text-[13px] font-bold uppercase tracking-wider text-foreground mb-5">Navigation</h3>
-            <nav aria-label="Footer Quick Links">
-              <ul className="space-y-4">
-                {navLinks.map((link) => (
-                  <li key={link.path}>
-                    <Link
-                      to={link.path}
-                      className="text-muted-foreground hover:text-primary font-medium transition-colors inline-flex items-center gap-2 group"
-                    >
-                      <span className="w-1.5 h-1.5 rounded-full bg-primary/0 group-hover:bg-primary transition-colors" />
-                      {link.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </nav>
+          <div className="lg:col-span-2 lg:col-start-6">
+            <h3 className="text-xs font-bold uppercase tracking-widest text-foreground/80 mb-6">Navigation</h3>
+            <ul className="space-y-4">
+              {navLinks.map((link) => (
+                <li key={link.path}>
+                  <Link
+                    to={link.path}
+                    className="text-sm text-muted-foreground hover:text-primary font-medium transition-colors inline-flex items-center group"
+                  >
+                    <span className="w-0 overflow-hidden group-hover:w-3 tracking-tighter transition-all duration-300 text-primary opacity-0 group-hover:opacity-100">- </span>
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </div>
 
           {/* Legal Links */}
-          <div className="lg:col-span-2">
-            <h3 className="text-[13px] font-bold uppercase tracking-wider text-foreground mb-5">Legal</h3>
-            <nav aria-label="Footer Legal Links">
-              <ul className="space-y-4">
-                {legalLinks.map((link) => (
-                  <li key={link.path}>
-                    <Link
-                      to={link.path}
-                      className="text-muted-foreground hover:text-primary font-medium transition-colors inline-flex items-center gap-2 group"
-                    >
-                      <span className="w-1.5 h-1.5 rounded-full bg-primary/0 group-hover:bg-primary transition-colors" />
-                      {link.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </nav>
+          <div className="lg:col-span-2 lg:col-start-8">
+            <h3 className="text-xs font-bold uppercase tracking-widest text-foreground/80 mb-6">Legal</h3>
+            <ul className="space-y-4">
+              {legalLinks.map((link) => (
+                <li key={link.path}>
+                  <Link
+                    to={link.path}
+                    className="text-sm text-muted-foreground hover:text-primary font-medium transition-colors inline-flex items-center group"
+                  >
+                    <span className="w-0 overflow-hidden group-hover:w-3 tracking-tighter transition-all duration-300 text-primary opacity-0 group-hover:opacity-100">- </span>
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </div>
 
-          {/* Contact */}
-          <div className="lg:col-span-3">
-            <h3 className="text-[13px] font-bold uppercase tracking-wider text-foreground mb-5">Contact</h3>
-            <div className="space-y-3 p-5 rounded-2xl bg-background/40 backdrop-blur-xl shadow-xl border border-border/50 shadow-sm relative overflow-hidden group">
-              <div className="absolute top-0 right-0 w-24 h-24 bg-primary/10 rounded-full blur-xl group-hover:bg-primary/20 transition-colors pointer-events-none" />
-              <div className="relative z-10">
+          {/* Contact Section */}
+          <div className="lg:col-span-3 lg:col-start-10">
+            <h3 className="text-xs font-bold uppercase tracking-widest text-foreground/80 mb-6">Contact</h3>
+            {contactEmail ? (
+              <div className="space-y-2 group">
                 <a
                   href={`mailto:${contactEmail}`}
-                  className="text-foreground hover:text-primary font-bold text-base inline-flex items-center gap-2 transition-colors mb-2 block truncate"
+                  className="text-foreground hover:text-primary font-bold text-sm inline-flex items-center gap-2 transition-colors mb-1 truncate block"
                 >
-                  {contactEmail}
-                  <ArrowUpRight className="w-3.5 h-3.5 text-primary" />
+                  <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors shrink-0">
+                    <ArrowUpRight className="w-4 h-4" />
+                  </div>
+                  <span className="truncate">{contactEmail}</span>
                 </a>
-                <p className="text-muted-foreground font-medium text-xs">{contactLocation}</p>
               </div>
-            </div>
+            ) : (
+                <p className="text-sm text-muted-foreground">Get in touch via the contact page.</p>
+            )}
           </div>
+
         </div>
 
         {/* Bottom Bar */}
-        <div className="mt-12 pt-6 border-t border-border/50 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div className="mt-16 pt-8 border-t border-border/40 flex flex-col sm:flex-row items-center justify-between gap-6">
           <p className="text-muted-foreground font-medium text-xs text-center sm:text-left">
             © {new Date().getFullYear()} AnandVerse. All rights reserved.
           </p>
-          <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-background/40 backdrop-blur-xl shadow-xl border border-border/50 text-xs font-semibold text-foreground">
-            Crafted with <Heart className="w-3.5 h-3.5 text-red-500 fill-red-500 animate-pulse" /> by Anand
+          <div className="flex items-center gap-2 text-xs font-medium text-muted-foreground bg-card px-4 py-2 rounded-full border border-border/50">
+            Crafted with 
+            <motion.div animate={{ scale: [1, 1.2, 1] }} transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}>
+              <Heart className="w-3.5 h-3.5 text-red-500 fill-red-500" />
+            </motion.div>
+            by <span className="text-foreground font-bold">Anand</span>
           </div>
         </div>
       </div>

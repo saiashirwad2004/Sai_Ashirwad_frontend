@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Routes, Route, useLocation, useOutlet } from 'react-router-dom';
-import { AnimatePresence } from 'framer-motion';
-import { cloneElement } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
+import { cloneElement, lazy, Suspense } from 'react';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import { FallingPattern } from '@/components/ui/falling-pattern';
@@ -12,34 +12,59 @@ import { AuthProvider } from '@/contexts/AuthContext';
 import ProtectedRoute from '@/components/ProtectedRoute';
 import { Toaster } from 'react-hot-toast';
 
-import Home from '@/pages/Home';
-import About from '@/pages/About';
-import Projects from '@/pages/Projects';
-import ProjectDetail from '@/pages/ProjectDetail';
-import Blog from '@/pages/Blog';
-import BlogDetail from '@/pages/BlogDetail';
-import Contact from '@/pages/Contact';
-import PrivacyPolicy from '@/pages/PrivacyPolicy';
-import TermsOfService from '@/pages/TermsOfService';
-import Setup from '@/pages/Setup';
-import Login from '@/pages/Login';
-import ForgotPassword from '@/pages/ForgotPassword';
-import ResetPassword from '@/pages/ResetPassword';
-import AcceptInvite from '@/pages/AcceptInvite';
-import NotFound from '@/pages/NotFound';
+// ── Lazy-loaded public pages ────────────────────────
+const Home = lazy(() => import('@/pages/Home'));
+const About = lazy(() => import('@/pages/About'));
+const Projects = lazy(() => import('@/pages/Projects'));
+const ProjectDetail = lazy(() => import('@/pages/ProjectDetail'));
+const Blog = lazy(() => import('@/pages/Blog'));
+const BlogDetail = lazy(() => import('@/pages/BlogDetail'));
+const Contact = lazy(() => import('@/pages/Contact'));
+const PrivacyPolicy = lazy(() => import('@/pages/PrivacyPolicy'));
+const TermsOfService = lazy(() => import('@/pages/TermsOfService'));
 
-import AdminLayout from '@/admin/AdminLayout';
-import Dashboard from '@/admin/Dashboard';
-import HeroManager from '@/admin/HeroManager';
-import AboutManager from '@/admin/AboutManager';
-import AdminProjects from '@/admin/Projects';
-import AdminBlogPosts from '@/admin/BlogPosts';
-import AdminServices from '@/admin/Services';
-import AdminTestimonials from '@/admin/Testimonials';
-import AdminMessages from '@/admin/Messages';
-import AdminSettings from '@/admin/Settings';
-import UserManagement from '@/admin/UserManagement';
-import AdminFileManager from '@/admin/FileManager';
+// ── Lazy-loaded auth pages ──────────────────────────
+const Setup = lazy(() => import('@/pages/Setup'));
+const Login = lazy(() => import('@/pages/Login'));
+const ForgotPassword = lazy(() => import('@/pages/ForgotPassword'));
+const ResetPassword = lazy(() => import('@/pages/ResetPassword'));
+const AcceptInvite = lazy(() => import('@/pages/AcceptInvite'));
+const NotFound = lazy(() => import('@/pages/NotFound'));
+
+// ── Lazy-loaded admin pages ─────────────────────────
+const AdminLayout = lazy(() => import('@/admin/AdminLayout'));
+const Dashboard = lazy(() => import('@/admin/Dashboard'));
+const HeroManager = lazy(() => import('@/admin/HeroManager'));
+const AboutManager = lazy(() => import('@/admin/AboutManager'));
+const AdminProjects = lazy(() => import('@/admin/Projects'));
+const AdminBlogPosts = lazy(() => import('@/admin/BlogPosts'));
+const AdminServices = lazy(() => import('@/admin/Services'));
+const AdminTestimonials = lazy(() => import('@/admin/Testimonials'));
+const AdminMessages = lazy(() => import('@/admin/Messages'));
+const AdminSettings = lazy(() => import('@/admin/Settings'));
+const UserManagement = lazy(() => import('@/admin/UserManagement'));
+const AdminFileManager = lazy(() => import('@/admin/FileManager'));
+
+// ── Full-page loading spinner ───────────────────────
+function PageLoader() {
+  return (
+    <div className="min-h-screen flex flex-col items-center justify-center gap-6">
+      <motion.div
+        animate={{ rotate: 360 }}
+        transition={{ duration: 1.2, repeat: Infinity, ease: 'linear' }}
+        className="w-10 h-10 border-[3px] border-primary/20 border-t-primary rounded-full shadow-lg shadow-primary/10"
+      />
+      <motion.p
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.4 }}
+        className="text-muted-foreground text-xs font-semibold uppercase tracking-widest"
+      >
+        Loading…
+      </motion.p>
+    </div>
+  );
+}
 
 function PublicLayout() {
   const location = useLocation();
@@ -62,9 +87,11 @@ function PublicLayout() {
       </div>
       <Navigation />
       <main className="flex-1 relative z-10">
-        <AnimatePresence mode="wait">
-          {outlet && cloneElement(outlet, { key: location.pathname })}
-        </AnimatePresence>
+        <Suspense fallback={<PageLoader />}>
+          <AnimatePresence mode="wait">
+            {outlet && cloneElement(outlet, { key: location.pathname })}
+          </AnimatePresence>
+        </Suspense>
       </main>
       <Footer />
       <FloatingActions />
@@ -124,7 +151,9 @@ function App() {
       <Router>
         <AuthProvider>
           <ScrollToTop />
-          <AnimatedRoutes />
+          <Suspense fallback={<PageLoader />}>
+            <AnimatedRoutes />
+          </Suspense>
           <Toaster
             position="top-right"
             toastOptions={{

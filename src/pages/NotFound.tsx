@@ -42,21 +42,21 @@ export default function NotFound() {
           >
             <Link
               to="/"
-              className="group inline-flex items-center gap-2 px-6 py-3 border border-transparent bg-primary text-primary-foreground rounded-lg font-bold text-sm hover:shadow-lg hover:shadow-primary/25 transition-all duration-300"
+              className="btn-primary"
             >
               <Home className="w-4 h-4" />
               Go Home
             </Link>
             <button
               onClick={() => window.history.back()}
-              className="inline-flex items-center gap-2 px-6 py-3 border border-border rounded-lg font-bold text-sm hover:bg-white/5 transition-all duration-300"
+              className="btn-ghost"
             >
               <ArrowLeft className="w-4 h-4" />
               Go Back
             </button>
             <Link
               to="/projects"
-              className="inline-flex items-center gap-2 px-6 py-3 border border-border rounded-lg font-bold text-sm hover:bg-white/5 transition-all duration-300"
+              className="btn-ghost"
             >
               <Search className="w-4 h-4" />
               Browse Projects
@@ -64,8 +64,8 @@ export default function NotFound() {
           </motion.div>
 
           {/* Decorative elements */}
-          <div className="absolute top-1/4 left-10 w-32 h-32 bg-primary/5 rounded-full blur-3xl" />
-          <div className="absolute bottom-1/4 right-10 w-40 h-40 bg-purple-500/5 rounded-full blur-3xl" />
+          <div className="absolute top-1/4 left-10 w-48 h-48 bg-primary/8 rounded-full blur-[100px] pointer-events-none" />
+          <div className="absolute bottom-1/4 right-10 w-56 h-56 bg-purple-500/6 rounded-full blur-[100px] pointer-events-none" />
         </div>
       </section>
     </PageTransition>
