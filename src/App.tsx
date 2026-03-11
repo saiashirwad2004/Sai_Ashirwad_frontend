@@ -1,4 +1,3 @@
-import { lazy, Suspense } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation, useOutlet } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 import { cloneElement } from 'react';
@@ -8,41 +7,38 @@ import ParticleBackground from '@/components/three/ParticleBackground';
 import ScrollToTop from '@/components/ScrollToTop';
 import FloatingActions from '@/components/FloatingActions';
 import ErrorBoundary from '@/components/ErrorBoundary';
-import LoadingSpinner from '@/components/LoadingSpinner';
 import { AuthProvider } from '@/contexts/AuthContext';
 import ProtectedRoute from '@/components/ProtectedRoute';
 import { Toaster } from 'react-hot-toast';
 
-// Lazy-loaded public pages
-const Home = lazy(() => import('@/pages/Home'));
-const About = lazy(() => import('@/pages/About'));
-const Projects = lazy(() => import('@/pages/Projects'));
-const ProjectDetail = lazy(() => import('@/pages/ProjectDetail'));
-const Blog = lazy(() => import('@/pages/Blog'));
-const BlogDetail = lazy(() => import('@/pages/BlogDetail'));
-const Contact = lazy(() => import('@/pages/Contact'));
-const PrivacyPolicy = lazy(() => import('@/pages/PrivacyPolicy'));
-const TermsOfService = lazy(() => import('@/pages/TermsOfService'));
-const Setup = lazy(() => import('@/pages/Setup'));
-const Login = lazy(() => import('@/pages/Login'));
-const ForgotPassword = lazy(() => import('@/pages/ForgotPassword'));
-const ResetPassword = lazy(() => import('@/pages/ResetPassword'));
-const AcceptInvite = lazy(() => import('@/pages/AcceptInvite'));
-const NotFound = lazy(() => import('@/pages/NotFound'));
+import Home from '@/pages/Home';
+import About from '@/pages/About';
+import Projects from '@/pages/Projects';
+import ProjectDetail from '@/pages/ProjectDetail';
+import Blog from '@/pages/Blog';
+import BlogDetail from '@/pages/BlogDetail';
+import Contact from '@/pages/Contact';
+import PrivacyPolicy from '@/pages/PrivacyPolicy';
+import TermsOfService from '@/pages/TermsOfService';
+import Setup from '@/pages/Setup';
+import Login from '@/pages/Login';
+import ForgotPassword from '@/pages/ForgotPassword';
+import ResetPassword from '@/pages/ResetPassword';
+import AcceptInvite from '@/pages/AcceptInvite';
+import NotFound from '@/pages/NotFound';
 
-// Lazy-loaded admin pages
-const AdminLayout = lazy(() => import('@/admin/AdminLayout'));
-const Dashboard = lazy(() => import('@/admin/Dashboard'));
-const HeroManager = lazy(() => import('@/admin/HeroManager'));
-const AboutManager = lazy(() => import('@/admin/AboutManager'));
-const AdminProjects = lazy(() => import('@/admin/Projects'));
-const AdminBlogPosts = lazy(() => import('@/admin/BlogPosts'));
-const AdminServices = lazy(() => import('@/admin/Services'));
-const AdminTestimonials = lazy(() => import('@/admin/Testimonials'));
-const AdminMessages = lazy(() => import('@/admin/Messages'));
-const AdminSettings = lazy(() => import('@/admin/Settings'));
-const UserManagement = lazy(() => import('@/admin/UserManagement'));
-const AdminFileManager = lazy(() => import('@/admin/FileManager'));
+import AdminLayout from '@/admin/AdminLayout';
+import Dashboard from '@/admin/Dashboard';
+import HeroManager from '@/admin/HeroManager';
+import AboutManager from '@/admin/AboutManager';
+import AdminProjects from '@/admin/Projects';
+import AdminBlogPosts from '@/admin/BlogPosts';
+import AdminServices from '@/admin/Services';
+import AdminTestimonials from '@/admin/Testimonials';
+import AdminMessages from '@/admin/Messages';
+import AdminSettings from '@/admin/Settings';
+import UserManagement from '@/admin/UserManagement';
+import AdminFileManager from '@/admin/FileManager';
 
 function PublicLayout() {
   const location = useLocation();
@@ -67,47 +63,45 @@ function AnimatedRoutes() {
   const location = useLocation();
 
   return (
-    <Suspense fallback={<LoadingSpinner />}>
-      <Routes location={location}>
-        {/* Public site with nav/footer */}
-        <Route element={<PublicLayout />}>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/projects" element={<Projects />} />
-          <Route path="/projects/:id" element={<ProjectDetail />} />
-          <Route path="/blog" element={<Blog />} />
-          <Route path="/blog/:id" element={<BlogDetail />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-          <Route path="/terms-of-service" element={<TermsOfService />} />
-        </Route>
+    <Routes location={location}>
+      {/* Public site with nav/footer */}
+      <Route element={<PublicLayout />}>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/projects" element={<Projects />} />
+        <Route path="/projects/:id" element={<ProjectDetail />} />
+        <Route path="/blog" element={<Blog />} />
+        <Route path="/blog/:id" element={<BlogDetail />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+        <Route path="/terms-of-service" element={<TermsOfService />} />
+      </Route>
 
-        {/* Auth pages (no nav/footer) */}
-        <Route path="/setup" element={<Setup />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/forgot-password" element={<ForgotPassword />} />
-        <Route path="/reset-password/:token" element={<ResetPassword />} />
-        <Route path="/accept-invite/:token" element={<AcceptInvite />} />
+      {/* Auth pages (no nav/footer) */}
+      <Route path="/setup" element={<Setup />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/forgot-password" element={<ForgotPassword />} />
+      <Route path="/reset-password/:token" element={<ResetPassword />} />
+      <Route path="/accept-invite/:token" element={<AcceptInvite />} />
 
-        {/* Admin panel (protected, own layout) */}
-        <Route path="/admin" element={<ProtectedRoute><AdminLayout /></ProtectedRoute>}>
-          <Route index element={<Dashboard />} />
-          <Route path="hero" element={<HeroManager />} />
-          <Route path="about" element={<AboutManager />} />
-          <Route path="projects" element={<AdminProjects />} />
-          <Route path="blog" element={<AdminBlogPosts />} />
-          <Route path="services" element={<AdminServices />} />
-          <Route path="testimonials" element={<AdminTestimonials />} />
-          <Route path="messages" element={<AdminMessages />} />
-          <Route path="files" element={<AdminFileManager />} />
-          <Route path="settings" element={<AdminSettings />} />
-          <Route path="users" element={<UserManagement />} />
-        </Route>
+      {/* Admin panel (protected, own layout) */}
+      <Route path="/admin" element={<ProtectedRoute><AdminLayout /></ProtectedRoute>}>
+        <Route index element={<Dashboard />} />
+        <Route path="hero" element={<HeroManager />} />
+        <Route path="about" element={<AboutManager />} />
+        <Route path="projects" element={<AdminProjects />} />
+        <Route path="blog" element={<AdminBlogPosts />} />
+        <Route path="services" element={<AdminServices />} />
+        <Route path="testimonials" element={<AdminTestimonials />} />
+        <Route path="messages" element={<AdminMessages />} />
+        <Route path="files" element={<AdminFileManager />} />
+        <Route path="settings" element={<AdminSettings />} />
+        <Route path="users" element={<UserManagement />} />
+      </Route>
 
-        {/* 404 */}
-        <Route path="*" element={<NotFound />} />
-      </Routes>
-    </Suspense>
+      {/* 404 */}
+      <Route path="*" element={<NotFound />} />
+    </Routes>
   );
 }
 

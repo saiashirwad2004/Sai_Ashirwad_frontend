@@ -24,17 +24,36 @@ class ApiError extends Error {
 
 async function api<T = ApiResponse>(
   endpoint: string,
-  options: ApiOptions = {}
+  options: ApiOptions & { forceRefresh?: boolean } = {}
 ): Promise<T> {
-  const { method = 'GET', body, headers = {}, isFormData = false } = options;
+  const { method = 'GET', body, headers = {}, isFormData = false, forceRefresh = false } = options;
 
-  const token = localStorage.getItem('token');
-  if (token) {
-    headers['Authorization'] = `Bearer ${token}`;
+  let tokenLocal;
+  try {
+    tokenLocal = localStorage.getItem('token');
+  } catch(e) {}
+
+  if (tokenLocal) {
+    headers['Authorization'] = `Bearer ${tokenLocal}`;
   }
 
   if (!isFormData) {
     headers['Content-Type'] = 'application/json';
+  }
+
+  // Session Storage Caching specific to Public GET endpoints
+  const cacheKey = `av_cache_${endpoint.replace(/\//g, '_')}`;
+  if (method === 'GET' && endpoint.startsWith('/public/') && !forceRefresh) {
+    try {
+      const cachedString = sessionStorage.getItem(cacheKey);
+      if (cachedString) {
+        const parsed = JSON.parse(cachedString);
+        // Only return if it exists and possesses the signature
+        if (parsed?._cacheTimestamp && (Date.now() - parsed._cacheTimestamp < 600000)) { // 10 minutes cache logic
+          return parsed.data as T;
+        }
+      }
+    } catch(e) {}
   }
 
   const config: RequestInit = {
@@ -54,6 +73,13 @@ async function api<T = ApiResponse>(
       data.message || 'Something went wrong',
       response.status
     );
+  }
+
+  // Cache successful GET results for public API calls
+  if (method === 'GET' && endpoint.startsWith('/public/')) {
+    try {
+      sessionStorage.setItem(cacheKey, JSON.stringify({ data, _cacheTimestamp: Date.now() }));
+    } catch(e) {}
   }
 
   return data as T;

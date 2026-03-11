@@ -143,7 +143,7 @@ export default function Home() {
               <div key={`s1-${i}`} className="flex-shrink-0 py-4">
                 <div className="group/card flex flex-col items-center gap-4 w-[280px] h-[320px] px-6 py-8 rounded-[1.5rem] bg-card border border-border hover:border-primary/50 hover:shadow-xl hover:shadow-primary/10 transition-all duration-300 backdrop-blur-sm cursor-default hover:-translate-y-2">
                   <div className="w-20 h-20 rounded-full bg-background flex items-center justify-center p-4 shadow-inner">
-                    <img src={tool.logo} alt={tool.name} className={`w-10 h-10 object-contain ${tool.invert ? 'invert' : ''}`} loading="lazy" />
+                    <img src={tool.logo} alt={tool.name} className={`w-10 h-10 object-contain ${tool.invert ? 'invert' : ''}`} />
                   </div>
                   <div className="text-center flex-1 flex flex-col">
                     <h3 className="text-xl font-bold mb-3 group-hover/card:text-primary transition-colors">{tool.name}</h3>
@@ -159,7 +159,7 @@ export default function Home() {
               <div key={`s2-${i}`} className="flex-shrink-0 py-4">
                 <div className="group/card flex flex-col items-center gap-4 w-[280px] h-[320px] px-6 py-8 rounded-[1.5rem] bg-card border border-border hover:border-primary/50 hover:shadow-xl hover:shadow-primary/10 transition-all duration-300 backdrop-blur-sm cursor-default hover:-translate-y-2">
                   <div className="w-20 h-20 rounded-full bg-background flex items-center justify-center p-4 shadow-inner">
-                    <img src={tool.logo} alt={tool.name} className={`w-10 h-10 object-contain ${tool.invert ? 'invert' : ''}`} loading="lazy" />
+                    <img src={tool.logo} alt={tool.name} className={`w-10 h-10 object-contain ${tool.invert ? 'invert' : ''}`} />
                   </div>
                   <div className="text-center flex-1 flex flex-col">
                     <h3 className="text-xl font-bold mb-3 group-hover/card:text-primary transition-colors">{tool.name}</h3>

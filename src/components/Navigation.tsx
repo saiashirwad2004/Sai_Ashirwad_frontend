@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Sparkles } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 
 const navItems = [
   { label: 'Home', path: '/' },
@@ -41,9 +41,7 @@ export default function Navigation() {
           <nav className="flex items-center justify-between h-16 md:h-20" aria-label="Main Navigation">
             {/* Logo */}
             <Link to="/" className="inline-flex items-center gap-2 group">
-              <div className="w-8 h-8 md:w-10 md:h-10 rounded-xl bg-gradient-to-br from-primary to-purple-600 flex items-center justify-center text-primary-foreground shadow-lg shadow-primary/20 group-hover:scale-105 group-hover:rotate-3 transition-all duration-300">
-                <Sparkles className="w-4 h-4 md:w-5 md:h-5" />
-              </div>
+              <img src="/logo.png" alt="AnandVerse Logo" className="w-8 h-8 md:w-10 md:h-10 object-contain group-hover:scale-105 group-hover:-rotate-3 transition-all duration-300 rounded-xl" />
               <span className="text-xl md:text-2xl font-black font-display tracking-tight hover:text-primary transition-colors duration-300">
                 AnandVerse<span className="text-primary">.</span>
               </span>

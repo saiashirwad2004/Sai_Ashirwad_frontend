@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Github, Linkedin, Twitter, Instagram, Heart, ArrowUpRight, Sparkles, Youtube, Globe } from 'lucide-react';
+import { Github, Linkedin, Twitter, Instagram, Heart, ArrowUpRight, Youtube, Globe } from 'lucide-react';
 import { publicApi } from '@/services/api';
 
 const navLinks = [
@@ -50,9 +50,7 @@ export default function Footer() {
           {/* Brand Info */}
           <div className="lg:col-span-5">
             <Link to="/" className="inline-flex items-center gap-2 mb-5 group">
-              <div className="w-8 h-8 md:w-10 md:h-10 rounded-xl bg-gradient-to-br from-primary to-purple-600 flex items-center justify-center text-primary-foreground shadow-lg shadow-primary/20 group-hover:scale-105 group-hover:rotate-3 transition-all duration-300">
-                <Sparkles className="w-4 h-4 md:w-5 md:h-5" />
-              </div>
+              <img src="/logo.png" alt="AnandVerse Logo" className="w-8 h-8 md:w-10 md:h-10 object-contain group-hover:scale-105 group-hover:-rotate-3 transition-all duration-300 rounded-xl" />
               <span className="text-xl md:text-2xl font-black font-display tracking-tight hover:text-primary transition-colors duration-300">
                 AnandVerse<span className="text-primary">.</span>
               </span>
