@@ -3,12 +3,14 @@ import { motion } from 'framer-motion';
 import { Link, useNavigate } from 'react-router-dom';
 import { LogIn, Eye, EyeOff, Loader2 } from 'lucide-react';
 import PageTransition from '@/components/PageTransition';
+import Turnstile from '@/components/Turnstile';
 import { authApi } from '@/services/api';
 
 export default function Login() {
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [turnstileToken, setTurnstileToken] = useState('');
   const [error, setError] = useState('');
 
   const [formData, setFormData] = useState({
@@ -36,6 +38,7 @@ export default function Login() {
       const data = await authApi.login({
         email: formData.email,
         password: formData.password,
+        turnstileToken,
       });
 
       if (data.token) {
@@ -141,9 +144,11 @@ export default function Login() {
                 </Link>
               </div>
 
+              <Turnstile onVerify={(token) => setTurnstileToken(token)} />
+
               <button
                 type="submit"
-                disabled={isSubmitting}
+                disabled={isSubmitting || !turnstileToken}
                 className="w-full btn-primary justify-center py-4 disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {isSubmitting ? (

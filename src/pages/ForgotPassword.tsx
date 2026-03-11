@@ -3,11 +3,13 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Mail, ArrowLeft, Loader2, CheckCircle } from 'lucide-react';
 import PageTransition from '@/components/PageTransition';
+import Turnstile from '@/components/Turnstile';
 import { authApi } from '@/services/api';
 
 export default function ForgotPassword() {
   const [email, setEmail] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [turnstileToken, setTurnstileToken] = useState('');
   const [error, setError] = useState('');
   const [sent, setSent] = useState(false);
 
@@ -23,7 +25,7 @@ export default function ForgotPassword() {
     setIsSubmitting(true);
 
     try {
-      await authApi.forgotPassword(email);
+      await authApi.forgotPassword(email, turnstileToken);
       setSent(true);
     } catch (err: unknown) {
       setError(err instanceof Error ? err.message : 'Failed to send reset email');
@@ -118,9 +120,11 @@ export default function ForgotPassword() {
                 />
               </div>
 
+              <Turnstile onVerify={(token) => setTurnstileToken(token)} />
+
               <button
                 type="submit"
-                disabled={isSubmitting}
+                disabled={isSubmitting || !turnstileToken}
                 className="w-full flex items-center justify-center gap-2 px-6 py-4 bg-primary text-primary-foreground rounded-xl font-medium hover:shadow-lg hover:shadow-primary/25 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {isSubmitting ? (

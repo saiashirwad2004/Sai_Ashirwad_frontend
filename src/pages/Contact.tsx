@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Mail, MapPin, Phone, Send, Github, Linkedin, Twitter, Instagram, Youtube, Globe, Sparkles, MessageSquare } from 'lucide-react';
 import PageTransition from '@/components/PageTransition';
+import Turnstile from '@/components/Turnstile';
 import FadeIn from '@/components/animations/FadeIn';
 import StaggerContainer, { StaggerItem } from '@/components/animations/StaggerContainer';
 import { publicApi } from '@/services/api';
@@ -19,6 +20,7 @@ export default function Contact() {
   const [formData, setFormData] = useState({ name: '', email: '', subject: '', message: '' });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [turnstileToken, setTurnstileToken] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(true);
 
@@ -40,9 +42,10 @@ export default function Contact() {
     e.preventDefault();
     setIsSubmitting(true); setError('');
     try {
-      await publicApi.submitContact(formData);
+      await publicApi.submitContact({ ...formData, turnstileToken });
       setSubmitted(true);
       setFormData({ name: '', email: '', subject: '', message: '' });
+      setTurnstileToken('');
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Failed to send message');
     } finally {
@@ -187,7 +190,9 @@ export default function Contact() {
                         <textarea id="message" name="message" value={formData.message} onChange={handleChange} required rows={5} className="input-field resize-none" placeholder="Tell me about your project, idea, or inquiry..." />
                       </div>
 
-                      <button type="submit" disabled={isSubmitting} className="w-full btn-solid justify-center py-4 mt-2 disabled:opacity-70 disabled:cursor-not-allowed group">
+                      <Turnstile onVerify={(token) => setTurnstileToken(token)} />
+
+                      <button type="submit" disabled={isSubmitting || !turnstileToken} className="w-full btn-solid justify-center py-4 mt-2 disabled:opacity-70 disabled:cursor-not-allowed group">
                         {isSubmitting ? (
                           <><div className="w-4 h-4 border-2 border-background/30 border-t-background rounded-full animate-spin" />Sending securely...</>
                         ) : (

@@ -88,9 +88,9 @@ async function api<T = ApiResponse>(
 // Auth API helpers
 export const authApi = {
   checkSetup: () => api('/auth/check-setup'),
-  setup: (data: { name: string; email: string; password: string }) =>
+  setup: (data: { name: string; email: string; password: string; turnstileToken?: string }) =>
     api('/auth/setup', { method: 'POST', body: data }),
-  login: (data: { email: string; password: string }) =>
+  login: (data: { email: string; password: string; turnstileToken?: string }) =>
     api('/auth/login', { method: 'POST', body: data }),
   getMe: () => api('/auth/me'),
   updateProfile: (formData: FormData) =>
@@ -101,8 +101,8 @@ export const authApi = {
     }),
   changePassword: (data: { currentPassword: string; newPassword: string }) =>
     api('/auth/change-password', { method: 'PUT', body: data }),
-  forgotPassword: (email: string) =>
-    api('/auth/forgot-password', { method: 'POST', body: { email } }),
+  forgotPassword: (email: string, turnstileToken?: string) =>
+    api('/auth/forgot-password', { method: 'POST', body: { email, turnstileToken } }),
   resetPassword: (token: string, password: string) =>
     api(`/auth/reset-password/${token}`, {
       method: 'POST',
@@ -160,12 +160,12 @@ export const publicApi = {
     const q = params ? '?' + new URLSearchParams(params).toString() : '';
     return api<{ data: unknown[] }>(`/public/testimonials${q}`);
   },
-  submitContact: (data: { name: string; email: string; subject: string; message: string }) =>
+  submitContact: (data: { name: string; email: string; subject: string; message: string; turnstileToken?: string }) =>
     api('/public/contact', { method: 'POST', body: data }),
-  submitTestimonial: (data: { name: string; role?: string; company?: string; content: string; rating: number }) =>
+  submitTestimonial: (data: { name: string; role?: string; company?: string; content: string; rating: number; turnstileToken?: string }) =>
     api('/public/testimonials', { method: 'POST', body: data }),
-  subscribeNewsletter: (email: string) =>
-    api('/public/newsletter', { method: 'POST', body: { email } }),
+  subscribeNewsletter: (email: string, turnstileToken?: string) =>
+    api('/public/newsletter', { method: 'POST', body: { email, turnstileToken } }),
 };
 
 export { ApiError };

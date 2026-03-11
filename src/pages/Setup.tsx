@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import { Shield, Eye, EyeOff, CheckCircle, Loader2 } from 'lucide-react';
 import PageTransition from '@/components/PageTransition';
+import Turnstile from '@/components/Turnstile';
 import { authApi } from '@/services/api';
 
 export default function Setup() {
@@ -12,6 +13,7 @@ export default function Setup() {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirm, setShowConfirm] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [turnstileToken, setTurnstileToken] = useState('');
   const [error, setError] = useState('');
   const [success, setSuccess] = useState(false);
 
@@ -71,6 +73,7 @@ export default function Setup() {
         name: formData.name,
         email: formData.email,
         password: formData.password,
+        turnstileToken,
       });
 
       // Store token
@@ -276,9 +279,11 @@ export default function Setup() {
                 </div>
               </div>
 
+              <Turnstile onVerify={(token) => setTurnstileToken(token)} />
+
               <button
                 type="submit"
-                disabled={isSubmitting}
+                disabled={isSubmitting || !turnstileToken}
                 className="w-full flex items-center justify-center gap-2 px-6 py-4 bg-primary text-primary-foreground rounded-xl font-medium hover:shadow-lg hover:shadow-primary/25 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed mt-6"
               >
                 {isSubmitting ? (
