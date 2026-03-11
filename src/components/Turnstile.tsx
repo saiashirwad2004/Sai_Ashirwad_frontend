@@ -25,25 +25,36 @@ export default function Turnstile({ onVerify, options = {} }: TurnstileProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const widgetIdRef = useRef<string | null>(null);
 
+  // Use a ref for onVerify to prevent effect re-runs when parent passes inline function
+  const onVerifyRef = useRef(onVerify);
+  onVerifyRef.current = onVerify;
+
   useEffect(() => {
     const siteKey = import.meta.env.VITE_TURNSTILE_SITE_KEY || '0x4AAAAAACpbKP942F0Qp-Js';
 
     const renderWidget = () => {
+      // Ensure we only render if container exists and we don't already have a widget
       if (window.turnstile && containerRef.current && !widgetIdRef.current) {
-        widgetIdRef.current = window.turnstile.render(containerRef.current, {
-          sitekey: siteKey,
-          callback: (token: string) => {
-            onVerify(token);
-          },
-          'expired-callback': () => {
-            onVerify('');
-          },
-          'error-callback': () => {
-            onVerify('');
-          },
-          theme: options.theme || 'dark',
-          size: options.size || 'normal',
-        });
+        try {
+          widgetIdRef.current = window.turnstile.render(containerRef.current, {
+            sitekey: siteKey,
+            callback: (token: string) => {
+              onVerifyRef.current(token);
+            },
+            'expired-callback': () => {
+              onVerifyRef.current('');
+            },
+            'error-callback': () => {
+              onVerifyRef.current('');
+            },
+            theme: options.theme || 'dark',
+            size: options.size || 'normal',
+            // Explicitly set execution to 'render' to avoid unintended execution
+            execution: 'render',
+          });
+        } catch (e) {
+          console.error('Turnstile render error:', e);
+        }
       }
     };
 
@@ -51,8 +62,7 @@ export default function Turnstile({ onVerify, options = {} }: TurnstileProps) {
     if (window.turnstile) {
       renderWidget();
     } else {
-      // If not, it might still be loading, but since we added it to head it should be there soon
-      // We can poll or wait for the script to load. Cloudflare suggests using an onload callback but for React this is fine.
+      // Polling for the script to be ready
       const timer = setInterval(() => {
         if (window.turnstile) {
           renderWidget();
@@ -64,11 +74,14 @@ export default function Turnstile({ onVerify, options = {} }: TurnstileProps) {
 
     return () => {
       if (widgetIdRef.current && window.turnstile) {
-        window.turnstile.remove(widgetIdRef.current);
+        try {
+          window.turnstile.remove(widgetIdRef.current);
+        } catch (e) {}
         widgetIdRef.current = null;
       }
     };
-  }, [onVerify, options.theme, options.size]);
+    // Only re-run if theme or size changes. onVerify changes are handled by the ref.
+  }, [options.theme, options.size]);
 
   return <div ref={containerRef} className="cf-turnstile-container flex justify-center py-2" />;
 }
