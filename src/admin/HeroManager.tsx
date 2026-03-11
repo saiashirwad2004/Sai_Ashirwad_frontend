@@ -82,7 +82,7 @@ export default function HeroManager() {
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Hero Text */}
-        <div className="rounded-3xl bg-card border border-border p-6 sm:p-8 shadow-sm">
+        <div className="rounded-3xl bg-card/40 backdrop-blur-xl shadow-xl border border-border p-6 sm:p-8 shadow-sm">
           <div className="flex items-center gap-2 mb-6 border-b border-border pb-4">
             <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center">
               <span className="text-primary font-black text-sm">H</span>
@@ -93,15 +93,15 @@ export default function HeroManager() {
           <div className="space-y-5">
             <div>
               <label className="text-sm font-bold text-muted-foreground uppercase tracking-wider mb-2 block">Heading</label>
-              <input value={config.heroHeading || ''} onChange={e => update('heroHeading', e.target.value)} className="w-full px-4 py-3 bg-background border border-border rounded-xl text-sm focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all font-bold text-foreground" placeholder="Hi, I'm Anand" />
+              <input value={config.heroHeading || ''} onChange={e => update('heroHeading', e.target.value)} className="w-full px-4 py-3 bg-background/40 backdrop-blur-xl shadow-xl border border-border rounded-xl text-sm focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all font-bold text-foreground" placeholder="Hi, I'm Anand" />
             </div>
             <div>
               <label className="text-sm font-bold text-muted-foreground uppercase tracking-wider mb-2 block">Subtitle</label>
-              <input value={config.heroSubtitle || ''} onChange={e => update('heroSubtitle', e.target.value)} className="w-full px-4 py-3 bg-background border border-border rounded-xl text-sm focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all text-foreground" placeholder="I build pixel-perfect, award-winning..." />
+              <input value={config.heroSubtitle || ''} onChange={e => update('heroSubtitle', e.target.value)} className="w-full px-4 py-3 bg-background/40 backdrop-blur-xl shadow-xl border border-border rounded-xl text-sm focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all text-foreground" placeholder="I build pixel-perfect, award-winning..." />
             </div>
             <div>
               <label className="text-sm font-bold text-muted-foreground uppercase tracking-wider mb-2 block">Description</label>
-              <textarea value={config.heroDescription || ''} onChange={e => update('heroDescription', e.target.value)} rows={4} className="w-full px-4 py-3 bg-background border border-border rounded-xl text-sm focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all resize-none leading-relaxed text-foreground" />
+              <textarea value={config.heroDescription || ''} onChange={e => update('heroDescription', e.target.value)} rows={4} className="w-full px-4 py-3 bg-background/40 backdrop-blur-xl shadow-xl border border-border rounded-xl text-sm focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all resize-none leading-relaxed text-foreground" />
             </div>
             
             <div className="pt-4 border-t border-border">
@@ -134,7 +134,7 @@ export default function HeroManager() {
 
         <div className="space-y-6">
           {/* CTAs */}
-          <div className="rounded-3xl bg-card border border-border p-6 sm:p-8 shadow-sm">
+          <div className="rounded-3xl bg-card/40 backdrop-blur-xl shadow-xl border border-border p-6 sm:p-8 shadow-sm">
             <div className="flex items-center gap-2 mb-6 border-b border-border pb-4">
               <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center">
                 <span className="text-primary font-black text-sm">C</span>
@@ -144,12 +144,12 @@ export default function HeroManager() {
             
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-6">
               <div className="space-y-4">
-                <div><label className="text-xs font-bold text-muted-foreground uppercase tracking-wider mb-1.5 block">Primary Text</label><input value={config.heroCTA?.primary?.text || ''} onChange={e => update('heroCTA.primary.text', e.target.value)} className="w-full px-4 py-2.5 bg-background border border-border rounded-xl text-sm focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all" /></div>
-                <div><label className="text-xs font-bold text-muted-foreground uppercase tracking-wider mb-1.5 block">Primary Link</label><input value={config.heroCTA?.primary?.link || ''} onChange={e => update('heroCTA.primary.link', e.target.value)} className="w-full px-4 py-2.5 bg-background border border-border rounded-xl text-sm focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all" /></div>
+                <div><label className="text-xs font-bold text-muted-foreground uppercase tracking-wider mb-1.5 block">Primary Text</label><input value={config.heroCTA?.primary?.text || ''} onChange={e => update('heroCTA.primary.text', e.target.value)} className="w-full px-4 py-2.5 bg-background/40 backdrop-blur-xl shadow-xl border border-border rounded-xl text-sm focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all" /></div>
+                <div><label className="text-xs font-bold text-muted-foreground uppercase tracking-wider mb-1.5 block">Primary Link</label><input value={config.heroCTA?.primary?.link || ''} onChange={e => update('heroCTA.primary.link', e.target.value)} className="w-full px-4 py-2.5 bg-background/40 backdrop-blur-xl shadow-xl border border-border rounded-xl text-sm focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all" /></div>
               </div>
               <div className="space-y-4">
-                <div><label className="text-xs font-bold text-muted-foreground uppercase tracking-wider mb-1.5 block">Secondary Text</label><input value={config.heroCTA?.secondary?.text || ''} onChange={e => update('heroCTA.secondary.text', e.target.value)} className="w-full px-4 py-2.5 bg-background border border-border rounded-xl text-sm focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all" /></div>
-                <div><label className="text-xs font-bold text-muted-foreground uppercase tracking-wider mb-1.5 block">Secondary Link</label><input value={config.heroCTA?.secondary?.link || ''} onChange={e => update('heroCTA.secondary.link', e.target.value)} className="w-full px-4 py-2.5 bg-background border border-border rounded-xl text-sm focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all" /></div>
+                <div><label className="text-xs font-bold text-muted-foreground uppercase tracking-wider mb-1.5 block">Secondary Text</label><input value={config.heroCTA?.secondary?.text || ''} onChange={e => update('heroCTA.secondary.text', e.target.value)} className="w-full px-4 py-2.5 bg-background/40 backdrop-blur-xl shadow-xl border border-border rounded-xl text-sm focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all" /></div>
+                <div><label className="text-xs font-bold text-muted-foreground uppercase tracking-wider mb-1.5 block">Secondary Link</label><input value={config.heroCTA?.secondary?.link || ''} onChange={e => update('heroCTA.secondary.link', e.target.value)} className="w-full px-4 py-2.5 bg-background/40 backdrop-blur-xl shadow-xl border border-border rounded-xl text-sm focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all" /></div>
               </div>
             </div>
             
@@ -160,7 +160,7 @@ export default function HeroManager() {
           </div>
 
           {/* Stats */}
-          <div className="rounded-3xl bg-card border border-border p-6 sm:p-8 shadow-sm">
+          <div className="rounded-3xl bg-card/40 backdrop-blur-xl shadow-xl border border-border p-6 sm:p-8 shadow-sm">
             <div className="flex items-center justify-between mb-6 border-b border-border pb-4">
               <div className="flex items-center gap-2">
                 <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center">
@@ -179,12 +179,12 @@ export default function HeroManager() {
             
             <div className="space-y-3">
               {(config.stats || []).map((stat, i) => (
-                <div key={i} className="flex items-center gap-3 bg-background p-2 rounded-2xl border border-border/50 hover:border-border transition-colors group">
+                <div key={i} className="flex items-center gap-3 bg-background/40 backdrop-blur-xl shadow-xl p-2 rounded-2xl border border-border/50 hover:border-border transition-colors group">
                   <div className="w-8 flex items-center justify-center cursor-move opacity-50 group-hover:opacity-100 transition-opacity">
                     <GripVertical className="w-4 h-4 text-muted-foreground" />
                   </div>
-                  <input value={stat.number} onChange={e => updateStat(i, 'number', e.target.value)} placeholder="50+" className="w-24 px-4 py-2.5 bg-card border border-border rounded-xl text-sm font-bold text-foreground focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all" />
-                  <input value={stat.label} onChange={e => updateStat(i, 'label', e.target.value)} placeholder="Projects Completed" className="flex-1 px-4 py-2.5 bg-card border border-border rounded-xl text-sm text-foreground focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all" />
+                  <input value={stat.number} onChange={e => updateStat(i, 'number', e.target.value)} placeholder="50+" className="w-24 px-4 py-2.5 bg-card/40 backdrop-blur-xl shadow-xl border border-border rounded-xl text-sm font-bold text-foreground focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all" />
+                  <input value={stat.label} onChange={e => updateStat(i, 'label', e.target.value)} placeholder="Projects Completed" className="flex-1 px-4 py-2.5 bg-card/40 backdrop-blur-xl shadow-xl border border-border rounded-xl text-sm text-foreground focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all" />
                   <button onClick={() => removeStat(i)} className="p-2.5 rounded-xl bg-red-500/10 hover:bg-red-500/20 text-red-500 transition-colors"><Trash2 className="w-4 h-4" /></button>
                 </div>
               ))}

@@ -96,7 +96,7 @@ export default function FileManager() {
           <button onClick={() => imageInput.current?.click()} disabled={uploading} className="inline-flex items-center gap-2 px-5 py-2.5 bg-primary text-primary-foreground rounded-xl text-sm font-bold shadow-lg shadow-primary/20 hover:bg-primary/90 transition-all hover:scale-105 active:scale-95 disabled:opacity-50">
             {uploading ? <Loader2 className="w-4 h-4 animate-spin" /> : <ImageIcon className="w-4 h-4" />} Upload Image
           </button>
-          <button onClick={() => fileInput.current?.click()} disabled={uploading} className="inline-flex items-center gap-2 px-5 py-2.5 border border-border bg-card text-foreground rounded-xl text-sm font-bold hover:bg-muted transition-colors disabled:opacity-50">
+          <button onClick={() => fileInput.current?.click()} disabled={uploading} className="inline-flex items-center gap-2 px-5 py-2.5 border border-border bg-card/40 backdrop-blur-xl shadow-xl text-foreground rounded-xl text-sm font-bold hover:bg-muted transition-colors disabled:opacity-50">
             <Upload className="w-4 h-4" /> Upload File
           </button>
         </div>
@@ -105,11 +105,11 @@ export default function FileManager() {
       <div className="flex flex-col sm:flex-row gap-4">
         <div className="relative flex-1">
           <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
-          <input value={search} onChange={e => setSearch(e.target.value)} placeholder="Search files by name..." className="w-full pl-12 pr-4 py-3 bg-card border border-border rounded-xl text-sm focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all shadow-sm" />
+          <input value={search} onChange={e => setSearch(e.target.value)} placeholder="Search files by name..." className="w-full pl-12 pr-4 py-3 bg-card/40 backdrop-blur-xl shadow-xl border border-border rounded-xl text-sm focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all shadow-sm" />
         </div>
         <div className="flex gap-2 overflow-x-auto pb-1 hide-scrollbar">
           {(['all', 'image', 'file'] as const).map(f => (
-            <button key={f} onClick={() => setFilterType(f)} className={`px-4 py-2.5 rounded-xl text-sm font-bold capitalize whitespace-nowrap transition-all ${filterType === f ? 'bg-primary/10 text-primary border border-primary/20' : 'border border-border bg-card text-muted-foreground hover:bg-muted hover:text-foreground'}`}>
+            <button key={f} onClick={() => setFilterType(f)} className={`px-4 py-2.5 rounded-xl text-sm font-bold capitalize whitespace-nowrap transition-all ${filterType === f ? 'bg-primary/10 text-primary border border-primary/20' : 'border border-border bg-card/40 backdrop-blur-xl shadow-xl text-muted-foreground hover:bg-muted hover:text-foreground'}`}>
               {f === 'file' ? 'Other Files' : f + 's'}
             </button>
           ))}
@@ -118,7 +118,7 @@ export default function FileManager() {
 
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-5">
         {filtered.map((f) => (
-          <div key={f._id} className="group rounded-3xl bg-card border border-border overflow-hidden hover:border-primary/50 hover:shadow-xl transition-all duration-300">
+          <div key={f._id} className="group rounded-3xl bg-card/40 backdrop-blur-xl shadow-xl border border-border overflow-hidden hover:border-primary/50 hover:shadow-xl transition-all duration-300">
             <div className="aspect-square bg-muted/50 flex flex-col items-center justify-center overflow-hidden relative">
               {f.mimeType.startsWith('image/') ? (
                 <img src={f.url} alt={f.originalName} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
@@ -126,10 +126,10 @@ export default function FileManager() {
                 <FileIcon className="w-12 h-12 text-muted-foreground/50 group-hover:scale-110 transition-transform duration-500" />
               )}
               <div className="absolute inset-0 bg-background/80 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-3">
-                <button onClick={() => copyUrl(f.url)} className="p-3 bg-card rounded-2xl shadow-lg border border-border hover:bg-primary hover:text-primary-foreground hover:border-primary transition-colors text-foreground" title="Copy URL">
+                <button onClick={() => copyUrl(f.url)} className="p-3 bg-card/40 backdrop-blur-xl shadow-xl rounded-2xl shadow-lg border border-border hover:bg-primary hover:text-primary-foreground hover:border-primary transition-colors text-foreground" title="Copy URL">
                   <Copy className="w-5 h-5" />
                 </button>
-                <button onClick={() => deleteFile(f._id)} className="p-3 bg-card rounded-2xl shadow-lg border border-border hover:bg-red-500 hover:text-white hover:border-red-500 transition-colors text-red-500" title="Delete">
+                <button onClick={() => deleteFile(f._id)} className="p-3 bg-card/40 backdrop-blur-xl shadow-xl rounded-2xl shadow-lg border border-border hover:bg-red-500 hover:text-white hover:border-red-500 transition-colors text-red-500" title="Delete">
                   <Trash2 className="w-5 h-5" />
                 </button>
               </div>
@@ -146,7 +146,7 @@ export default function FileManager() {
       </div>
       
       {filtered.length === 0 && (
-        <div className="py-20 text-center border-2 border-dashed border-border rounded-3xl bg-card/50">
+        <div className="py-20 text-center border-2 border-dashed border-border rounded-3xl bg-card/40 backdrop-blur-xl shadow-xl">
           <FileIcon className="w-12 h-12 text-muted-foreground/50 mx-auto mb-4" />
           <h3 className="text-xl font-bold text-foreground mb-2">No files found</h3>
           <p className="text-muted-foreground">Upload some files or change your search filter.</p>

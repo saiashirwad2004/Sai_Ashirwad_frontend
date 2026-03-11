@@ -48,7 +48,7 @@ export default function AdminLayout() {
   const handleLogout = () => { logout(); navigate('/login'); };
 
   return (
-    <div className="flex h-screen bg-background text-foreground overflow-hidden font-sans">
+    <div className="flex h-screen bg-background/40 backdrop-blur-xl shadow-xl text-foreground overflow-hidden font-sans">
       {sidebarOpen && <div className="fixed inset-0 bg-background/80 backdrop-blur-sm z-40 lg:hidden" onClick={() => setSidebarOpen(false)} />}
 
       {/* Sidebar */}

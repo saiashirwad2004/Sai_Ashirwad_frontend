@@ -74,12 +74,12 @@ export default function Projects() {
       <div className="relative max-w-md">
         <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
         <input value={search} onChange={e => setSearch(e.target.value)} placeholder="Search projects..." 
-               className="w-full pl-12 pr-4 py-3 bg-card border border-border rounded-xl text-sm focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all shadow-sm" />
+               className="w-full pl-12 pr-4 py-3 bg-card/40 backdrop-blur-xl shadow-xl border border-border rounded-xl text-sm focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all shadow-sm" />
       </div>
 
       <div className="grid gap-6">
         {filtered.map((p) => (
-          <div key={p._id} className="p-5 rounded-3xl bg-card border border-border shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col xl:flex-row gap-6 group">
+          <div key={p._id} className="p-5 rounded-3xl bg-card/40 backdrop-blur-xl shadow-xl border border-border shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col xl:flex-row gap-6 group">
             {p.image?.url ? 
               <img src={p.image.url} alt={p.title} className="w-full xl:w-48 h-48 xl:h-auto object-cover rounded-2xl flex-shrink-0 border border-border/50 group-hover:scale-[1.02] transition-transform duration-500" /> 
               : <div className="w-full xl:w-48 h-48 xl:h-auto rounded-2xl bg-muted border border-border flex items-center justify-center flex-shrink-0"><span className="text-muted-foreground text-sm font-medium">No Image</span></div>
@@ -121,7 +121,7 @@ export default function Projects() {
           </div>
         ))}
         {filtered.length === 0 && (
-          <div className="py-20 text-center border-2 border-dashed border-border rounded-3xl bg-card/50">
+          <div className="py-20 text-center border-2 border-dashed border-border rounded-3xl bg-card/40 backdrop-blur-xl shadow-xl">
             <h3 className="text-xl font-bold text-foreground mb-2">No projects found</h3>
             <p className="text-muted-foreground">Try adjusting your search query, or add a new project.</p>
           </div>
@@ -131,18 +131,18 @@ export default function Projects() {
       {/* Create/Edit Modal */}
       {showForm && (
         <div className="fixed inset-0 bg-background/80 backdrop-blur-md z-50 flex items-center justify-center p-4 animate-in fade-in zoom-in-95 duration-200" onClick={() => setShowForm(false)}>
-          <div className="bg-card border border-border shadow-2xl rounded-3xl w-full max-w-2xl max-h-[85vh] overflow-y-auto p-8" onClick={e => e.stopPropagation()}>
+          <div className="bg-card/40 backdrop-blur-xl shadow-xl border border-border shadow-2xl rounded-3xl w-full max-w-2xl max-h-[85vh] overflow-y-auto p-8" onClick={e => e.stopPropagation()}>
             <div className="flex items-center justify-between mb-8">
               <h2 className="text-2xl font-black">{editId ? 'Edit Project' : 'New Project'}</h2>
               <button onClick={() => setShowForm(false)} className="p-2 rounded-xl hover:bg-muted text-muted-foreground hover:text-foreground transition-colors"><X className="w-6 h-6" /></button>
             </div>
             <div className="space-y-5">
-              <div><label className="text-sm font-semibold text-foreground mb-1.5 block">Title *</label><input value={form.title} onChange={e => setForm({...form, title: e.target.value})} className="w-full px-5 py-3 bg-background border border-border rounded-xl text-sm focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all" /></div>
-              <div><label className="text-sm font-semibold text-foreground mb-1.5 block">Short Description *</label><textarea value={form.description} onChange={e => setForm({...form, description: e.target.value})} rows={2} className="w-full px-5 py-3 bg-background border border-border rounded-xl text-sm focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all resize-none" /></div>
-              <div><label className="text-sm font-semibold text-foreground mb-1.5 block">Long Description</label><textarea value={form.longDescription} onChange={e => setForm({...form, longDescription: e.target.value})} rows={4} className="w-full px-5 py-3 bg-background border border-border rounded-xl text-sm focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all resize-none" /></div>
+              <div><label className="text-sm font-semibold text-foreground mb-1.5 block">Title *</label><input value={form.title} onChange={e => setForm({...form, title: e.target.value})} className="w-full px-5 py-3 bg-background/40 backdrop-blur-xl shadow-xl border border-border rounded-xl text-sm focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all" /></div>
+              <div><label className="text-sm font-semibold text-foreground mb-1.5 block">Short Description *</label><textarea value={form.description} onChange={e => setForm({...form, description: e.target.value})} rows={2} className="w-full px-5 py-3 bg-background/40 backdrop-blur-xl shadow-xl border border-border rounded-xl text-sm focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all resize-none" /></div>
+              <div><label className="text-sm font-semibold text-foreground mb-1.5 block">Long Description</label><textarea value={form.longDescription} onChange={e => setForm({...form, longDescription: e.target.value})} rows={4} className="w-full px-5 py-3 bg-background/40 backdrop-blur-xl shadow-xl border border-border rounded-xl text-sm focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all resize-none" /></div>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                <div><label className="text-sm font-semibold text-foreground mb-1.5 block">Category</label><input value={form.category} onChange={e => setForm({...form, category: e.target.value})} className="w-full px-5 py-3 bg-background border border-border rounded-xl text-sm focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all" /></div>
-                <div><label className="text-sm font-semibold text-foreground mb-1.5 block">Tags (comma separated)</label><input value={form.tags} onChange={e => setForm({...form, tags: e.target.value})} className="w-full px-5 py-3 bg-background border border-border rounded-xl text-sm focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all" placeholder="React, Node.js, MongoDB" /></div>
+                <div><label className="text-sm font-semibold text-foreground mb-1.5 block">Category</label><input value={form.category} onChange={e => setForm({...form, category: e.target.value})} className="w-full px-5 py-3 bg-background/40 backdrop-blur-xl shadow-xl border border-border rounded-xl text-sm focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all" /></div>
+                <div><label className="text-sm font-semibold text-foreground mb-1.5 block">Tags (comma separated)</label><input value={form.tags} onChange={e => setForm({...form, tags: e.target.value})} className="w-full px-5 py-3 bg-background/40 backdrop-blur-xl shadow-xl border border-border rounded-xl text-sm focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all" placeholder="React, Node.js, MongoDB" /></div>
               </div>
               
               <div>
@@ -170,8 +170,8 @@ export default function Projects() {
                 </div>
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                <div><label className="text-sm font-semibold text-foreground mb-1.5 block">GitHub URL</label><input value={form.github} onChange={e => setForm({...form, github: e.target.value})} className="w-full px-5 py-3 bg-background border border-border rounded-xl text-sm focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all" /></div>
-                <div><label className="text-sm font-semibold text-foreground mb-1.5 block">Live URL</label><input value={form.live} onChange={e => setForm({...form, live: e.target.value})} className="w-full px-5 py-3 bg-background border border-border rounded-xl text-sm focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all" /></div>
+                <div><label className="text-sm font-semibold text-foreground mb-1.5 block">GitHub URL</label><input value={form.github} onChange={e => setForm({...form, github: e.target.value})} className="w-full px-5 py-3 bg-background/40 backdrop-blur-xl shadow-xl border border-border rounded-xl text-sm focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all" /></div>
+                <div><label className="text-sm font-semibold text-foreground mb-1.5 block">Live URL</label><input value={form.live} onChange={e => setForm({...form, live: e.target.value})} className="w-full px-5 py-3 bg-background/40 backdrop-blur-xl shadow-xl border border-border rounded-xl text-sm focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all" /></div>
               </div>
               <div className="flex justify-end gap-3 pt-6 border-t border-border mt-8">
                 <button onClick={() => setShowForm(false)} className="px-6 py-3 rounded-xl text-sm font-bold bg-muted hover:bg-muted/80 text-foreground transition-colors">Cancel</button>
@@ -187,7 +187,7 @@ export default function Projects() {
       {/* Delete Confirmation */}
       {deleteId && (
         <div className="fixed inset-0 bg-background/80 backdrop-blur-md z-[60] flex items-center justify-center p-4 animate-in fade-in zoom-in-95 duration-200" onClick={() => setDeleteId(null)}>
-          <div className="bg-card border border-border shadow-2xl rounded-3xl p-8 max-w-sm w-full text-center" onClick={e => e.stopPropagation()}>
+          <div className="bg-card/40 backdrop-blur-xl shadow-xl border border-border shadow-2xl rounded-3xl p-8 max-w-sm w-full text-center" onClick={e => e.stopPropagation()}>
             <div className="w-16 h-16 rounded-full bg-red-500/10 flex items-center justify-center mx-auto mb-4">
                <Trash2 className="w-8 h-8 text-red-500" />
             </div>

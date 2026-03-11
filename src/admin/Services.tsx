@@ -35,7 +35,7 @@ export default function Services() {
       
       <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {data.map((s) => (
-          <div key={s._id} className={`p-6 rounded-3xl bg-card border shadow-sm transition-all duration-300 group flex flex-col ${s.isActive ? 'border-border hover:shadow-xl hover:border-primary/30' : 'border-border opacity-60 grayscale-[50%]'}`}>
+          <div key={s._id} className={`p-6 rounded-3xl bg-card/40 backdrop-blur-xl shadow-xl border shadow-sm transition-all duration-300 group flex flex-col ${s.isActive ? 'border-border hover:shadow-xl hover:border-primary/30' : 'border-border opacity-60 grayscale-[50%]'}`}>
             <div className="flex items-start justify-between mb-4">
               <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center text-primary border border-primary/20">
                 <span className="font-bold text-xs uppercase tracking-wider">{s.icon || 'ICN'}</span>
@@ -72,7 +72,7 @@ export default function Services() {
           </div>
         ))}
         {data.length === 0 && (
-          <div className="py-20 text-center border-2 border-dashed border-border rounded-3xl bg-card/50 col-span-full">
+          <div className="py-20 text-center border-2 border-dashed border-border rounded-3xl bg-card/40 backdrop-blur-xl shadow-xl col-span-full">
             <h3 className="text-xl font-bold text-foreground mb-2">No services offered</h3>
             <p className="text-muted-foreground">Add your first service listing to get started.</p>
           </div>
@@ -81,21 +81,21 @@ export default function Services() {
 
       {showForm && (
         <div className="fixed inset-0 bg-background/80 backdrop-blur-md z-50 flex items-center justify-center p-4 animate-in fade-in zoom-in-95 duration-200" onClick={() => setShowForm(false)}>
-          <div className="bg-card border border-border shadow-2xl rounded-3xl w-full max-w-lg overflow-y-auto max-h-[90vh] p-8" onClick={e => e.stopPropagation()}>
+          <div className="bg-card/40 backdrop-blur-xl shadow-xl border border-border shadow-2xl rounded-3xl w-full max-w-lg overflow-y-auto max-h-[90vh] p-8" onClick={e => e.stopPropagation()}>
             <div className="flex items-center justify-between mb-8">
               <h2 className="text-2xl font-black">{editId ? 'Edit Service' : 'New Service'}</h2>
               <button onClick={() => setShowForm(false)} className="p-2 rounded-xl hover:bg-muted text-muted-foreground hover:text-foreground transition-colors"><X className="w-6 h-6" /></button>
             </div>
             <div className="space-y-5">
-              <div><label className="text-sm font-semibold text-foreground mb-1.5 block">Service Title *</label><input value={form.title} onChange={e => setForm({...form, title: e.target.value})} className="w-full px-5 py-3 bg-background border border-border rounded-xl text-sm focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all" /></div>
-              <div><label className="text-sm font-semibold text-foreground mb-1.5 block">Description *</label><textarea value={form.description} onChange={e => setForm({...form, description: e.target.value})} rows={3} className="w-full px-5 py-3 bg-background border border-border rounded-xl text-sm focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all resize-none leading-relaxed" /></div>
+              <div><label className="text-sm font-semibold text-foreground mb-1.5 block">Service Title *</label><input value={form.title} onChange={e => setForm({...form, title: e.target.value})} className="w-full px-5 py-3 bg-background/40 backdrop-blur-xl shadow-xl border border-border rounded-xl text-sm focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all" /></div>
+              <div><label className="text-sm font-semibold text-foreground mb-1.5 block">Description *</label><textarea value={form.description} onChange={e => setForm({...form, description: e.target.value})} rows={3} className="w-full px-5 py-3 bg-background/40 backdrop-blur-xl shadow-xl border border-border rounded-xl text-sm focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all resize-none leading-relaxed" /></div>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                <div><label className="text-sm font-semibold text-foreground mb-1.5 block">Icon Name (Lucide)</label><input value={form.icon} onChange={e => setForm({...form, icon: e.target.value})} className="w-full px-5 py-3 bg-background border border-border rounded-xl text-sm focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all" /></div>
-                <div><label className="text-sm font-semibold text-foreground mb-1.5 block">Category</label><input value={form.category} onChange={e => setForm({...form, category: e.target.value})} className="w-full px-5 py-3 bg-background border border-border rounded-xl text-sm focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all" /></div>
+                <div><label className="text-sm font-semibold text-foreground mb-1.5 block">Icon Name (Lucide)</label><input value={form.icon} onChange={e => setForm({...form, icon: e.target.value})} className="w-full px-5 py-3 bg-background/40 backdrop-blur-xl shadow-xl border border-border rounded-xl text-sm focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all" /></div>
+                <div><label className="text-sm font-semibold text-foreground mb-1.5 block">Category</label><input value={form.category} onChange={e => setForm({...form, category: e.target.value})} className="w-full px-5 py-3 bg-background/40 backdrop-blur-xl shadow-xl border border-border rounded-xl text-sm focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all" /></div>
               </div>
               <div>
                 <label className="text-sm font-semibold text-foreground mb-1.5 block">Features <span className="text-muted-foreground text-xs font-normal ml-2">(One feature per line)</span></label>
-                <textarea value={form.features} onChange={e => setForm({...form, features: e.target.value})} rows={5} className="w-full px-5 py-3 bg-background border border-border rounded-xl text-sm focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all resize-none leading-relaxed" placeholder="Feature 1&#10;Feature 2&#10;Feature 3" />
+                <textarea value={form.features} onChange={e => setForm({...form, features: e.target.value})} rows={5} className="w-full px-5 py-3 bg-background/40 backdrop-blur-xl shadow-xl border border-border rounded-xl text-sm focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all resize-none leading-relaxed" placeholder="Feature 1&#10;Feature 2&#10;Feature 3" />
               </div>
               <div className="flex justify-end gap-3 pt-6 border-t border-border mt-8">
                 <button onClick={() => setShowForm(false)} className="px-6 py-3 rounded-xl text-sm font-bold bg-muted hover:bg-muted/80 text-foreground transition-colors">Cancel</button>

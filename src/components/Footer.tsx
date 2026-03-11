@@ -39,7 +39,7 @@ export default function Footer() {
   const contactLocation = site?.location || 'San Francisco, CA';
 
   return (
-    <footer className="relative border-t border-border bg-card/50 overflow-hidden">
+    <footer className="relative border-t border-border bg-card/40 backdrop-blur-xl shadow-xl overflow-hidden">
       {/* Background Gradients */}
       <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-primary/5 rounded-full blur-[100px] pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-purple-500/5 rounded-full blur-[100px] pointer-events-none" />
@@ -68,7 +68,7 @@ export default function Footer() {
                     rel="noopener noreferrer"
                     whileHover={{ y: -4, scale: 1.1 }}
                     whileTap={{ scale: 0.95 }}
-                    className="w-10 h-10 rounded-xl bg-background border border-border/50 flex items-center justify-center text-muted-foreground hover:bg-primary hover:border-primary hover:text-primary-foreground hover:shadow-lg hover:shadow-primary/30 transition-all duration-300"
+                    className="w-10 h-10 rounded-xl bg-background/40 backdrop-blur-xl shadow-xl border border-border/50 flex items-center justify-center text-muted-foreground hover:bg-primary hover:border-primary hover:text-primary-foreground hover:shadow-lg hover:shadow-primary/30 transition-all duration-300"
                     title={social.label as string}
                   >
                     <social.icon className="w-4 h-4" />
@@ -121,7 +121,7 @@ export default function Footer() {
           {/* Contact */}
           <div className="lg:col-span-3">
             <h3 className="text-[13px] font-bold uppercase tracking-wider text-foreground mb-5">Contact</h3>
-            <div className="space-y-3 p-5 rounded-2xl bg-background border border-border/50 shadow-sm relative overflow-hidden group">
+            <div className="space-y-3 p-5 rounded-2xl bg-background/40 backdrop-blur-xl shadow-xl border border-border/50 shadow-sm relative overflow-hidden group">
               <div className="absolute top-0 right-0 w-24 h-24 bg-primary/10 rounded-full blur-xl group-hover:bg-primary/20 transition-colors pointer-events-none" />
               <div className="relative z-10">
                 <a
@@ -142,7 +142,7 @@ export default function Footer() {
           <p className="text-muted-foreground font-medium text-xs text-center sm:text-left">
             © {new Date().getFullYear()} AnandVerse. All rights reserved.
           </p>
-          <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-background border border-border/50 text-xs font-semibold text-foreground">
+          <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-background/40 backdrop-blur-xl shadow-xl border border-border/50 text-xs font-semibold text-foreground">
             Crafted with <Heart className="w-3.5 h-3.5 text-red-500 fill-red-500 animate-pulse" /> by Anand
           </div>
         </div>

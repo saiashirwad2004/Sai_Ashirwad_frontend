@@ -60,9 +60,9 @@ export default function Messages() {
         <div className="relative flex-1">
           <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
           <input value={search} onChange={e => setSearch(e.target.value)} placeholder="Search sender or subject..." 
-                 className="w-full pl-12 pr-4 py-3 bg-card border border-border rounded-xl text-sm focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all shadow-sm" />
+                 className="w-full pl-12 pr-4 py-3 bg-card/40 backdrop-blur-xl shadow-xl border border-border rounded-xl text-sm focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all shadow-sm" />
         </div>
-        <div className="flex bg-card p-1 rounded-xl border border-border shadow-sm overflow-x-auto hide-scrollbar">
+        <div className="flex bg-card/40 backdrop-blur-xl shadow-xl p-1 rounded-xl border border-border shadow-sm overflow-x-auto hide-scrollbar">
           {(['all', 'unread', 'starred'] as const).map((f) => (
             <button key={f} onClick={() => setFilter(f)} 
                     className={`px-6 py-2 rounded-lg text-sm font-bold capitalize transition-all whitespace-nowrap ${filter === f ? 'bg-primary text-primary-foreground shadow-sm' : 'text-muted-foreground hover:text-foreground hover:bg-muted/50'}`}>
@@ -75,7 +75,7 @@ export default function Messages() {
       <div className="space-y-3">
         {filtered.map((m) => (
           <div key={m._id} onClick={() => openMessage(m)} 
-               className={`p-5 rounded-2xl border cursor-pointer transition-all duration-300 group ${!m.read ? 'bg-primary/5 border-primary/20 shadow-sm' : 'bg-card border-border hover:border-primary/30'} flex flex-col sm:flex-row gap-4 items-start sm:items-center`}>
+               className={`p-5 rounded-2xl border cursor-pointer transition-all duration-300 group ${!m.read ? 'bg-primary/5 border-primary/20 shadow-sm' : 'bg-card/40 backdrop-blur-xl shadow-xl border-border hover:border-primary/30'} flex flex-col sm:flex-row gap-4 items-start sm:items-center`}>
             
             <button onClick={(e) => { e.stopPropagation(); toggleStar(m._id); }} className="flex-shrink-0 mt-1 sm:mt-0 p-1 hover:bg-muted rounded-full transition-colors">
               <Star className={`w-5 h-5 ${m.starred ? 'text-yellow-500 fill-yellow-500' : 'text-muted-foreground group-hover:text-yellow-500/50'}`} />
@@ -104,7 +104,7 @@ export default function Messages() {
           </div>
         ))}
         {filtered.length === 0 && (
-          <div className="py-20 text-center border-2 border-dashed border-border rounded-3xl bg-card/50">
+          <div className="py-20 text-center border-2 border-dashed border-border rounded-3xl bg-card/40 backdrop-blur-xl shadow-xl">
             <h3 className="text-xl font-bold text-foreground mb-2">Inbox Empty</h3>
             <p className="text-muted-foreground">You have no messages matching the current filters.</p>
           </div>
@@ -114,7 +114,7 @@ export default function Messages() {
       {/* Message Detail Modal */}
       {selected && (
         <div className="fixed inset-0 bg-background/80 backdrop-blur-md z-50 flex items-center justify-center p-4 animate-in fade-in zoom-in-95 duration-200" onClick={() => setSelected(null)}>
-          <div className="bg-card border border-border shadow-2xl rounded-3xl w-full max-w-2xl max-h-[85vh] flex flex-col" onClick={e => e.stopPropagation()}>
+          <div className="bg-card/40 backdrop-blur-xl shadow-xl border border-border shadow-2xl rounded-3xl w-full max-w-2xl max-h-[85vh] flex flex-col" onClick={e => e.stopPropagation()}>
             <div className="flex items-center justify-between p-6 border-b border-border bg-muted/20">
               <h2 className="text-xl font-black truncate pr-4">{selected.subject || 'No Subject'}</h2>
               <button onClick={() => setSelected(null)} className="p-2 rounded-xl hover:bg-muted text-muted-foreground hover:text-foreground transition-colors flex-shrink-0"><X className="w-5 h-5" /></button>
@@ -150,7 +150,7 @@ export default function Messages() {
                   </div>
                 </div>
               ) : (
-                <div className="border border-border rounded-2xl overflow-hidden bg-background">
+                <div className="border border-border rounded-2xl overflow-hidden bg-background/40 backdrop-blur-xl shadow-xl">
                   <div className="bg-muted/50 p-3 border-b border-border flex items-center gap-2">
                     <Reply className="w-4 h-4 text-muted-foreground" />
                     <h3 className="text-sm font-bold text-foreground">Draft Reply</h3>
@@ -158,11 +158,11 @@ export default function Messages() {
                   <div className="p-4 space-y-4">
                     <div>
                       <label className="text-xs font-bold text-muted-foreground uppercase tracking-widest mb-1.5 block">Subject</label>
-                      <input value={replyForm.subject} onChange={e => setReplyForm({...replyForm, subject: e.target.value})} className="w-full px-4 py-2.5 bg-card border border-border rounded-xl text-sm focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all" />
+                      <input value={replyForm.subject} onChange={e => setReplyForm({...replyForm, subject: e.target.value})} className="w-full px-4 py-2.5 bg-card/40 backdrop-blur-xl shadow-xl border border-border rounded-xl text-sm focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all" />
                     </div>
                     <div>
                       <label className="text-xs font-bold text-muted-foreground uppercase tracking-widest mb-1.5 block">Message</label>
-                      <textarea value={replyForm.body} onChange={e => setReplyForm({...replyForm, body: e.target.value})} rows={5} placeholder="Write your response here..." className="w-full px-4 py-3 bg-card border border-border rounded-xl text-sm focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all resize-none leading-relaxed" />
+                      <textarea value={replyForm.body} onChange={e => setReplyForm({...replyForm, body: e.target.value})} rows={5} placeholder="Write your response here..." className="w-full px-4 py-3 bg-card/40 backdrop-blur-xl shadow-xl border border-border rounded-xl text-sm focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all resize-none leading-relaxed" />
                     </div>
                     <div className="flex justify-end pt-2">
                       <button onClick={sendReply} disabled={replying || !replyForm.body} className="px-6 py-2.5 bg-primary text-primary-foreground rounded-xl text-sm font-bold shadow-lg shadow-primary/20 hover:bg-primary/90 disabled:opacity-50 transition-all hover:scale-105 active:scale-95 inline-flex items-center gap-2">

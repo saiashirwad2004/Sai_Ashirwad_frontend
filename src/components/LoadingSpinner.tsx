@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 
 export default function LoadingSpinner() {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-background">
+    <div className="min-h-screen flex items-center justify-center bg-background/40 backdrop-blur-xl shadow-xl">
       <motion.div
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: 1, scale: 1 }}

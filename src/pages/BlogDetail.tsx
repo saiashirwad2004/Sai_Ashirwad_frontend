@@ -65,7 +65,7 @@ export default function BlogDetail() {
               {post.title}
             </h1>
 
-            <div className="flex flex-wrap items-center gap-4 text-muted-foreground mb-10 p-4 rounded-[1.5rem] bg-card border border-border/50 shadow-sm">
+            <div className="flex flex-wrap items-center gap-4 text-muted-foreground mb-10 p-4 rounded-[1.5rem] bg-card/40 backdrop-blur-xl shadow-xl border border-border/50 shadow-sm">
               <div className="flex items-center gap-2.5">
                 <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary to-purple-600 flex items-center justify-center shadow-inner">
                   <span className="text-white font-bold text-base">{(post.author || 'A')[0]}</span>
@@ -92,7 +92,7 @@ export default function BlogDetail() {
           </FadeIn>
 
           <FadeIn delay={0.1}>
-            <div className="relative aspect-[16/9] rounded-[1.5rem] overflow-hidden mb-12 bg-card border border-border p-2 shadow-xl">
+            <div className="relative aspect-[16/9] rounded-[1.5rem] overflow-hidden mb-12 bg-card/40 backdrop-blur-xl shadow-xl border border-border p-2 shadow-xl">
               <div className="w-full h-full rounded-[1.2rem] overflow-hidden relative">
                 {post.image?.url ? (
                   <img src={post.image.url} alt={post.title} className="w-full h-full object-cover" />
@@ -134,7 +134,7 @@ export default function BlogDetail() {
           </FadeIn>
 
           <FadeIn delay={0.3}>
-            <div className="mt-16 p-6 rounded-[1.5rem] bg-card border border-border flex flex-col items-center gap-5 shadow-xl relative overflow-hidden">
+            <div className="mt-16 p-6 rounded-[1.5rem] bg-card/40 backdrop-blur-xl shadow-xl border border-border flex flex-col items-center gap-5 shadow-xl relative overflow-hidden">
               <div className="absolute top-0 right-0 w-24 h-24 bg-primary/10 rounded-full blur-2xl pointer-events-none" />
 
               <div className="flex items-center gap-2.5 text-base font-bold">
@@ -172,7 +172,7 @@ export default function BlogDetail() {
               {related.map((rp, i) => (
                 <motion.article key={rp._id} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="h-full">
                   <Link to={`/blog/${rp.slug}`} className="group block h-full">
-                    <div className="flex flex-col sm:flex-row gap-5 p-5 rounded-[1.5rem] bg-card border border-border hover:border-primary/50 transition-all duration-500 shadow-sm hover:shadow-xl h-full items-center">
+                    <div className="flex flex-col sm:flex-row gap-5 p-5 rounded-[1.5rem] bg-card/40 backdrop-blur-xl shadow-xl border border-border hover:border-primary/50 transition-all duration-500 shadow-sm hover:shadow-xl h-full items-center">
                       <div className="w-full sm:w-40 aspect-video sm:aspect-square sm:h-auto flex-shrink-0 rounded-[1.2rem] overflow-hidden bg-primary/5 border border-border/50 relative">
                         {rp.image?.url ? (
                           <img src={rp.image.url} alt={rp.title} className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />

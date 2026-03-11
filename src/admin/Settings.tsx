@@ -54,8 +54,8 @@ export default function Settings() {
   const InputField = ({ label, value, onChange, rows }: { label: string; value: string; onChange: (v: string) => void; rows?: number }) => (
     <div>
       <label className="text-sm font-semibold text-foreground mb-1.5 block">{label}</label>
-      {rows ? <textarea value={value || ''} onChange={e => onChange(e.target.value)} rows={rows} className="w-full px-5 py-3 bg-background border border-border rounded-xl text-sm focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all resize-none font-mono" />
-        : <input value={value || ''} onChange={e => onChange(e.target.value)} className="w-full px-5 py-3 bg-background border border-border rounded-xl text-sm focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all font-medium" />}
+      {rows ? <textarea value={value || ''} onChange={e => onChange(e.target.value)} rows={rows} className="w-full px-5 py-3 bg-background/40 backdrop-blur-xl shadow-xl border border-border rounded-xl text-sm focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all resize-none font-mono" />
+        : <input value={value || ''} onChange={e => onChange(e.target.value)} className="w-full px-5 py-3 bg-background/40 backdrop-blur-xl shadow-xl border border-border rounded-xl text-sm focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all font-medium" />}
     </div>
   );
 
@@ -82,7 +82,7 @@ export default function Settings() {
         ))}
       </div>
 
-      <div className="rounded-3xl bg-card border border-border p-6 sm:p-8 shadow-sm animate-in zoom-in-95 duration-300">
+      <div className="rounded-3xl bg-card/40 backdrop-blur-xl shadow-xl border border-border p-6 sm:p-8 shadow-sm animate-in zoom-in-95 duration-300">
         {activeTab === 'general' && (
           <div className="space-y-5">
             <InputField label="Site Name" value={config.siteName} onChange={v => update('siteName', v)} />

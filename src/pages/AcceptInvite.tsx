@@ -58,7 +58,7 @@ export default function AcceptInvite() {
 
   if (success) {
     return (
-      <div className="min-h-screen bg-background flex flex-col items-center justify-center p-4">
+      <div className="min-h-screen bg-background/40 backdrop-blur-xl shadow-xl flex flex-col items-center justify-center p-4">
         <motion.div 
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -75,7 +75,7 @@ export default function AcceptInvite() {
   }
 
   return (
-    <div className="min-h-screen bg-background flex flex-col items-center justify-center p-4">
+    <div className="min-h-screen bg-background/40 backdrop-blur-xl shadow-xl flex flex-col items-center justify-center p-4">
       <div className="w-full max-w-md space-y-8">
         <div className="text-center">
           <Link to="/" className="inline-block mb-6">
@@ -100,7 +100,7 @@ export default function AcceptInvite() {
                   required
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="w-full pl-10 pr-4 py-3 bg-background border border-border rounded-xl text-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-colors"
+                  className="w-full pl-10 pr-4 py-3 bg-background/40 backdrop-blur-xl shadow-xl border border-border rounded-xl text-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-colors"
                   placeholder="At least 6 characters"
                   minLength={6}
                 />
@@ -118,7 +118,7 @@ export default function AcceptInvite() {
                   required
                   value={confirmPassword}
                   onChange={(e) => setConfirmPassword(e.target.value)}
-                  className="w-full pl-10 pr-4 py-3 bg-background border border-border rounded-xl text-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-colors"
+                  className="w-full pl-10 pr-4 py-3 bg-background/40 backdrop-blur-xl shadow-xl border border-border rounded-xl text-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-colors"
                   placeholder="Must match password"
                   minLength={6}
                 />

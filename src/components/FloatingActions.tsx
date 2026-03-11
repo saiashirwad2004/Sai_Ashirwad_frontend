@@ -120,7 +120,7 @@ export default function FloatingActions() {
                             animate={{ opacity: 1, scale: 1, y: 0 }}
                             exit={{ opacity: 0, scale: 0.95, y: 20 }}
                             transition={{ duration: 0.3, type: "spring", stiffness: 300, damping: 25 }}
-                            className="relative w-full max-w-lg bg-card border border-border shadow-2xl rounded-3xl p-6 sm:p-8"
+                            className="relative w-full max-w-lg bg-card/40 backdrop-blur-xl shadow-xl border border-border shadow-2xl rounded-3xl p-6 sm:p-8"
                         >
                             <button
                                 onClick={() => setIsModalOpen(false)}
@@ -142,7 +142,7 @@ export default function FloatingActions() {
 
                             <form onSubmit={handleSubmitReview} className="space-y-4">
                                 {/* Rating */}
-                                <div className="flex flex-col items-center justify-center p-4 bg-background rounded-2xl border border-border/50">
+                                <div className="flex flex-col items-center justify-center p-4 bg-background/40 backdrop-blur-xl shadow-xl rounded-2xl border border-border/50">
                                     <label className="text-sm font-semibold mb-2">How was your experience?</label>
                                     <div className="flex gap-2">
                                         {[1, 2, 3, 4, 5].map((star) => (
@@ -174,7 +174,7 @@ export default function FloatingActions() {
                                             value={form.name}
                                             onChange={(e) => setForm({ ...form, name: e.target.value })}
                                             placeholder="John Doe"
-                                            className="w-full px-4 py-3 bg-background border border-border rounded-xl text-sm focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all"
+                                            className="w-full px-4 py-3 bg-background/40 backdrop-blur-xl shadow-xl border border-border rounded-xl text-sm focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all"
                                         />
                                     </div>
                                     <div className="space-y-1">
@@ -184,7 +184,7 @@ export default function FloatingActions() {
                                             value={form.company}
                                             onChange={(e) => setForm({ ...form, company: e.target.value })}
                                             placeholder="Acme Corp"
-                                            className="w-full px-4 py-3 bg-background border border-border rounded-xl text-sm focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all"
+                                            className="w-full px-4 py-3 bg-background/40 backdrop-blur-xl shadow-xl border border-border rounded-xl text-sm focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all"
                                         />
                                     </div>
                                 </div>
@@ -196,7 +196,7 @@ export default function FloatingActions() {
                                         value={form.role}
                                         onChange={(e) => setForm({ ...form, role: e.target.value })}
                                         placeholder="E.g. CEO, Developer, Client"
-                                        className="w-full px-4 py-3 bg-background border border-border rounded-xl text-sm focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all"
+                                        className="w-full px-4 py-3 bg-background/40 backdrop-blur-xl shadow-xl border border-border rounded-xl text-sm focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all"
                                     />
                                 </div>
 
@@ -208,7 +208,7 @@ export default function FloatingActions() {
                                         value={form.content}
                                         onChange={(e) => setForm({ ...form, content: e.target.value })}
                                         placeholder="Tell us what you think..."
-                                        className="w-full px-4 py-3 bg-background border border-border rounded-xl text-sm focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all resize-none"
+                                        className="w-full px-4 py-3 bg-background/40 backdrop-blur-xl shadow-xl border border-border rounded-xl text-sm focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all resize-none"
                                     />
                                 </div>
 

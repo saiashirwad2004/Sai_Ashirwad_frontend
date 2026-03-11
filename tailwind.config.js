@@ -63,6 +63,9 @@ module.exports = {
       boxShadow: {
         xs: "0 1px 2px 0 rgb(0 0 0 / 0.05)",
       },
+      brightness: {
+        600: '6',
+      },
       keyframes: {
         "accordion-down": {
           from: { height: "0" },

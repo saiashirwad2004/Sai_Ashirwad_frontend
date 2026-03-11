@@ -33,15 +33,15 @@ export default function Navigation() {
     <>
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled
-            ? 'bg-background/80 backdrop-blur-xl border-b border-border/50'
-            : 'bg-transparent'
+          ? 'bg-background/80 backdrop-blur-xl border-b border-border/50'
+          : 'bg-transparent'
           }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <nav className="flex items-center justify-between h-16 md:h-20" aria-label="Main Navigation">
             {/* Logo */}
             <Link to="/" className="inline-flex items-center gap-2 group">
-              <img src="/logo.png" alt="AnandVerse Logo" className="w-8 h-8 md:w-10 md:h-10 object-contain group-hover:scale-105 group-hover:-rotate-3 transition-all duration-300 rounded-xl" />
+              <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>" alt="AnandVerse Logo" className="w-8 h-8 md:w-10 md:h-10 object-contain group-hover:scale-105 group-hover:-rotate-3 transition-all duration-300 rounded-xl" />
               <span className="text-xl md:text-2xl font-black font-display tracking-tight hover:text-primary transition-colors duration-300">
                 AnandVerse<span className="text-primary">.</span>
               </span>
@@ -57,24 +57,24 @@ export default function Navigation() {
                       to={item.path}
                       className="relative px-4 py-2 group block"
                     >
-                    <span
-                      className={`text-sm font-medium transition-colors duration-300 ${isActive
+                      <span
+                        className={`text-sm font-medium transition-colors duration-300 ${isActive
                           ? 'text-foreground'
                           : 'text-muted-foreground group-hover:text-foreground'
-                        }`}
-                    >
-                      {item.label}
-                    </span>
-                    {isActive && (
+                          }`}
+                      >
+                        {item.label}
+                      </span>
+                      {isActive && (
+                        <motion.div
+                          layoutId="activeNav"
+                          className="absolute inset-0 bg-primary/10 rounded-lg -z-10"
+                          transition={{ type: 'spring', bounce: 0.2, duration: 0.6 }}
+                        />
+                      )}
                       <motion.div
-                        layoutId="activeNav"
-                        className="absolute inset-0 bg-primary/10 rounded-lg -z-10"
-                        transition={{ type: 'spring', bounce: 0.2, duration: 0.6 }}
+                        className="absolute inset-0 bg-white/5 rounded-lg opacity-0 group-hover:opacity-100 -z-10 transition-opacity duration-300"
                       />
-                    )}
-                    <motion.div
-                      className="absolute inset-0 bg-white/5 rounded-lg opacity-0 group-hover:opacity-100 -z-10 transition-opacity duration-300"
-                    />
                     </Link>
                   </li>
                 );
@@ -115,7 +115,7 @@ export default function Navigation() {
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.95 }}
               transition={{ duration: 0.2, delay: 0.1 }}
-              className="absolute top-20 left-4 right-4 bg-card border border-border rounded-2xl p-6 shadow-2xl"
+              className="absolute top-20 left-4 right-4 bg-card/40 backdrop-blur-xl shadow-xl border border-border rounded-2xl p-6 shadow-2xl"
             >
               <nav aria-label="Mobile Navigation">
                 <ul className="flex flex-col gap-2 list-none p-0 m-0">
@@ -131,8 +131,8 @@ export default function Navigation() {
                         <Link
                           to={item.path}
                           className={`flex items-center px-4 py-3 rounded-xl text-lg font-medium transition-all duration-300 ${isActive
-                              ? 'bg-primary/10 text-foreground'
-                              : 'text-muted-foreground hover:bg-white/5 hover:text-foreground'
+                            ? 'bg-primary/10 text-foreground'
+                            : 'text-muted-foreground hover:bg-white/5 hover:text-foreground'
                             }`}
                         >
                           {item.label}

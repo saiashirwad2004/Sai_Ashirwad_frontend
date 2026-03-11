@@ -93,7 +93,7 @@ export default function UserManagement() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
         {users.map((user) => (
-          <div key={user._id} className="group rounded-3xl bg-card border border-border p-6 shadow-sm hover:shadow-xl hover:border-primary/50 transition-all duration-300 relative overflow-hidden flex flex-col h-full">
+          <div key={user._id} className="group rounded-3xl bg-card/40 backdrop-blur-xl shadow-xl border border-border p-6 shadow-sm hover:shadow-xl hover:border-primary/50 transition-all duration-300 relative overflow-hidden flex flex-col h-full">
             {/* Background decoration */}
             <div className="absolute -top-10 -right-10 w-32 h-32 bg-primary/5 rounded-full blur-2xl group-hover:bg-primary/10 transition-colors pointer-events-none" />
             
@@ -148,7 +148,7 @@ export default function UserManagement() {
         ))}
         
         {users.length === 0 && (
-          <div className="col-span-full py-20 text-center border-2 border-dashed border-border rounded-3xl bg-card/50">
+          <div className="col-span-full py-20 text-center border-2 border-dashed border-border rounded-3xl bg-card/40 backdrop-blur-xl shadow-xl">
             <Users className="w-12 h-12 text-muted-foreground/50 mx-auto mb-4" />
             <h3 className="text-xl font-bold text-foreground mb-2">No users found</h3>
             <p className="text-muted-foreground">Invite a new admin to get started.</p>
@@ -158,7 +158,7 @@ export default function UserManagement() {
 
       {showInviteModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-background/80 backdrop-blur-md p-4 animate-in fade-in duration-200">
-          <div className="bg-card w-full max-w-md rounded-3xl border border-border shadow-2xl p-6 sm:p-8 animate-in zoom-in-95 duration-200">
+          <div className="bg-card/40 backdrop-blur-xl shadow-xl w-full max-w-md rounded-3xl border border-border shadow-2xl p-6 sm:p-8 animate-in zoom-in-95 duration-200">
             <div className="flex justify-between items-center mb-6">
               <h2 className="text-2xl font-bold flex items-center gap-3">
                 <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center">
@@ -182,7 +182,7 @@ export default function UserManagement() {
                   required
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  className="w-full bg-background border border-border rounded-xl px-5 py-3 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all text-sm font-medium"
+                  className="w-full bg-background/40 backdrop-blur-xl shadow-xl border border-border rounded-xl px-5 py-3 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all text-sm font-medium"
                   placeholder="e.g. Anand"
                 />
               </div>
@@ -193,7 +193,7 @@ export default function UserManagement() {
                   required
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  className="w-full bg-background border border-border rounded-xl px-5 py-3 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all text-sm font-medium"
+                  className="w-full bg-background/40 backdrop-blur-xl shadow-xl border border-border rounded-xl px-5 py-3 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all text-sm font-medium"
                   placeholder="anand@example.com"
                 />
               </div>
@@ -202,7 +202,7 @@ export default function UserManagement() {
                 <select
                   value={formData.role}
                   onChange={(e) => setFormData({ ...formData, role: e.target.value })}
-                  className="w-full bg-background border border-border rounded-xl px-5 py-3 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all text-sm font-medium appearance-none"
+                  className="w-full bg-background/40 backdrop-blur-xl shadow-xl border border-border rounded-xl px-5 py-3 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all text-sm font-medium appearance-none"
                   style={{ backgroundImage: `url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e")`, backgroundPosition: `right 0.5rem center`, backgroundRepeat: `no-repeat`, backgroundSize: `1.5em 1.5em` }}
                 >
                   <option value="admin">Administrator (Standard Access)</option>

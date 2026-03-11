@@ -71,7 +71,7 @@ export default function Dashboard() {
           </p>
         </div>
         <div className="flex gap-3">
-           <Link to="/admin/blog" className="px-4 py-2 bg-card border border-border rounded-xl text-sm font-medium hover:bg-muted transition-colors">
+           <Link to="/admin/blog" className="px-4 py-2 bg-card/40 backdrop-blur-xl shadow-xl border border-border rounded-xl text-sm font-medium hover:bg-muted transition-colors">
               Write Post
            </Link>
            <Link to="/admin/projects" className="px-4 py-2 bg-primary text-primary-foreground rounded-xl text-sm font-medium shadow-lg hover:bg-primary/90 transition-colors">
@@ -84,7 +84,7 @@ export default function Dashboard() {
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {cards.map((card) => (
           <Link key={card.label} to={card.to} className="group block h-full">
-            <div className="h-full p-6 rounded-3xl bg-card border border-border shadow-sm hover:shadow-xl transition-all duration-300 relative overflow-hidden flex flex-col justify-between">
+            <div className="h-full p-6 rounded-3xl bg-card/40 backdrop-blur-xl shadow-xl border border-border shadow-sm hover:shadow-xl transition-all duration-300 relative overflow-hidden flex flex-col justify-between">
               <div className={`absolute -right-6 -top-6 w-24 h-24 rounded-full blur-2xl opacity-20 ${colorMap[card.color].split(' ')[0]}`} />
               <div>
                 <div className={`w-12 h-12 rounded-2xl flex items-center justify-center mb-6 shadow-sm border ${colorMap[card.color]}`}>
@@ -106,7 +106,7 @@ export default function Dashboard() {
 
       <div className="grid grid-cols-1 xl:grid-cols-2 gap-8">
         {/* Recent Messages */}
-        <div className="rounded-3xl bg-card border border-border shadow-sm overflow-hidden flex flex-col">
+        <div className="rounded-3xl bg-card/40 backdrop-blur-xl shadow-xl border border-border shadow-sm overflow-hidden flex flex-col">
           <div className="p-6 border-b border-border flex items-center justify-between bg-muted/20">
             <div className="flex items-center gap-3">
               <div className="p-2 bg-blue-500/10 text-blue-500 rounded-xl">
@@ -148,7 +148,7 @@ export default function Dashboard() {
         </div>
 
         {/* Recent Posts */}
-        <div className="rounded-3xl bg-card border border-border shadow-sm overflow-hidden flex flex-col">
+        <div className="rounded-3xl bg-card/40 backdrop-blur-xl shadow-xl border border-border shadow-sm overflow-hidden flex flex-col">
           <div className="p-6 border-b border-border flex items-center justify-between bg-muted/20">
             <div className="flex items-center gap-3">
               <div className="p-2 bg-purple-500/10 text-purple-500 rounded-xl">

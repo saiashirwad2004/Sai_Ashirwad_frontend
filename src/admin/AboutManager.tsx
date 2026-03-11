@@ -130,7 +130,7 @@ export default function AboutManager() {
 
       {/* ═══════════════ ABOUT INFO ═══════════════ */}
       {activeSection === 'about' && config && (
-        <div className="rounded-3xl bg-card border border-border p-6 sm:p-8 shadow-sm animate-in zoom-in-95 duration-300">
+        <div className="rounded-3xl bg-card/40 backdrop-blur-xl shadow-xl border border-border p-6 sm:p-8 shadow-sm animate-in zoom-in-95 duration-300">
           <div className="flex items-center justify-between border-b border-border pb-6 mb-6">
             <h2 className="text-xl font-bold flex items-center gap-2"><User className="w-6 h-6 text-primary" /> Owner Information</h2>
             <button onClick={saveConfig} disabled={configSaving} className={`inline-flex items-center gap-2 px-6 py-2.5 rounded-xl text-sm font-bold transition-all shadow-md ${configSaved ? 'bg-green-500 text-white shadow-green-500/20' : 'bg-primary text-primary-foreground shadow-primary/20 hover:bg-primary/90'} disabled:opacity-50`}>
@@ -140,24 +140,24 @@ export default function AboutManager() {
           
           <div className="space-y-6">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-              <div><label className="text-xs font-bold text-muted-foreground uppercase tracking-wider mb-2 block">Full Name</label><input value={config.ownerName || ''} onChange={e => setConfig({ ...config, ownerName: e.target.value })} className="w-full px-4 py-3 bg-background border border-border rounded-xl text-sm focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all font-bold" /></div>
-              <div><label className="text-xs font-bold text-muted-foreground uppercase tracking-wider mb-2 block">Title / Role</label><input value={config.ownerTitle || ''} onChange={e => setConfig({ ...config, ownerTitle: e.target.value })} className="w-full px-4 py-3 bg-background border border-border rounded-xl text-sm focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all" /></div>
+              <div><label className="text-xs font-bold text-muted-foreground uppercase tracking-wider mb-2 block">Full Name</label><input value={config.ownerName || ''} onChange={e => setConfig({ ...config, ownerName: e.target.value })} className="w-full px-4 py-3 bg-background/40 backdrop-blur-xl shadow-xl border border-border rounded-xl text-sm focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all font-bold" /></div>
+              <div><label className="text-xs font-bold text-muted-foreground uppercase tracking-wider mb-2 block">Title / Role</label><input value={config.ownerTitle || ''} onChange={e => setConfig({ ...config, ownerTitle: e.target.value })} className="w-full px-4 py-3 bg-background/40 backdrop-blur-xl shadow-xl border border-border rounded-xl text-sm focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all" /></div>
             </div>
             <div>
               <label className="text-xs font-bold text-muted-foreground uppercase tracking-wider mb-2 block">Short Bio</label>
-              <textarea value={config.ownerBio || ''} onChange={e => setConfig({ ...config, ownerBio: e.target.value })} rows={3} className="w-full px-4 py-3 bg-background border border-border rounded-xl text-sm focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all resize-none leading-relaxed" />
+              <textarea value={config.ownerBio || ''} onChange={e => setConfig({ ...config, ownerBio: e.target.value })} rows={3} className="w-full px-4 py-3 bg-background/40 backdrop-blur-xl shadow-xl border border-border rounded-xl text-sm focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all resize-none leading-relaxed" />
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
-              <div><label className="text-xs font-bold text-muted-foreground uppercase tracking-wider mb-2 block">Email</label><input value={config.email || ''} onChange={e => setConfig({ ...config, email: e.target.value })} className="w-full px-4 py-3 bg-background border border-border rounded-xl text-sm focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all" /></div>
-              <div><label className="text-xs font-bold text-muted-foreground uppercase tracking-wider mb-2 block">Phone</label><input value={config.phone || ''} onChange={e => setConfig({ ...config, phone: e.target.value })} className="w-full px-4 py-3 bg-background border border-border rounded-xl text-sm focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all" /></div>
-              <div><label className="text-xs font-bold text-muted-foreground uppercase tracking-wider mb-2 block">Location</label><input value={config.location || ''} onChange={e => setConfig({ ...config, location: e.target.value })} className="w-full px-4 py-3 bg-background border border-border rounded-xl text-sm focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all" /></div>
+              <div><label className="text-xs font-bold text-muted-foreground uppercase tracking-wider mb-2 block">Email</label><input value={config.email || ''} onChange={e => setConfig({ ...config, email: e.target.value })} className="w-full px-4 py-3 bg-background/40 backdrop-blur-xl shadow-xl border border-border rounded-xl text-sm focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all" /></div>
+              <div><label className="text-xs font-bold text-muted-foreground uppercase tracking-wider mb-2 block">Phone</label><input value={config.phone || ''} onChange={e => setConfig({ ...config, phone: e.target.value })} className="w-full px-4 py-3 bg-background/40 backdrop-blur-xl shadow-xl border border-border rounded-xl text-sm focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all" /></div>
+              <div><label className="text-xs font-bold text-muted-foreground uppercase tracking-wider mb-2 block">Location</label><input value={config.location || ''} onChange={e => setConfig({ ...config, location: e.target.value })} className="w-full px-4 py-3 bg-background/40 backdrop-blur-xl shadow-xl border border-border rounded-xl text-sm focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all" /></div>
             </div>
             
             <div>
               <label className="text-xs font-bold text-muted-foreground uppercase tracking-wider mb-2 block">Resume (PDF)</label>
               <div className="flex flex-col gap-2">
                 <input type="file" id="resumeUpload" accept=".pdf,.doc,.docx" onChange={handleResumeUpload} className="hidden" />
-                <label htmlFor="resumeUpload" className={`flex items-center justify-center gap-2 w-full px-4 py-3 bg-background border border-dashed hover:border-primary border-border rounded-xl text-sm font-bold cursor-pointer transition-all ${uploadingResume ? 'opacity-50 pointer-events-none' : ''}`}>
+                <label htmlFor="resumeUpload" className={`flex items-center justify-center gap-2 w-full px-4 py-3 bg-background/40 backdrop-blur-xl shadow-xl border border-dashed hover:border-primary border-border rounded-xl text-sm font-bold cursor-pointer transition-all ${uploadingResume ? 'opacity-50 pointer-events-none' : ''}`}>
                   {uploadingResume ? <Loader2 className="w-4 h-4 animate-spin" /> : <Upload className="w-4 h-4" />}
                   {uploadingResume ? 'Uploading...' : 'Upload New Resume'}
                 </label>
@@ -169,7 +169,7 @@ export default function AboutManager() {
                 )}
               </div>
             </div>
-            <div><label className="text-xs font-bold text-muted-foreground uppercase tracking-wider mb-2 block">Detailed About Description</label><textarea value={config.aboutDescription || ''} onChange={e => setConfig({ ...config, aboutDescription: e.target.value })} rows={5} className="w-full px-4 py-3 bg-background border border-border rounded-xl text-sm focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all resize-none leading-relaxed" /></div>
+            <div><label className="text-xs font-bold text-muted-foreground uppercase tracking-wider mb-2 block">Detailed About Description</label><textarea value={config.aboutDescription || ''} onChange={e => setConfig({ ...config, aboutDescription: e.target.value })} rows={5} className="w-full px-4 py-3 bg-background/40 backdrop-blur-xl shadow-xl border border-border rounded-xl text-sm focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all resize-none leading-relaxed" /></div>
             <div>
               <label className="text-xs font-bold text-muted-foreground uppercase tracking-wider mb-2 block">About Image</label>
               <div className="flex gap-4 items-center">
@@ -206,7 +206,7 @@ export default function AboutManager() {
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {skillCats.map(cat => (
-              <div key={cat} className="rounded-3xl bg-card border border-border p-6 shadow-sm">
+              <div key={cat} className="rounded-3xl bg-card/40 backdrop-blur-xl shadow-xl border border-border p-6 shadow-sm">
                 <div className="flex items-center justify-between mb-5 border-b border-border pb-3">
                   <h3 className="text-lg font-bold capitalize flex items-center gap-2">
                     {cat} <span className="text-xs bg-muted text-muted-foreground px-2 py-0.5 rounded-full">{grouped[cat]?.length || 0}</span>
@@ -227,7 +227,7 @@ export default function AboutManager() {
                         </div>
                       </div>
                       <div className="flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                        <button onClick={() => openSkillEdit(s)} className="p-2 rounded-xl hover:bg-background text-muted-foreground hover:text-foreground transition-colors"><Pencil className="w-4 h-4" /></button>
+                        <button onClick={() => openSkillEdit(s)} className="p-2 rounded-xl hover:bg-background/40 backdrop-blur-xl shadow-xl text-muted-foreground hover:text-foreground transition-colors"><Pencil className="w-4 h-4" /></button>
                         <button onClick={() => skills.deleteItem(s._id)} className="p-2 rounded-xl hover:bg-red-500/10 text-muted-foreground hover:text-red-500 transition-colors"><Trash2 className="w-4 h-4" /></button>
                       </div>
                     </div>
@@ -249,7 +249,7 @@ export default function AboutManager() {
           <div className="space-y-6">
             {expTypes.map(type => {
               const Icon = typeIcons[type]; return (
-              <div key={type} className="rounded-3xl bg-card border border-border p-6 sm:p-8 shadow-sm">
+              <div key={type} className="rounded-3xl bg-card/40 backdrop-blur-xl shadow-xl border border-border p-6 sm:p-8 shadow-sm">
                 <div className="flex items-center justify-between mb-6 border-b border-border pb-4">
                   <h3 className="text-xl font-bold capitalize flex items-center gap-3">
                     <div className="p-2 bg-primary/10 rounded-xl text-primary"><Icon className="w-5 h-5" /></div>
@@ -276,7 +276,7 @@ export default function AboutManager() {
                           {e.location && <p className="text-xs text-muted-foreground mt-1">📍 {e.location}</p>}
                         </div>
                         <div className="flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0">
-                          <button onClick={() => openExpEdit(e)} className="p-2 rounded-xl bg-background border border-border hover:bg-muted text-foreground transition-colors"><Pencil className="w-4 h-4" /></button>
+                          <button onClick={() => openExpEdit(e)} className="p-2 rounded-xl bg-background/40 backdrop-blur-xl shadow-xl border border-border hover:bg-muted text-foreground transition-colors"><Pencil className="w-4 h-4" /></button>
                           <button onClick={() => experience.deleteItem(e._id)} className="p-2 rounded-xl bg-red-500/10 text-red-500 hover:bg-red-500/20 transition-colors"><Trash2 className="w-4 h-4" /></button>
                         </div>
                       </div>
@@ -296,14 +296,14 @@ export default function AboutManager() {
       {/* ═══════════════ SKILL MODAL ═══════════════ */}
       {showSkillForm && (
         <div className="fixed inset-0 bg-background/80 backdrop-blur-md z-50 flex items-center justify-center p-4 animate-in fade-in zoom-in-95 duration-200" onClick={() => setShowSkillForm(false)}>
-          <div className="bg-card border border-border shadow-2xl rounded-3xl w-full max-w-md p-8" onClick={e => e.stopPropagation()}>
+          <div className="bg-card/40 backdrop-blur-xl shadow-xl border border-border shadow-2xl rounded-3xl w-full max-w-md p-8" onClick={e => e.stopPropagation()}>
             <div className="flex items-center justify-between mb-8">
               <h2 className="text-2xl font-black">{skillEditId ? 'Edit Skill' : 'New Skill'}</h2>
               <button onClick={() => setShowSkillForm(false)} className="p-2 rounded-xl hover:bg-muted text-muted-foreground hover:text-foreground transition-colors"><X className="w-6 h-6" /></button>
             </div>
             <div className="space-y-5">
-              <div><label className="text-sm font-semibold text-foreground mb-1.5 block">Skill Name *</label><input value={skillForm.name} onChange={e => setSkillForm({...skillForm, name: e.target.value})} className="w-full px-5 py-3 bg-background border border-border rounded-xl text-sm focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all font-bold" /></div>
-              <div><label className="text-sm font-semibold text-foreground mb-1.5 block">Category</label><select value={skillForm.category} onChange={e => setSkillForm({...skillForm, category: e.target.value})} className="w-full px-5 py-3 bg-background border border-border rounded-xl text-sm focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all capitalize">{skillCats.map(c => <option key={c} value={c}>{c}</option>)}</select></div>
+              <div><label className="text-sm font-semibold text-foreground mb-1.5 block">Skill Name *</label><input value={skillForm.name} onChange={e => setSkillForm({...skillForm, name: e.target.value})} className="w-full px-5 py-3 bg-background/40 backdrop-blur-xl shadow-xl border border-border rounded-xl text-sm focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all font-bold" /></div>
+              <div><label className="text-sm font-semibold text-foreground mb-1.5 block">Category</label><select value={skillForm.category} onChange={e => setSkillForm({...skillForm, category: e.target.value})} className="w-full px-5 py-3 bg-background/40 backdrop-blur-xl shadow-xl border border-border rounded-xl text-sm focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all capitalize">{skillCats.map(c => <option key={c} value={c}>{c}</option>)}</select></div>
               <div>
                 <label className="text-sm font-semibold text-foreground mb-3 flex justify-between items-center">Proficiency <span className="font-black text-primary bg-primary/10 px-2 py-0.5 rounded-md">{skillForm.level}%</span></label>
                 <input type="range" min={0} max={100} value={skillForm.level} onChange={e => setSkillForm({...skillForm, level: parseInt(e.target.value)})} className="w-full accent-primary h-2 bg-muted rounded-lg appearance-none cursor-pointer" />
@@ -320,23 +320,23 @@ export default function AboutManager() {
       {/* ═══════════════ EXPERIENCE MODAL ═══════════════ */}
       {showExpForm && (
         <div className="fixed inset-0 bg-background/80 backdrop-blur-md z-50 flex items-center justify-center p-4 animate-in fade-in zoom-in-95 duration-200" onClick={() => setShowExpForm(false)}>
-          <div className="bg-card border border-border shadow-2xl rounded-3xl w-full max-w-lg overflow-y-auto max-h-[90vh] p-8" onClick={e => e.stopPropagation()}>
+          <div className="bg-card/40 backdrop-blur-xl shadow-xl border border-border shadow-2xl rounded-3xl w-full max-w-lg overflow-y-auto max-h-[90vh] p-8" onClick={e => e.stopPropagation()}>
             <div className="flex items-center justify-between mb-8">
               <h2 className="text-2xl font-black">{expEditId ? 'Edit Entry' : 'New Timeline Entry'}</h2>
               <button onClick={() => setShowExpForm(false)} className="p-2 rounded-xl hover:bg-muted text-muted-foreground hover:text-foreground transition-colors"><X className="w-6 h-6" /></button>
             </div>
             <div className="space-y-5">
-              <div><label className="text-sm font-semibold text-foreground mb-1.5 block">Title / Role *</label><input value={expForm.title} onChange={e => setExpForm({...expForm, title: e.target.value})} className="w-full px-5 py-3 bg-background border border-border rounded-xl text-sm focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all font-bold" /></div>
-              <div><label className="text-sm font-semibold text-foreground mb-1.5 block">Organization / Company *</label><input value={expForm.organization} onChange={e => setExpForm({...expForm, organization: e.target.value})} className="w-full px-5 py-3 bg-background border border-border rounded-xl text-sm focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all" /></div>
+              <div><label className="text-sm font-semibold text-foreground mb-1.5 block">Title / Role *</label><input value={expForm.title} onChange={e => setExpForm({...expForm, title: e.target.value})} className="w-full px-5 py-3 bg-background/40 backdrop-blur-xl shadow-xl border border-border rounded-xl text-sm focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all font-bold" /></div>
+              <div><label className="text-sm font-semibold text-foreground mb-1.5 block">Organization / Company *</label><input value={expForm.organization} onChange={e => setExpForm({...expForm, organization: e.target.value})} className="w-full px-5 py-3 bg-background/40 backdrop-blur-xl shadow-xl border border-border rounded-xl text-sm focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all" /></div>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                <div><label className="text-sm font-semibold text-foreground mb-1.5 block">Type</label><select value={expForm.type} onChange={e => setExpForm({...expForm, type: e.target.value})} className="w-full px-5 py-3 bg-background border border-border rounded-xl text-sm focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all capitalize">{expTypes.map(t => <option key={t} value={t}>{t}</option>)}</select></div>
-                <div><label className="text-sm font-semibold text-foreground mb-1.5 block">Period *</label><input value={expForm.period} onChange={e => setExpForm({...expForm, period: e.target.value})} className="w-full px-5 py-3 bg-background border border-border rounded-xl text-sm focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all" placeholder="e.g. 2022 - Present" /></div>
+                <div><label className="text-sm font-semibold text-foreground mb-1.5 block">Type</label><select value={expForm.type} onChange={e => setExpForm({...expForm, type: e.target.value})} className="w-full px-5 py-3 bg-background/40 backdrop-blur-xl shadow-xl border border-border rounded-xl text-sm focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all capitalize">{expTypes.map(t => <option key={t} value={t}>{t}</option>)}</select></div>
+                <div><label className="text-sm font-semibold text-foreground mb-1.5 block">Period *</label><input value={expForm.period} onChange={e => setExpForm({...expForm, period: e.target.value})} className="w-full px-5 py-3 bg-background/40 backdrop-blur-xl shadow-xl border border-border rounded-xl text-sm focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all" placeholder="e.g. 2022 - Present" /></div>
               </div>
-              <div><label className="text-sm font-semibold text-foreground mb-1.5 block">Location</label><input value={expForm.location} onChange={e => setExpForm({...expForm, location: e.target.value})} className="w-full px-5 py-3 bg-background border border-border rounded-xl text-sm focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all" /></div>
-              <div><label className="text-sm font-semibold text-foreground mb-1.5 block">Description</label><textarea value={expForm.description} onChange={e => setExpForm({...expForm, description: e.target.value})} rows={4} className="w-full px-5 py-3 bg-background border border-border rounded-xl text-sm focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all resize-none leading-relaxed" /></div>
+              <div><label className="text-sm font-semibold text-foreground mb-1.5 block">Location</label><input value={expForm.location} onChange={e => setExpForm({...expForm, location: e.target.value})} className="w-full px-5 py-3 bg-background/40 backdrop-blur-xl shadow-xl border border-border rounded-xl text-sm focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all" /></div>
+              <div><label className="text-sm font-semibold text-foreground mb-1.5 block">Description</label><textarea value={expForm.description} onChange={e => setExpForm({...expForm, description: e.target.value})} rows={4} className="w-full px-5 py-3 bg-background/40 backdrop-blur-xl shadow-xl border border-border rounded-xl text-sm focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all resize-none leading-relaxed" /></div>
               
-              <label className="flex items-center gap-3 cursor-pointer p-4 rounded-xl border border-border bg-background hover:bg-muted/50 transition-colors">
-                <div className="relative flex items-center justify-center w-5 h-5 rounded border border-primary bg-background">
+              <label className="flex items-center gap-3 cursor-pointer p-4 rounded-xl border border-border bg-background/40 backdrop-blur-xl shadow-xl hover:bg-muted/50 transition-colors">
+                <div className="relative flex items-center justify-center w-5 h-5 rounded border border-primary bg-background/40 backdrop-blur-xl shadow-xl">
                   <input type="checkbox" checked={expForm.current} onChange={e => setExpForm({...expForm, current: e.target.checked})} className="absolute opacity-0 w-full h-full cursor-pointer peer" />
                   {expForm.current && <div className="w-3 h-3 bg-primary rounded-[2px]" />}
                 </div>

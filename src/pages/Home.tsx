@@ -142,7 +142,7 @@ export default function Home() {
             {tools.map((tool, i) => (
               <div key={`s1-${i}`} className="flex-shrink-0 py-4">
                 <div className="group/card flex flex-col items-center gap-4 w-[280px] h-[320px] px-6 py-8 rounded-[1.5rem] bg-card border border-border hover:border-primary/50 hover:shadow-xl hover:shadow-primary/10 transition-all duration-300 backdrop-blur-sm cursor-default hover:-translate-y-2">
-                  <div className="w-20 h-20 rounded-full bg-background flex items-center justify-center p-4 shadow-inner">
+                  <div className="w-20 h-20 rounded-full bg-background/40 backdrop-blur-xl shadow-xl flex items-center justify-center p-4 shadow-inner">
                     <img src={tool.logo} alt={tool.name} className={`w-10 h-10 object-contain ${tool.invert ? 'invert' : ''}`} />
                   </div>
                   <div className="text-center flex-1 flex flex-col">
@@ -158,7 +158,7 @@ export default function Home() {
             {tools.map((tool, i) => (
               <div key={`s2-${i}`} className="flex-shrink-0 py-4">
                 <div className="group/card flex flex-col items-center gap-4 w-[280px] h-[320px] px-6 py-8 rounded-[1.5rem] bg-card border border-border hover:border-primary/50 hover:shadow-xl hover:shadow-primary/10 transition-all duration-300 backdrop-blur-sm cursor-default hover:-translate-y-2">
-                  <div className="w-20 h-20 rounded-full bg-background flex items-center justify-center p-4 shadow-inner">
+                  <div className="w-20 h-20 rounded-full bg-background/40 backdrop-blur-xl shadow-xl flex items-center justify-center p-4 shadow-inner">
                     <img src={tool.logo} alt={tool.name} className={`w-10 h-10 object-contain ${tool.invert ? 'invert' : ''}`} />
                   </div>
                   <div className="text-center flex-1 flex flex-col">
@@ -183,7 +183,7 @@ export default function Home() {
             <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {services.map((s) => (
                 <StaggerItem key={s._id}>
-                  <div className="group p-8 rounded-[1.5rem] bg-card border border-border/50 hover:border-primary/50 transition-all duration-500 shadow-sm hover:shadow-md">
+                  <div className="group p-8 rounded-[1.5rem] bg-card/40 backdrop-blur-xl shadow-xl border border-border/50 hover:border-primary/50 transition-all duration-500 shadow-sm hover:shadow-md">
                     <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300"><span className="text-2xl">💼</span></div>
                     <h3 className="text-lg font-bold mb-2">{s.title}</h3>
                     <p className="text-muted-foreground text-sm leading-relaxed">{s.description}</p>
@@ -207,7 +207,7 @@ export default function Home() {
               {projects.map((p) => (
                 <StaggerItem key={p._id}>
                   <Link to={`/projects/${p.slug}`} className="group block h-full">
-                    <div className="h-full relative overflow-hidden rounded-[1.5rem] bg-card border border-border/50 hover:border-primary/50 transition-all duration-500 shadow-sm hover:shadow-lg flex flex-col">
+                    <div className="h-full relative overflow-hidden rounded-[1.5rem] bg-card/40 backdrop-blur-xl shadow-xl border border-border/50 hover:border-primary/50 transition-all duration-500 shadow-sm hover:shadow-lg flex flex-col">
                       <div className="aspect-video overflow-hidden bg-primary/5">
                         {p.image?.url ? <img src={p.image.url} alt={p.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
                           : <div className="w-full h-full flex items-center justify-center text-muted-foreground">No Image</div>}
@@ -238,7 +238,7 @@ export default function Home() {
             <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {testimonials.map((t) => (
                 <StaggerItem key={t._id}>
-                  <div className="group relative h-full p-6 sm:p-8 rounded-[1.5rem] bg-card border border-border/50 hover:border-primary/30 transition-all duration-500 shadow-sm hover:shadow-lg flex flex-col">
+                  <div className="group relative h-full p-6 sm:p-8 rounded-[1.5rem] bg-card/40 backdrop-blur-xl shadow-xl border border-border/50 hover:border-primary/30 transition-all duration-500 shadow-sm hover:shadow-lg flex flex-col">
                     {/* Quote icon */}
                     <Quote className="w-8 h-8 text-primary/20 mb-4" />
 
@@ -285,7 +285,7 @@ export default function Home() {
               {posts.map((p) => (
                 <StaggerItem key={p._id}>
                   <Link to={`/blog/${p.slug}`} className="group block h-full">
-                    <div className="h-full relative overflow-hidden rounded-[1.5rem] bg-card border border-border/50 hover:border-primary/50 transition-all duration-500 shadow-sm hover:shadow-lg flex flex-col">
+                    <div className="h-full relative overflow-hidden rounded-[1.5rem] bg-card/40 backdrop-blur-xl shadow-xl border border-border/50 hover:border-primary/50 transition-all duration-500 shadow-sm hover:shadow-lg flex flex-col">
                       <div className="aspect-video overflow-hidden bg-primary/5">
                         {p.image?.url ? <img src={p.image.url} alt={p.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
                           : <div className="w-full h-full flex items-center justify-center text-muted-foreground">No Image</div>}

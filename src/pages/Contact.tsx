@@ -50,7 +50,7 @@ export default function Contact() {
   };
 
   const contactInfo = [
-    { icon: Mail, label: 'Email', value: site?.email || 'anand@anandverse.com', href: `mailto:${site?.email || ''}` },
+    { icon: Mail, label: 'Email', value: site?.email || 'info@anandverse.space', href: `mailto:${site?.email || 'info@anandverse.space'}` },
     { icon: Phone, label: 'Phone', value: site?.phone || '', href: `tel:${site?.phone || ''}` },
     { icon: MapPin, label: 'Location', value: site?.location || '', href: '#' },
   ].filter(c => c.value);
@@ -89,7 +89,7 @@ export default function Contact() {
             {/* Left Column: Info & Socials */}
             <div className="lg:col-span-5 order-2 lg:order-1">
               <FadeIn direction="left" className="h-full flex flex-col">
-                <div className="bg-card border border-border/50 rounded-[1.5rem] p-6 sm:p-8 shadow-xl flex-1 relative overflow-hidden">
+                <div className="bg-card/40 backdrop-blur-xl shadow-xl border border-border/50 rounded-[1.5rem] p-6 sm:p-8 shadow-xl flex-1 relative overflow-hidden">
                   <div className="absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-full blur-2xl pointer-events-none" />
 
                   <h2 className="text-2xl font-bold font-display mb-6">Contact Information</h2>
@@ -130,7 +130,7 @@ export default function Contact() {
             {/* Right Column: Contact Form */}
             <div className="lg:col-span-7 order-1 lg:order-2">
               <FadeIn direction="right">
-                <div className="p-6 sm:p-8 rounded-[1.5rem] bg-card border border-border/50 shadow-xl relative overflow-hidden h-full flex flex-col justify-center">
+                <div className="p-6 sm:p-8 rounded-[1.5rem] bg-card/40 backdrop-blur-xl shadow-xl border border-border/50 shadow-xl relative overflow-hidden h-full flex flex-col justify-center">
                   <div className="absolute -bottom-20 -right-20 w-64 h-64 bg-primary/10 rounded-full blur-[60px] pointer-events-none" />
 
                   <div className="flex items-center gap-3 mb-6 relative z-10">
@@ -160,22 +160,22 @@ export default function Contact() {
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div className="space-y-1.5">
                           <label htmlFor="name" className="text-xs font-bold text-foreground">Your Name <span className="text-primary">*</span></label>
-                          <input type="text" id="name" name="name" value={formData.name} onChange={handleChange} required className="w-full px-4 py-3 rounded-xl text-sm bg-background border border-border focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all font-medium placeholder:text-muted-foreground/50 shadow-inner" placeholder="John Doe" />
+                          <input type="text" id="name" name="name" value={formData.name} onChange={handleChange} required className="w-full px-4 py-3 rounded-xl text-sm bg-background/40 backdrop-blur-xl shadow-xl border border-border focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all font-medium placeholder:text-muted-foreground/50 shadow-inner" placeholder="John Doe" />
                         </div>
                         <div className="space-y-1.5">
                           <label htmlFor="email" className="text-xs font-bold text-foreground">Your Email <span className="text-primary">*</span></label>
-                          <input type="email" id="email" name="email" value={formData.email} onChange={handleChange} required className="w-full px-4 py-3 rounded-xl text-sm bg-background border border-border focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all font-medium placeholder:text-muted-foreground/50 shadow-inner" placeholder="john@example.com" />
+                          <input type="email" id="email" name="email" value={formData.email} onChange={handleChange} required className="w-full px-4 py-3 rounded-xl text-sm bg-background/40 backdrop-blur-xl shadow-xl border border-border focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all font-medium placeholder:text-muted-foreground/50 shadow-inner" placeholder="john@example.com" />
                         </div>
                       </div>
 
                       <div className="space-y-1.5">
                         <label htmlFor="subject" className="text-xs font-bold text-foreground">Subject <span className="text-primary">*</span></label>
-                        <input type="text" id="subject" name="subject" value={formData.subject} onChange={handleChange} required className="w-full px-4 py-3 rounded-xl text-sm bg-background border border-border focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all font-medium placeholder:text-muted-foreground/50 shadow-inner" placeholder="What's this regarding?" />
+                        <input type="text" id="subject" name="subject" value={formData.subject} onChange={handleChange} required className="w-full px-4 py-3 rounded-xl text-sm bg-background/40 backdrop-blur-xl shadow-xl border border-border focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all font-medium placeholder:text-muted-foreground/50 shadow-inner" placeholder="What's this regarding?" />
                       </div>
 
                       <div className="space-y-1.5">
                         <label htmlFor="message" className="text-xs font-bold text-foreground">Message <span className="text-primary">*</span></label>
-                        <textarea id="message" name="message" value={formData.message} onChange={handleChange} required rows={5} className="w-full px-4 py-3 rounded-xl text-sm bg-background border border-border focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all font-medium placeholder:text-muted-foreground/50 shadow-inner resize-none" placeholder="Tell me about your project, idea, or inquiry..." />
+                        <textarea id="message" name="message" value={formData.message} onChange={handleChange} required rows={5} className="w-full px-4 py-3 rounded-xl text-sm bg-background/40 backdrop-blur-xl shadow-xl border border-border focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all font-medium placeholder:text-muted-foreground/50 shadow-inner resize-none" placeholder="Tell me about your project, idea, or inquiry..." />
                       </div>
 
                       <button type="submit" disabled={isSubmitting} className="w-full flex items-center justify-center gap-3 px-6 py-4 mt-2 bg-foreground text-background rounded-xl font-bold text-sm hover:shadow-2xl hover:shadow-foreground/20 transition-all duration-300 disabled:opacity-70 disabled:cursor-not-allowed hover:scale-[1.02] active:scale-[0.98] group">
@@ -210,7 +210,7 @@ export default function Contact() {
               { q: 'How do you handle project payments?', a: 'I typically work with a 50% upfront deposit to secure the project, and 50% upon successful completion. For larger projects, we arrange milestone-based delivery and payments.' },
             ].map((faq, i) => (
               <StaggerItem key={i}>
-                <div className="p-6 sm:p-8 rounded-[1.5rem] bg-card border border-border/50 hover:border-primary/30 transition-all duration-300 shadow-sm hover:shadow-md">
+                <div className="p-6 sm:p-8 rounded-[1.5rem] bg-card/40 backdrop-blur-xl shadow-xl border border-border/50 hover:border-primary/30 transition-all duration-300 shadow-sm hover:shadow-md">
                   <h3 className="text-lg font-bold mb-2 flex items-start gap-3 text-foreground">
                     <span className="text-primary mt-0.5 text-xl leading-none">Q.</span> {faq.q}
                   </h3>

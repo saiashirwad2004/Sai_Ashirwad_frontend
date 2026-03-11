@@ -36,7 +36,7 @@ export default function ProjectDetail() {
     <PageTransition>
       <div className="pt-24 pb-6 relative z-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <Link to="/projects" className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-card border border-border text-muted-foreground hover:text-foreground hover:bg-muted font-bold text-[13px] transition-all duration-300 shadow-sm hover:shadow-md">
+          <Link to="/projects" className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-card/40 backdrop-blur-xl shadow-xl border border-border text-muted-foreground hover:text-foreground hover:bg-muted font-bold text-[13px] transition-all duration-300 shadow-sm hover:shadow-md">
             <ArrowLeft className="w-4 h-4" /> Back to Projects
           </Link>
         </div>
@@ -77,7 +77,7 @@ export default function ProjectDetail() {
 
                 <div className="flex flex-wrap gap-2 mb-10">
                   {(project.tags || []).map(t => (
-                    <span key={t} className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-card border border-border text-[13px] font-bold shadow-sm">
+                    <span key={t} className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-card/40 backdrop-blur-xl shadow-xl border border-border text-[13px] font-bold shadow-sm">
                       <Tag className="w-3.5 h-3.5 text-primary" />{t}
                     </span>
                   ))}
@@ -91,7 +91,7 @@ export default function ProjectDetail() {
                     </a>
                   )}
                   {project.github && (
-                    <a href={project.github} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-6 py-3 bg-card border border-border text-foreground rounded-xl text-sm font-bold hover:bg-muted hover:shadow-md transition-all duration-300 hover:scale-105 active:scale-95 group">
+                    <a href={project.github} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-6 py-3 bg-card/40 backdrop-blur-xl shadow-xl border border-border text-foreground rounded-xl text-sm font-bold hover:bg-muted hover:shadow-md transition-all duration-300 hover:scale-105 active:scale-95 group">
                       <Github className="w-4 h-4 group-hover:-translate-y-0.5 transition-transform" />
                       Source Code
                     </a>
@@ -103,14 +103,14 @@ export default function ProjectDetail() {
             {/* Right Image/Showcase Column */}
             <div className="lg:col-span-7 order-1 lg:order-2 relative">
               <FadeIn delay={0.2} direction="right">
-                <div className="relative rounded-[1.5rem] overflow-hidden bg-card border border-border p-3 shadow-xl">
+                <div className="relative rounded-[1.5rem] overflow-hidden bg-card/40 backdrop-blur-xl shadow-xl border border-border p-3 shadow-xl">
                   <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-purple-500/10 opacity-50 pointer-events-none" />
 
                   <div className="relative aspect-[4/3] rounded-[1.2rem] overflow-hidden bg-muted/50 border border-border/50 group">
                     {project.image?.url ? (
                       <img src={project.image.url} alt={project.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000 ease-out" />
                     ) : (
-                      <div className="w-full h-full flex flex-col items-center justify-center text-muted-foreground bg-card">
+                      <div className="w-full h-full flex flex-col items-center justify-center text-muted-foreground bg-card/40 backdrop-blur-xl shadow-xl">
                         <span className="text-4xl mb-3 opacity-50">🚀</span>
                         <span className="font-medium text-sm">Project Media</span>
                       </div>
@@ -143,7 +143,7 @@ export default function ProjectDetail() {
                   <h2 className="text-2xl font-bold m-0 pl-2">About the Project</h2>
                 </div>
 
-                <div className="whitespace-pre-line leading-relaxed bg-card border border-border rounded-[1.5rem] p-6 sm:p-8 shadow-sm">
+                <div className="whitespace-pre-line leading-relaxed bg-card/40 backdrop-blur-xl shadow-xl border border-border rounded-[1.5rem] p-6 sm:p-8 shadow-sm">
                   {project.longDescription}
                 </div>
               </div>
@@ -167,10 +167,10 @@ export default function ProjectDetail() {
               {related.map((rp, i) => (
                 <motion.div key={rp._id} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}>
                   <Link to={`/projects/${rp.slug}`} className="group block h-full">
-                    <div className="relative overflow-hidden rounded-[1.5rem] bg-card border border-border hover:border-primary/50 transition-all duration-500 hover:shadow-xl hover:shadow-primary/10 h-full flex flex-col">
+                    <div className="relative overflow-hidden rounded-[1.5rem] bg-card/40 backdrop-blur-xl shadow-xl border border-border hover:border-primary/50 transition-all duration-500 hover:shadow-xl hover:shadow-primary/10 h-full flex flex-col">
                       <div className="aspect-[16/9] overflow-hidden bg-muted/50 relative p-2">
                         <div className="w-full h-full rounded-[1.2rem] overflow-hidden border border-border/50 relative">
-                          {rp.image?.url ? <img src={rp.image.url} alt={rp.title} className="w-full h-full object-cover group-hover:scale-105 group-hover:rotate-1 transition-transform duration-700 ease-out" /> : <div className="w-full h-full flex items-center justify-center text-muted-foreground bg-card"><FolderKanban className="w-10 h-10 mb-2 opacity-20" /></div>}
+                          {rp.image?.url ? <img src={rp.image.url} alt={rp.title} className="w-full h-full object-cover group-hover:scale-105 group-hover:rotate-1 transition-transform duration-700 ease-out" /> : <div className="w-full h-full flex items-center justify-center text-muted-foreground bg-card/40 backdrop-blur-xl shadow-xl"><FolderKanban className="w-10 h-10 mb-2 opacity-20" /></div>}
                           <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-background via-background/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                         </div>
                       </div>

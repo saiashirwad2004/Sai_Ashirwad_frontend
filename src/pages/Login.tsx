@@ -75,7 +75,7 @@ export default function Login() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="p-6 sm:p-8 rounded-2xl bg-card border border-border"
+            className="p-6 sm:p-8 rounded-2xl bg-card/40 backdrop-blur-xl shadow-xl border border-border"
           >
             <form onSubmit={handleSubmit} className="space-y-4">
               {error && (
@@ -99,7 +99,7 @@ export default function Login() {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 rounded-xl bg-background border border-border focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all"
+                  className="w-full px-4 py-3 rounded-xl bg-background/40 backdrop-blur-xl shadow-xl border border-border focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all"
                   placeholder="anand@example.com"
                 />
               </div>
@@ -116,7 +116,7 @@ export default function Login() {
                     value={formData.password}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 pr-12 rounded-xl bg-background border border-border focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all"
+                    className="w-full px-4 py-3 pr-12 rounded-xl bg-background/40 backdrop-blur-xl shadow-xl border border-border focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all"
                     placeholder="Enter your password"
                   />
                   <button

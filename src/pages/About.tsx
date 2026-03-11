@@ -128,7 +128,7 @@ export default function About() {
             <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {Object.entries(skills).map(([cat, items]) => (
                 <StaggerItem key={cat}>
-                  <div className="p-5 rounded-[1.5rem] bg-card border border-border/50 h-full shadow-sm hover:shadow-md transition-shadow">
+                  <div className="p-5 rounded-[1.5rem] bg-card/40 backdrop-blur-xl shadow-xl border border-border/50 h-full shadow-sm hover:shadow-md transition-shadow">
                     <h3 className="text-lg font-bold mb-5 flex items-center gap-2 capitalize">
                       <span className={`w-2.5 h-2.5 rounded-full ${catDots[cat] || 'bg-gray-500'}`} />
                       {catLabels[cat] || cat}
@@ -256,7 +256,7 @@ export default function About() {
             <StaggerContainer className="grid grid-cols-2 lg:grid-cols-4 gap-4">
               {site!.stats.map((stat, i) => (
                 <StaggerItem key={i}>
-                  <div className="text-center p-5 rounded-[1.5rem] bg-card border border-border/50 shadow-sm hover:shadow-md transition-shadow">
+                  <div className="text-center p-5 rounded-[1.5rem] bg-card/40 backdrop-blur-xl shadow-xl border border-border/50 shadow-sm hover:shadow-md transition-shadow">
                     <motion.div initial={{ scale: 0 }} whileInView={{ scale: 1 }} viewport={{ once: true }} transition={{ delay: i * 0.1, type: 'spring' }}
                       className="text-3xl md:text-4xl font-black font-display text-gradient mb-1">{stat.number}</motion.div>
                     <p className="text-xs sm:text-sm font-semibold text-muted-foreground uppercase tracking-wider">{stat.label}</p>

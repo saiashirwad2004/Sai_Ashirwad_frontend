@@ -62,17 +62,17 @@ export default function Blog() {
       <section className="py-6 relative z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <FadeIn>
-            <div className="flex flex-col md:flex-row gap-4 items-center justify-between bg-card border border-border/50 p-3 md:p-4 rounded-[1.5rem] shadow-xl shadow-background/50">
+            <div className="flex flex-col md:flex-row gap-4 items-center justify-between bg-card/40 backdrop-blur-xl shadow-xl border border-border/50 p-3 md:p-4 rounded-[1.5rem] shadow-xl shadow-background/50">
               <div className="relative w-full md:w-1/3">
                 <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
                 <input type="text" placeholder="Search articles..." value={searchQuery} onChange={e => setSearchQuery(e.target.value)}
-                  className="w-full pl-10 pr-5 py-3 rounded-xl text-sm bg-background border border-border focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all font-medium shadow-inner" />
+                  className="w-full pl-10 pr-5 py-3 rounded-xl text-sm bg-background/40 backdrop-blur-xl shadow-xl border border-border focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all font-medium shadow-inner" />
               </div>
               <div className="flex flex-wrap gap-2 justify-center md:justify-end flex-1">
-                <button onClick={() => setSelectedTag(null)} className={`px-4 py-2 rounded-lg text-[13px] font-bold transition-all duration-300 ${!selectedTag ? 'bg-primary text-primary-foreground shadow-lg shadow-primary/30 scale-105' : 'bg-background border border-border text-muted-foreground hover:bg-muted hover:text-foreground'}`}>All Topics</button>
+                <button onClick={() => setSelectedTag(null)} className={`px-4 py-2 rounded-lg text-[13px] font-bold transition-all duration-300 ${!selectedTag ? 'bg-primary text-primary-foreground shadow-lg shadow-primary/30 scale-105' : 'bg-background/40 backdrop-blur-xl shadow-xl border border-border text-muted-foreground hover:bg-muted hover:text-foreground'}`}>All Topics</button>
                 {allTags.map(tag => (
                   <button key={tag} onClick={() => setSelectedTag(tag === selectedTag ? null : tag)}
-                    className={`px-4 py-2 rounded-lg text-[13px] font-bold transition-all duration-300 ${selectedTag === tag ? 'bg-primary text-primary-foreground shadow-lg shadow-primary/30 scale-105' : 'bg-background border border-border text-muted-foreground hover:bg-muted hover:text-foreground'}`}>{tag}</button>
+                    className={`px-4 py-2 rounded-lg text-[13px] font-bold transition-all duration-300 ${selectedTag === tag ? 'bg-primary text-primary-foreground shadow-lg shadow-primary/30 scale-105' : 'bg-background/40 backdrop-blur-xl shadow-xl border border-border text-muted-foreground hover:bg-muted hover:text-foreground'}`}>{tag}</button>
                 ))}
               </div>
             </div>
@@ -91,14 +91,14 @@ export default function Blog() {
                 {filteredPosts.map((post, i) => (
                   <motion.article key={post._id} initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: i * 0.1, duration: 0.4 }} className="h-full">
                     <Link to={`/blog/${post.slug}`} className="group block h-full">
-                      <div className="h-full flex flex-col rounded-[1.5rem] bg-card border border-border/50 hover:border-primary/50 transition-all duration-500 overflow-hidden relative shadow-sm hover:shadow-lg">
+                      <div className="h-full flex flex-col rounded-[1.5rem] bg-card/40 backdrop-blur-xl shadow-xl border border-border/50 hover:border-primary/50 transition-all duration-500 overflow-hidden relative shadow-sm hover:shadow-lg">
                         {/* Glow Effect */}
                         <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
 
                         <div className="relative aspect-[16/10] overflow-hidden bg-muted/30 p-2">
                           <div className="w-full h-full rounded-[1.2rem] overflow-hidden border border-border/50 relative">
                             {post.image?.url ? <img src={post.image.url} alt={post.title} className="w-full h-full object-cover group-hover:scale-105 group-hover:-rotate-1 transition-transform duration-700 ease-out" />
-                              : <div className="w-full h-full flex flex-col items-center justify-center text-muted-foreground bg-card"><BookOpen className="w-10 h-10 mb-3 opacity-20" /></div>}
+                              : <div className="w-full h-full flex flex-col items-center justify-center text-muted-foreground bg-card/40 backdrop-blur-xl shadow-xl"><BookOpen className="w-10 h-10 mb-3 opacity-20" /></div>}
                             <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-background via-background/40 to-transparent pointer-events-none" />
                           </div>
                         </div>
@@ -129,7 +129,7 @@ export default function Blog() {
 
           {!loading && filteredPosts.length === 0 && (
             <FadeIn>
-              <div className="text-center py-32 rounded-3xl border-2 border-dashed border-border bg-card/50 max-w-3xl mx-auto">
+              <div className="text-center py-32 rounded-3xl border-2 border-dashed border-border bg-card/40 backdrop-blur-xl shadow-xl max-w-3xl mx-auto">
                 <Search className="w-16 h-16 text-muted-foreground/30 mx-auto mb-4" />
                 <h3 className="text-2xl font-bold text-foreground mb-2">No Articles Found</h3>
                 <p className="text-muted-foreground text-lg">We couldn't find any articles matching your search criteria.</p>
@@ -143,7 +143,7 @@ export default function Blog() {
       <section className="py-24 relative">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <FadeIn>
-            <div className="relative overflow-hidden rounded-[2rem] bg-card border border-border p-8 sm:p-12 md:p-16 text-center shadow-lg">
+            <div className="relative overflow-hidden rounded-[2rem] bg-card/40 backdrop-blur-xl shadow-xl border border-border p-8 sm:p-12 md:p-16 text-center shadow-lg">
               <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-purple-500/10 to-transparent pointer-events-none" />
               <div className="absolute top-0 right-0 w-64 h-64 bg-primary/20 rounded-full blur-[80px] -translate-y-1/2 translate-x-1/2 pointer-events-none" />
 
@@ -155,7 +155,7 @@ export default function Blog() {
                 <p className="text-muted-foreground text-sm sm:text-base mb-8 max-w-2xl mx-auto leading-relaxed">Join my newsletter to get the latest articles, tutorials, and insights delivered straight to your inbox.</p>
                 <form className="flex flex-col sm:flex-row gap-3 max-w-lg mx-auto relative">
                   <div className="relative flex-1">
-                    <input type="email" placeholder="Enter your email address" required className="w-full pl-5 pr-4 py-3 rounded-xl text-sm bg-background border border-border focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all font-medium shadow-inner" />
+                    <input type="email" placeholder="Enter your email address" required className="w-full pl-5 pr-4 py-3 rounded-xl text-sm bg-background/40 backdrop-blur-xl shadow-xl border border-border focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all font-medium shadow-inner" />
                   </div>
                   <button type="submit" className="px-6 py-3 bg-foreground text-background rounded-xl font-bold text-sm hover:shadow-xl hover:shadow-foreground/20 transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] whitespace-nowrap">Subscribe</button>
                 </form>

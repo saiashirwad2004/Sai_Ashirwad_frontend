@@ -34,7 +34,7 @@ export default function Testimonials() {
         </button>
       </div>
 
-      <div className="flex gap-2 p-1 bg-card border border-border rounded-xl shadow-sm w-max">
+      <div className="flex gap-2 p-1 bg-card/40 backdrop-blur-xl shadow-xl border border-border rounded-xl shadow-sm w-max">
         {(['all', 'pending', 'approved'] as const).map((f) => (
           <button key={f} onClick={() => setFilter(f)}
             className={`px-5 py-2.5 rounded-lg text-sm font-bold capitalize transition-all whitespace-nowrap inline-flex items-center gap-2 ${filter === f ? 'bg-primary text-primary-foreground shadow-sm' : 'text-muted-foreground hover:text-foreground hover:bg-muted/50'}`}>
@@ -46,7 +46,7 @@ export default function Testimonials() {
 
       <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {filtered.map((t) => (
-          <div key={t._id} className={`p-6 rounded-3xl bg-card border shadow-sm transition-all duration-300 group flex flex-col ${!t.approved ? 'border-yellow-500/30' : t.featured ? 'border-primary/30 shadow-primary/5' : 'border-border hover:border-primary/30'}`}>
+          <div key={t._id} className={`p-6 rounded-3xl bg-card/40 backdrop-blur-xl shadow-xl border shadow-sm transition-all duration-300 group flex flex-col ${!t.approved ? 'border-yellow-500/30' : t.featured ? 'border-primary/30 shadow-primary/5' : 'border-border hover:border-primary/30'}`}>
             <div className="flex items-start justify-between gap-3 mb-5">
               <div className="flex items-center gap-3">
                 <div className={`w-12 h-12 rounded-2xl flex items-center justify-center text-lg font-black shadow-inner flex-shrink-0 ${t.featured ? 'bg-gradient-to-br from-primary to-purple-500 text-primary-foreground' : 'bg-muted text-foreground'}`}>
@@ -89,7 +89,7 @@ export default function Testimonials() {
           </div>
         ))}
         {filtered.length === 0 && (
-          <div className="py-20 text-center border-2 border-dashed border-border rounded-3xl bg-card/50 col-span-full">
+          <div className="py-20 text-center border-2 border-dashed border-border rounded-3xl bg-card/40 backdrop-blur-xl shadow-xl col-span-full">
             <h3 className="text-xl font-bold text-foreground mb-2">No testimonials found</h3>
             <p className="text-muted-foreground">Try changing your filters or adding a new testimonial.</p>
           </div>
@@ -98,18 +98,18 @@ export default function Testimonials() {
 
       {showForm && (
         <div className="fixed inset-0 bg-background/80 backdrop-blur-md z-50 flex items-center justify-center p-4 animate-in fade-in zoom-in-95 duration-200" onClick={() => setShowForm(false)}>
-          <div className="bg-card border border-border shadow-2xl rounded-3xl w-full max-w-lg overflow-y-auto max-h-[90vh] p-8" onClick={e => e.stopPropagation()}>
+          <div className="bg-card/40 backdrop-blur-xl shadow-xl border border-border shadow-2xl rounded-3xl w-full max-w-lg overflow-y-auto max-h-[90vh] p-8" onClick={e => e.stopPropagation()}>
             <div className="flex items-center justify-between mb-8">
               <h2 className="text-2xl font-black">{editId ? 'Edit Testimonial' : 'New Testimonial'}</h2>
               <button onClick={() => setShowForm(false)} className="p-2 rounded-xl hover:bg-muted text-muted-foreground hover:text-foreground transition-colors"><X className="w-6 h-6" /></button>
             </div>
             <div className="space-y-5">
-              <div><label className="text-sm font-semibold text-foreground mb-1.5 block">Client Name *</label><input value={form.name} onChange={e => setForm({...form, name: e.target.value})} className="w-full px-5 py-3 bg-background border border-border rounded-xl text-sm focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all" /></div>
+              <div><label className="text-sm font-semibold text-foreground mb-1.5 block">Client Name *</label><input value={form.name} onChange={e => setForm({...form, name: e.target.value})} className="w-full px-5 py-3 bg-background/40 backdrop-blur-xl shadow-xl border border-border rounded-xl text-sm focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all" /></div>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                <div><label className="text-sm font-semibold text-foreground mb-1.5 block">Job Role</label><input value={form.role} onChange={e => setForm({...form, role: e.target.value})} className="w-full px-5 py-3 bg-background border border-border rounded-xl text-sm focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all" /></div>
-                <div><label className="text-sm font-semibold text-foreground mb-1.5 block">Company</label><input value={form.company} onChange={e => setForm({...form, company: e.target.value})} className="w-full px-5 py-3 bg-background border border-border rounded-xl text-sm focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all" /></div>
+                <div><label className="text-sm font-semibold text-foreground mb-1.5 block">Job Role</label><input value={form.role} onChange={e => setForm({...form, role: e.target.value})} className="w-full px-5 py-3 bg-background/40 backdrop-blur-xl shadow-xl border border-border rounded-xl text-sm focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all" /></div>
+                <div><label className="text-sm font-semibold text-foreground mb-1.5 block">Company</label><input value={form.company} onChange={e => setForm({...form, company: e.target.value})} className="w-full px-5 py-3 bg-background/40 backdrop-blur-xl shadow-xl border border-border rounded-xl text-sm focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all" /></div>
               </div>
-              <div><label className="text-sm font-semibold text-foreground mb-1.5 block">Testimonial Content *</label><textarea value={form.content} onChange={e => setForm({...form, content: e.target.value})} rows={5} className="w-full px-5 py-3 bg-background border border-border rounded-xl text-sm focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all resize-none leading-relaxed" /></div>
+              <div><label className="text-sm font-semibold text-foreground mb-1.5 block">Testimonial Content *</label><textarea value={form.content} onChange={e => setForm({...form, content: e.target.value})} rows={5} className="w-full px-5 py-3 bg-background/40 backdrop-blur-xl shadow-xl border border-border rounded-xl text-sm focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all resize-none leading-relaxed" /></div>
               <div>
                 <label className="text-sm font-semibold text-foreground mb-3 flex items-center justify-between">Rating <span className="text-primary font-black bg-primary/10 px-2 py-0.5 rounded-md">{form.rating} / 5</span></label>
                 <input type="range" min={1} max={5} value={form.rating} onChange={e => setForm({...form, rating: parseInt(e.target.value)})} className="w-full accent-primary h-2 bg-muted rounded-lg appearance-none cursor-pointer" />

@@ -74,12 +74,12 @@ export default function BlogPosts() {
       <div className="relative max-w-md">
         <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
         <input value={search} onChange={e => setSearch(e.target.value)} placeholder="Search posts..." 
-               className="w-full pl-12 pr-4 py-3 bg-card border border-border rounded-xl text-sm focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all shadow-sm" />
+               className="w-full pl-12 pr-4 py-3 bg-card/40 backdrop-blur-xl shadow-xl border border-border rounded-xl text-sm focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all shadow-sm" />
       </div>
 
       <div className="space-y-4">
         {filtered.map((p) => (
-          <div key={p._id} className="p-5 rounded-3xl bg-card border border-border shadow-sm hover:shadow-xl transition-all duration-300 group">
+          <div key={p._id} className="p-5 rounded-3xl bg-card/40 backdrop-blur-xl shadow-xl border border-border shadow-sm hover:shadow-xl transition-all duration-300 group">
             <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
               <div className="flex-1 min-w-0">
                 <div className="flex items-center gap-3 flex-wrap mb-2">
@@ -130,7 +130,7 @@ export default function BlogPosts() {
           </div>
         ))}
         {filtered.length === 0 && (
-          <div className="py-20 text-center border-2 border-dashed border-border rounded-3xl bg-card/50">
+          <div className="py-20 text-center border-2 border-dashed border-border rounded-3xl bg-card/40 backdrop-blur-xl shadow-xl">
             <h3 className="text-xl font-bold text-foreground mb-2">No posts found</h3>
             <p className="text-muted-foreground">Try adjusting your search query, or write a new post.</p>
           </div>
@@ -139,19 +139,19 @@ export default function BlogPosts() {
 
       {showForm && (
         <div className="fixed inset-0 bg-background/80 backdrop-blur-md z-50 flex items-center justify-center p-4 animate-in fade-in zoom-in-95 duration-200" onClick={() => setShowForm(false)}>
-          <div className="bg-card border border-border shadow-2xl rounded-3xl w-full max-w-3xl max-h-[90vh] overflow-y-auto p-8" onClick={e => e.stopPropagation()}>
+          <div className="bg-card/40 backdrop-blur-xl shadow-xl border border-border shadow-2xl rounded-3xl w-full max-w-3xl max-h-[90vh] overflow-y-auto p-8" onClick={e => e.stopPropagation()}>
             <div className="flex items-center justify-between mb-8">
               <h2 className="text-2xl font-black">{editId ? 'Edit Post' : 'New Post'}</h2>
               <button onClick={() => setShowForm(false)} className="p-2 rounded-xl hover:bg-muted text-muted-foreground hover:text-foreground transition-colors"><X className="w-6 h-6" /></button>
             </div>
             <div className="space-y-5">
-              <div><label className="text-sm font-semibold text-foreground mb-1.5 block">Title *</label><input value={form.title} onChange={e => setForm({...form, title: e.target.value})} className="w-full px-5 py-3 bg-background border border-border rounded-xl text-sm focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all" /></div>
-              <div><label className="text-sm font-semibold text-foreground mb-1.5 block">Excerpt *</label><textarea value={form.excerpt} onChange={e => setForm({...form, excerpt: e.target.value})} rows={2} className="w-full px-5 py-3 bg-background border border-border rounded-xl text-sm focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all resize-none" /></div>
-              <div><label className="text-sm font-semibold text-foreground mb-1.5 block">Content * (Markdown)</label><textarea value={form.content} onChange={e => setForm({...form, content: e.target.value})} rows={12} className="w-full px-5 py-3 bg-background border border-border rounded-xl text-sm focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all resize-none font-mono leading-relaxed" /></div>
+              <div><label className="text-sm font-semibold text-foreground mb-1.5 block">Title *</label><input value={form.title} onChange={e => setForm({...form, title: e.target.value})} className="w-full px-5 py-3 bg-background/40 backdrop-blur-xl shadow-xl border border-border rounded-xl text-sm focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all" /></div>
+              <div><label className="text-sm font-semibold text-foreground mb-1.5 block">Excerpt *</label><textarea value={form.excerpt} onChange={e => setForm({...form, excerpt: e.target.value})} rows={2} className="w-full px-5 py-3 bg-background/40 backdrop-blur-xl shadow-xl border border-border rounded-xl text-sm focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all resize-none" /></div>
+              <div><label className="text-sm font-semibold text-foreground mb-1.5 block">Content * (Markdown)</label><textarea value={form.content} onChange={e => setForm({...form, content: e.target.value})} rows={12} className="w-full px-5 py-3 bg-background/40 backdrop-blur-xl shadow-xl border border-border rounded-xl text-sm focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all resize-none font-mono leading-relaxed" /></div>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
-                <div><label className="text-sm font-semibold text-foreground mb-1.5 block">Category</label><input value={form.category} onChange={e => setForm({...form, category: e.target.value})} className="w-full px-5 py-3 bg-background border border-border rounded-xl text-sm focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all" /></div>
-                <div><label className="text-sm font-semibold text-foreground mb-1.5 block">Tags (comma sep)</label><input value={form.tags} onChange={e => setForm({...form, tags: e.target.value})} className="w-full px-5 py-3 bg-background border border-border rounded-xl text-sm focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all" /></div>
-                <div><label className="text-sm font-semibold text-foreground mb-1.5 block">Author</label><input value={form.author} onChange={e => setForm({...form, author: e.target.value})} className="w-full px-5 py-3 bg-background border border-border rounded-xl text-sm focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all" /></div>
+                <div><label className="text-sm font-semibold text-foreground mb-1.5 block">Category</label><input value={form.category} onChange={e => setForm({...form, category: e.target.value})} className="w-full px-5 py-3 bg-background/40 backdrop-blur-xl shadow-xl border border-border rounded-xl text-sm focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all" /></div>
+                <div><label className="text-sm font-semibold text-foreground mb-1.5 block">Tags (comma sep)</label><input value={form.tags} onChange={e => setForm({...form, tags: e.target.value})} className="w-full px-5 py-3 bg-background/40 backdrop-blur-xl shadow-xl border border-border rounded-xl text-sm focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all" /></div>
+                <div><label className="text-sm font-semibold text-foreground mb-1.5 block">Author</label><input value={form.author} onChange={e => setForm({...form, author: e.target.value})} className="w-full px-5 py-3 bg-background/40 backdrop-blur-xl shadow-xl border border-border rounded-xl text-sm focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all" /></div>
               </div>
               <div>
                 <label className="text-sm font-semibold text-foreground mb-1.5 block">Cover Image</label>
@@ -191,7 +191,7 @@ export default function BlogPosts() {
       {/* Delete Confirmation */}
       {deleteId && (
         <div className="fixed inset-0 bg-background/80 backdrop-blur-md z-[60] flex items-center justify-center p-4 animate-in fade-in zoom-in-95 duration-200" onClick={() => setDeleteId(null)}>
-          <div className="bg-card border border-border shadow-2xl rounded-3xl p-8 max-w-sm w-full text-center" onClick={e => e.stopPropagation()}>
+          <div className="bg-card/40 backdrop-blur-xl shadow-xl border border-border shadow-2xl rounded-3xl p-8 max-w-sm w-full text-center" onClick={e => e.stopPropagation()}>
             <div className="w-16 h-16 rounded-full bg-red-500/10 flex items-center justify-center mx-auto mb-4">
                <Trash2 className="w-8 h-8 text-red-500" />
             </div>

@@ -3,7 +3,8 @@ import { AnimatePresence } from 'framer-motion';
 import { cloneElement } from 'react';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
-import ParticleBackground from '@/components/three/ParticleBackground';
+import { FallingPattern } from '@/components/ui/falling-pattern';
+import { Component as EtheralShadow } from '@/components/ui/etheral-shadow';
 import ScrollToTop from '@/components/ScrollToTop';
 import FloatingActions from '@/components/FloatingActions';
 import ErrorBoundary from '@/components/ErrorBoundary';
@@ -45,8 +46,20 @@ function PublicLayout() {
   const outlet = useOutlet();
 
   return (
-    <div className="min-h-screen bg-background text-foreground relative flex flex-col">
-      <ParticleBackground />
+    <div className="min-h-screen text-foreground relative flex flex-col">
+      {/* Falling pattern background */}
+      <div className="fixed inset-0 z-0 bg-background">
+        <FallingPattern className="h-full w-full [mask-image:radial-gradient(ellipse_at_center,transparent,var(--background))]" />
+      </div>
+      {/* Etheral shadow overlay */}
+      <div className="fixed inset-0 z-[1] pointer-events-none">
+        <EtheralShadow
+          color="rgba(59, 130, 246, 0.15)"
+          animation={{ scale: 100, speed: 90 }}
+          noise={{ opacity: 0.3, scale: 1.2 }}
+          sizing="fill"
+        />
+      </div>
       <Navigation />
       <main className="flex-1 relative z-10">
         <AnimatePresence mode="wait">
