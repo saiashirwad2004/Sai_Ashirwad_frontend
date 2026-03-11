@@ -28,11 +28,19 @@
                 },
                 {
                     "key": "Referrer-Policy",
-                    "value": "no-referrer-when-downgrade"
+                    "value": "strict-origin-when-cross-origin"
+                },
+                {
+                    "key": "Strict-Transport-Security",
+                    "value": "max-age=63072000; includeSubDomains; preload"
                 },
                 {
                     "key": "Permissions-Policy",
                     "value": "camera=(), microphone=(), geolocation=()"
+                },
+                {
+                    "key": "Vary",
+                    "value": "Accept-Encoding"
                 },
                 {
                     "key": "CDN-Cache-Control",
@@ -43,12 +51,8 @@
                     "value": "max-age=300"
                 },
                 {
-                    "key": "Vary",
-                    "value": "Accept-Encoding"
-                },
-                {
                     "key": "Content-Security-Policy",
-                    "value": "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' blob: https://challenges.cloudflare.com https://static.cloudflareinsights.com https://www.googletagmanager.com https://www.google-analytics.com https://www.clarity.ms; script-src-elem 'self' 'unsafe-inline' blob: https://challenges.cloudflare.com https://static.cloudflareinsights.com https://www.googletagmanager.com https://www.google-analytics.com https://www.clarity.ms; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; style-src-elem 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob: https: https://www.clarity.ms https://*.clarity.ms; frame-src https://challenges.cloudflare.com https://*.cloudflare.com; worker-src blob: https://challenges.cloudflare.com; connect-src 'self' blob: http://localhost:5000 https://api.anandverse.space https://www.anandverse.space https://anandverse.space https://res.cloudinary.com https://challenges.cloudflare.com https://*.challenges.cloudflare.com https://cloudflareinsights.com https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://www.clarity.ms https://*.clarity.ms; media-src 'self'; base-uri 'self'; manifest-src 'self';"
+                    "value": "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' blob: https://challenges.cloudflare.com https://static.cloudflareinsights.com https://www.googletagmanager.com https://www.google-analytics.com https://www.clarity.ms https://clarity.ms; script-src-elem 'self' 'unsafe-inline' blob: https://challenges.cloudflare.com https://static.cloudflareinsights.com https://www.googletagmanager.com https://www.google-analytics.com https://www.clarity.ms https://clarity.ms; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; style-src-elem 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob: https: https://www.clarity.ms https://*.clarity.ms https://clarity.ms; frame-src https://challenges.cloudflare.com https://*.cloudflare.com; worker-src blob: https://challenges.cloudflare.com; connect-src 'self' blob: http://localhost:5000 https://api.anandverse.space https://www.anandverse.space https://anandverse.space https://res.cloudinary.com https://challenges.cloudflare.com https://*.challenges.cloudflare.com https://cloudflareinsights.com https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://www.clarity.ms https://*.clarity.ms https://clarity.ms; media-src 'self'; base-uri 'self'; manifest-src 'self'; frame-ancestors 'self';"
                 }
             ]
         },
