@@ -41,9 +41,9 @@ export default function Navigation() {
           <nav className="flex items-center justify-between h-16 md:h-20" aria-label="Main Navigation">
             {/* Logo */}
             <Link to="/" className="inline-flex items-center gap-2 group">
-              <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>" alt="AnandVerse Logo" className="w-8 h-8 md:w-10 md:h-10 object-contain group-hover:scale-105 group-hover:-rotate-3 transition-all duration-300 rounded-xl" />
+              <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>" alt="Sai Ashirwad Logo" className="w-8 h-8 md:w-10 md:h-10 object-contain group-hover:scale-105 group-hover:-rotate-3 transition-all duration-300 rounded-xl" />
               <span className="text-xl md:text-2xl font-black font-display tracking-tight hover:text-primary transition-colors duration-300">
-                AnandVerse<span className="text-primary">.</span>
+                Sai Ashirwad<span className="text-primary">.</span>
               </span>
             </Link>
 

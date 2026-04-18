@@ -21,13 +21,13 @@ export default function TermsOfService() {
           <FadeIn delay={0.1}>
             <div className="prose dark:prose-invert max-w-none text-muted-foreground font-medium text-sm leading-relaxed">
               <p>
-                By accessing or using the AnandVerse website, you agree to be bound by these Terms of Service and all applicable laws and regulations.
+                By accessing or using the Sai Ashirwad website, you agree to be bound by these Terms of Service and all applicable laws and regulations.
                 If you do not agree with any of these terms, you are prohibited from using or accessing this site.
               </p>
 
               <h2 className="text-foreground font-display font-bold mt-10 mb-3 text-2xl">Services and Intellectual Property</h2>
               <p>
-                The materials on AnandVerse's website are provided on an 'as is' basis. All designs, code snippets, articles, and media not explicitly marked for reuse are the intellectual property of Anand.
+                The materials on Sai Ashirwad's website are provided on an 'as is' basis. All designs, code snippets, articles, and media not explicitly marked for reuse are the intellectual property of Sai Ashirwad.
                 You may access these for personal or educational use, but they may not be republished or sold without express permission.
               </p>
 
@@ -51,12 +51,12 @@ export default function TermsOfService() {
               <h2 className="text-foreground font-display font-bold mt-10 mb-3 text-2xl">Warranties and Liability</h2>
               <p>
                 I make no warranties, expressed or implied, regarding the continuous availability of the site. I shall not be liable for any damages
-                arising out of the use or inability to use the materials on the AnandVerse website.
+                arising out of the use or inability to use the materials on the Sai Ashirwad website.
               </p>
 
               <h2 className="text-foreground font-display font-bold mt-10 mb-3 text-2xl">Changes to Terms</h2>
               <p>
-                AnandVerse may revise these Terms of Service at any time without notice. By using this website you are agreeing to be bound by the then current version of these Terms of Service.
+                Sai Ashirwad may revise these Terms of Service at any time without notice. By using this website you are agreeing to be bound by the then current version of these Terms of Service.
               </p>
             </div>
           </FadeIn>

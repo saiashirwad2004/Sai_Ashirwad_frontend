@@ -46,7 +46,7 @@ Mastering these patterns will make you a more effective React developer and help
     tags: ['React', 'JavaScript', 'Web Development'],
     date: '2024-03-01',
     readTime: '8 min read',
-    author: 'Anand'
+    author: 'Sai Ashirwad'
   },
   {
     id: 'typescript-best-practices',
@@ -81,7 +81,7 @@ Following these practices will help you get the most out of TypeScript and avoid
     tags: ['TypeScript', 'JavaScript', 'Programming'],
     date: '2024-02-15',
     readTime: '6 min read',
-    author: 'Anand'
+    author: 'Sai Ashirwad'
   },
   {
     id: 'web-performance',
@@ -112,7 +112,7 @@ These techniques will significantly improve your website's performance metrics.`
     tags: ['Performance', 'Web Development', 'Optimization'],
     date: '2024-01-28',
     readTime: '10 min read',
-    author: 'Anand'
+    author: 'Sai Ashirwad'
   },
   {
     id: 'threejs-basics',
@@ -172,7 +172,7 @@ Three.js opens up endless possibilities for creative web experiences. Start expe
     tags: ['Three.js', '3D', 'WebGL', 'JavaScript'],
     date: '2024-01-10',
     readTime: '7 min read',
-    author: 'Anand'
+    author: 'Sai Ashirwad'
   },
   {
     id: 'fullstack-deployment',
@@ -209,7 +209,7 @@ Choose the deployment strategy that best fits your application requirements and 
     tags: ['DevOps', 'Deployment', 'Docker', 'CI/CD'],
     date: '2023-12-20',
     readTime: '9 min read',
-    author: 'Anand'
+    author: 'Sai Ashirwad'
   }
 ];
 

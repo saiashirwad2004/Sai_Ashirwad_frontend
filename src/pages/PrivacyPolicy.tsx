@@ -21,7 +21,7 @@ export default function PrivacyPolicy() {
           <FadeIn delay={0.1}>
             <div className="prose dark:prose-invert max-w-none text-muted-foreground font-medium text-sm leading-relaxed">
               <p>
-                At AnandVerse, I am committed to protecting your privacy and ensuring you have a positive experience on my website.
+                At Sai Ashirwad, I am committed to protecting your privacy and ensuring you have a positive experience on my website.
                 This Privacy Policy outlines how I collect, use, and safeguard your personal information.
               </p>
 
@@ -54,7 +54,7 @@ export default function PrivacyPolicy() {
 
               <h2 className="text-foreground font-display font-bold mt-10 mb-3 text-2xl">Your Rights</h2>
               <p>
-                You have the right to request access to the personal data we hold about you or request its deletion. If you would like to exercise these rights or have questions about this policy, please contact me at <strong>anand@anandverse.space</strong>.
+                You have the right to request access to the personal data we hold about you or request its deletion. If you would like to exercise these rights or have questions about this policy, please contact me at <strong>sai@saiashirwad.online</strong>.
               </p>
             </div>
           </FadeIn>

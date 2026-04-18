@@ -11,7 +11,7 @@ interface SEOProps {
 export function useSEO({ title, description, type = 'website', url, image }: SEOProps) {
   useEffect(() => {
     // Basic SEO pattern
-    document.title = `${title} – AnandVerse`;
+    document.title = `${title} – Sai Ashirwad`;
 
     const setMetaTag = (attr: string, key: string, content: string) => {
       let element = document.querySelector(`meta[${attr}="${key}"]`);
@@ -26,7 +26,7 @@ export function useSEO({ title, description, type = 'website', url, image }: SEO
     setMetaTag('name', 'description', description);
     
     // Open Graph
-    setMetaTag('property', 'og:title', `${title} – AnandVerse`);
+    setMetaTag('property', 'og:title', `${title} – Sai Ashirwad`);
     setMetaTag('property', 'og:description', description);
     setMetaTag('property', 'og:type', type);
     
@@ -35,7 +35,7 @@ export function useSEO({ title, description, type = 'website', url, image }: SEO
 
     // Twitter
     setMetaTag('name', 'twitter:card', 'summary_large_image');
-    setMetaTag('name', 'twitter:title', `${title} – AnandVerse`);
+    setMetaTag('name', 'twitter:title', `${title} – Sai Ashirwad`);
     setMetaTag('name', 'twitter:description', description);
     if (image) setMetaTag('name', 'twitter:image', image);
 

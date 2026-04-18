@@ -66,8 +66,8 @@ export default function Home() {
 
   useSEO({
     title: 'Home',
-    description: 'AnandVerse is the portfolio of Anand, a Full Stack Developer building scalable web applications using React, Node.js, and modern technologies.',
-    url: 'https://anandverse.space'
+    description: 'Sai Ashirwad is the portfolio of Sai Ashirwad, a Full Stack Developer building scalable web applications using React, Node.js, and modern technologies.',
+    url: 'https://www.saiashirwad.online'
   });
 
   if (loading || !site) {

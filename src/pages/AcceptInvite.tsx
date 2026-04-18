@@ -67,7 +67,7 @@ export default function AcceptInvite() {
           <div className="w-20 h-20 mx-auto bg-green-500/10 rounded-full flex items-center justify-center">
             <ShieldCheck className="w-10 h-10 text-green-500" />
           </div>
-          <h1 className="text-3xl font-bold font-display text-foreground">Welcome to AnandVerse</h1>
+          <h1 className="text-3xl font-bold font-display text-foreground">Welcome to Sai Ashirwad</h1>
           <p className="text-muted-foreground">Your account has been successfully set up. Redirecting to your dashboard...</p>
         </motion.div>
       </div>
@@ -80,7 +80,7 @@ export default function AcceptInvite() {
         <div className="text-center">
           <Link to="/" className="inline-block mb-6">
             <span className="text-3xl font-black bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-500">
-              AnandVerse
+              Sai Ashirwad
             </span>
           </Link>
           <h1 className="text-3xl font-bold font-display text-foreground mb-2">Accept Invitation</h1>

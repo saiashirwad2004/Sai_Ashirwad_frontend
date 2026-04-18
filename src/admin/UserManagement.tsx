@@ -183,7 +183,7 @@ export default function UserManagement() {
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                   className="w-full bg-background/40 backdrop-blur-xl shadow-xl border border-border rounded-xl px-5 py-3 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all text-sm font-medium"
-                  placeholder="e.g. Anand"
+                  placeholder="e.g. Sai Ashirwad"
                 />
               </div>
               <div>
@@ -194,7 +194,7 @@ export default function UserManagement() {
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                   className="w-full bg-background/40 backdrop-blur-xl shadow-xl border border-border rounded-xl px-5 py-3 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all text-sm font-medium"
-                  placeholder="anand@example.com"
+                  placeholder="sai@example.com"
                 />
               </div>
               <div>

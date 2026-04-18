@@ -54,11 +54,11 @@ export default function Footer() {
             <Link to="/" className="inline-flex items-center gap-3 mb-6 group">
               <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary/80 to-purple-600/80 p-[1px] group-hover:scale-105 transition-transform duration-300">
                 <div className="w-full h-full bg-background/90 rounded-[11px] flex items-center justify-center overflow-hidden">
-                  <img src="/logo.png" alt="AnandVerse" className="w-6 h-6 object-contain" />
+                  <img src="/logo.png" alt="Sai Ashirwad" className="w-6 h-6 object-contain" />
                 </div>
               </div>
               <span className="text-xl font-bold font-display tracking-tight hover:text-primary transition-colors duration-300">
-                AnandVerse<span className="text-primary">.</span>
+                Sai Ashirwad<span className="text-primary">.</span>
               </span>
             </Link>
             <p className="text-muted-foreground text-sm mb-8 leading-relaxed max-w-sm">
@@ -146,14 +146,14 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="mt-16 pt-8 border-t border-border/40 flex flex-col sm:flex-row items-center justify-between gap-6">
           <p className="text-muted-foreground font-medium text-xs text-center sm:text-left">
-            © {new Date().getFullYear()} AnandVerse. All rights reserved.
+            © {new Date().getFullYear()} Sai Ashirwad. All rights reserved.
           </p>
           <div className="flex items-center gap-2 text-xs font-medium text-muted-foreground bg-card px-4 py-2 rounded-full border border-border/50">
             Crafted with 
             <motion.div animate={{ scale: [1, 1.2, 1] }} transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}>
               <Heart className="w-3.5 h-3.5 text-red-500 fill-red-500" />
             </motion.div>
-            by <span className="text-foreground font-bold">Anand</span>
+            by <span className="text-foreground font-bold">Sai Ashirwad</span>
           </div>
         </div>
       </div>

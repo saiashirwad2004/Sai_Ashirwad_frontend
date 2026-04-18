@@ -23,8 +23,8 @@ export default function Projects() {
 
   useSEO({
     title: 'Projects',
-    description: 'Explore the portfolio of Anand, featuring full-stack applications, creative coding, and professional projects.',
-    url: 'https://anandverse.space/projects'
+    description: 'Explore the portfolio of Sai Ashirwad, featuring full-stack applications, creative coding, and professional projects.',
+    url: 'https://www.saiashirwad.online/projects'
   });
 
   const allTags = Array.from(new Set(projects.flatMap(p => p.tags || [])));

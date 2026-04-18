@@ -106,7 +106,7 @@ export default function Login() {
                   onChange={handleChange}
                   required
                   className="input-field"
-                  placeholder="anand@example.com"
+                  placeholder="sai@example.com"
                 />
               </div>
 

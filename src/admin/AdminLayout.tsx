@@ -54,7 +54,7 @@ export default function AdminLayout() {
       {/* Sidebar */}
       <aside className={`fixed lg:static inset-y-0 left-0 z-50 flex flex-col bg-card/50 backdrop-blur-xl border-r border-border transition-all duration-300 ${sidebarOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'} ${collapsed ? 'w-[80px]' : 'w-72'}`}>
         <div className="flex items-center justify-between h-20 px-6 border-b border-border">
-          {!collapsed && <span className="text-2xl font-black font-display bg-gradient-to-r from-primary to-purple-500 bg-clip-text text-transparent">AnandVerse</span>}
+          {!collapsed && <span className="text-2xl font-black font-display bg-gradient-to-r from-primary to-purple-500 bg-clip-text text-transparent">Sai Ashirwad</span>}
           <button onClick={() => { if (window.innerWidth >= 1024) setCollapsed(!collapsed); else setSidebarOpen(false); }} className="p-2 rounded-xl hover:bg-muted text-muted-foreground hover:text-foreground transition-colors ml-auto">
             {sidebarOpen ? <X className="w-5 h-5" /> : <ChevronLeft className={`w-5 h-5 transition-transform ${collapsed ? 'rotate-180' : ''}`} />}
           </button>

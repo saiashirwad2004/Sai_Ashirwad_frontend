@@ -54,8 +54,8 @@ export default function About() {
 
   useSEO({
     title: 'About Me',
-    description: 'Learn more about Anand, a Full Stack Developer specializing in React, Node.js, and modern web architectures.',
-    url: 'https://anandverse.space/about'
+    description: 'Learn more about Sai Ashirwad, a Full Stack Developer specializing in React, Node.js, and modern web architectures.',
+    url: 'https://www.saiashirwad.online/about'
   });
 
   if (loading || !site) {

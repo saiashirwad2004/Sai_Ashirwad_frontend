@@ -19,8 +19,8 @@ Key features include:
 The platform handles thousands of concurrent users and processes hundreds of transactions daily with 99.9% uptime.`,
     image: 'https://images.unsplash.com/photo-1557821552-17105176677c?w=800&h=600&fit=crop',
     tags: ['React', 'Node.js', 'MongoDB', 'Stripe', 'Socket.io', 'Redis'],
-    github: 'https://github.com/anandverse/ecommerce-platform',
-    live: 'https://demo-ecommerce.anandverse.space',
+    github: 'https://github.com/saiashirwad/ecommerce-platform',
+    live: 'https://demo-ecommerce.saiashirwad.online',
     featured: true,
     date: '2024-01-15'
   },
@@ -42,8 +42,8 @@ Key features include:
 The system has helped teams increase productivity by 40% on average.`,
     image: 'https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=800&h=600&fit=crop',
     tags: ['Next.js', 'TypeScript', 'PostgreSQL', 'Prisma', 'Tailwind CSS'],
-    github: 'https://github.com/anandverse/task-management',
-    live: 'https://tasks.anandverse.space',
+    github: 'https://github.com/saiashirwad/task-management',
+    live: 'https://tasks.saiashirwad.online',
     featured: true,
     date: '2023-11-20'
   },
@@ -65,8 +65,8 @@ Key features include:
 The platform has generated over 100,000 images for users worldwide.`,
     image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&h=600&fit=crop',
     tags: ['React', 'Python', 'FastAPI', 'TensorFlow', 'AWS', 'Docker'],
-    github: 'https://github.com/anandverse/ai-image-gen',
-    live: 'https://ai-images.anandverse.space',
+    github: 'https://github.com/saiashirwad/ai-image-gen',
+    live: 'https://ai-images.saiashirwad.online',
     featured: true,
     date: '2024-02-10'
   },
@@ -88,8 +88,8 @@ Key features include:
 Used by over 5,000 traders and investors for daily market analysis.`,
     image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop',
     tags: ['React', 'D3.js', 'Node.js', 'WebSocket', 'PostgreSQL', 'Redis'],
-    github: 'https://github.com/anandverse/finance-dashboard',
-    live: 'https://finance.anandverse.space',
+    github: 'https://github.com/saiashirwad/finance-dashboard',
+    live: 'https://finance.saiashirwad.online',
     featured: false,
     date: '2023-09-05'
   },
@@ -111,7 +111,7 @@ Key features include:
 The platform has 10,000+ active users with high engagement rates.`,
     image: 'https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=800&h=600&fit=crop',
     tags: ['React Native', 'Node.js', 'MongoDB', 'Socket.io', 'AWS S3'],
-    github: 'https://github.com/anandverse/social-app',
+    github: 'https://github.com/saiashirwad/social-app',
     featured: false,
     date: '2023-07-18'
   },
@@ -133,8 +133,8 @@ Key features include:
 Rated 4.8 stars with over 50,000 downloads.`,
     image: 'https://images.unsplash.com/photo-1592210454359-9043f067919b?w=800&h=600&fit=crop',
     tags: ['React Native', 'Weather API', 'Geolocation', 'Push Notifications'],
-    github: 'https://github.com/anandverse/weather-app',
-    live: 'https://weather.anandverse.space',
+    github: 'https://github.com/saiashirwad/weather-app',
+    live: 'https://weather.saiashirwad.online',
     featured: false,
     date: '2023-05-22'
   }

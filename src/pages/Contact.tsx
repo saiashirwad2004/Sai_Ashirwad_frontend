@@ -30,8 +30,8 @@ export default function Contact() {
 
   useSEO({
     title: 'Contact',
-    description: 'Get in touch with Anand. Have a visionary project in mind or a question about my work? Send a message securely and let us connect.',
-    url: 'https://anandverse.space/contact'
+    description: 'Get in touch with Sai Ashirwad. Have a visionary project in mind or a question about my work? Send a message securely and let us connect.',
+    url: 'https://www.saiashirwad.online/contact'
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {

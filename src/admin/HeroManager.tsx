@@ -93,7 +93,7 @@ export default function HeroManager() {
           <div className="space-y-5">
             <div>
               <label className="text-sm font-bold text-muted-foreground uppercase tracking-wider mb-2 block">Heading</label>
-              <input value={config.heroHeading || ''} onChange={e => update('heroHeading', e.target.value)} className="w-full px-4 py-3 bg-background/40 backdrop-blur-xl shadow-xl border border-border rounded-xl text-sm focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all font-bold text-foreground" placeholder="Hi, I'm Anand" />
+              <input value={config.heroHeading || ''} onChange={e => update('heroHeading', e.target.value)} className="w-full px-4 py-3 bg-background/40 backdrop-blur-xl shadow-xl border border-border rounded-xl text-sm focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all font-bold text-foreground" placeholder="Hi, I'm Sai Ashirwad" />
             </div>
             <div>
               <label className="text-sm font-bold text-muted-foreground uppercase tracking-wider mb-2 block">Subtitle</label>

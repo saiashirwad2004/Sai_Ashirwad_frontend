@@ -1,7 +1,7 @@
-Contact: https://anandverse.space/contact
-Contact: security@anandverse.space
+Contact: https://www.saiashirwad.online/contact
+Contact: security@saiashirwad.online
 Expires: 2027-01-01T12:00:00.000Z
 Languages: en
 Preferred-Languages: en
-Ack: https://anandverse.space/security/acknowledgments
-Policy: https://anandverse.space/privacy-policy
+Ack: https://www.saiashirwad.online/security/acknowledgments
+Policy: https://www.saiashirwad.online/privacy-policy

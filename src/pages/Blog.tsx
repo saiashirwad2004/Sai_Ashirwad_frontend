@@ -24,8 +24,8 @@ export default function Blog() {
 
   useSEO({
     title: 'Blog',
-    description: 'Read articles, tutorials, and insights on modern web development, architecture, and technology by Anand.',
-    url: 'https://anandverse.space/blog'
+    description: 'Read articles, tutorials, and insights on modern web development, architecture, and technology by Sai Ashirwad.',
+    url: 'https://www.saiashirwad.online/blog'
   });
 
   const allTags = Array.from(new Set(posts.flatMap(p => p.tags || [])));

@@ -10,7 +10,7 @@ interface BlogPost {
   readTime: string; published: boolean; featured: boolean; views: number; date: string;
 }
 
-const emptyForm = { title: '', excerpt: '', content: '', category: 'general', tags: '', author: 'Anand', imageUrl: '' };
+const emptyForm = { title: '', excerpt: '', content: '', category: 'general', tags: '', author: 'Sai Ashirwad', imageUrl: '' };
 
 export default function BlogPosts() {
   const { data, loading, createItem, updateItem, deleteItem, toggleField } = useAdminData<BlogPost>('blog');
@@ -24,7 +24,7 @@ export default function BlogPosts() {
 
   const openCreate = () => { setForm(emptyForm); setEditId(null); setShowForm(true); };
   const openEdit = (p: BlogPost) => {
-    setForm({ title: p.title, excerpt: p.excerpt, content: p.content, category: p.category || 'general', tags: p.tags.join(', '), author: p.author || 'Anand', imageUrl: p.image?.url || '' });
+    setForm({ title: p.title, excerpt: p.excerpt, content: p.content, category: p.category || 'general', tags: p.tags.join(', '), author: p.author || 'Sai Ashirwad', imageUrl: p.image?.url || '' });
     setEditId(p._id); setShowForm(true);
   };
 

@@ -25,4 +25,4 @@ Disallow: /admin
 Disallow: /api/
 
 # Specify the location of the sitemap (Uncomment and replace with your actual domain when you have a sitemap)
-Sitemap: https://anandverse.space/sitemap.xml
+Sitemap: https://www.saiashirwad.online/sitemap.xml

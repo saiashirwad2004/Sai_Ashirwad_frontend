@@ -1,8 +1,8 @@
 /* TEAM */
-  Developer: Anand
+  Developer: Sai Ashirwad
   Role: Full Stack Engineer
   Location: Earth
-  Contact: hello [at] anandverse.space (update with actual email)
+  Contact: hello [at] saiashirwad.online (update with actual email)
 
 /* SITE */
   Last update: 2026-03-12
